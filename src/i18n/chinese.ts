@@ -135,7 +135,7 @@ export default {
         },
         problems: {
           text: "題目",
-          id: "編號",
+          id: "序號",
           pid: "題號",
           name: "題名",
           quota: "額度",
