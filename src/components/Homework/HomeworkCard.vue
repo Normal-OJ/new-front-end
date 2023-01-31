@@ -2,6 +2,9 @@
 import { computed } from "vue";
 import { useSession } from "@/stores/session";
 import { formatTime } from "@/utils/formatTime";
+import { useI18n } from "vue-i18n";
+
+const {t} = useI18n();
 
 interface Props {
   homework: HomeworkListItem | HomeworkPreviewForm;
@@ -15,9 +18,9 @@ const props = withDefaults(defineProps<Props>(), {
 
 const session = useSession();
 const STATUS_LABEL = {
-  RUNNING: "RUNNING",
-  NOT_START: "NOT START",
-  OVER: "OVER",
+  RUNNING: t("components.hw.hwCard.statusLabel.running"),
+  NOT_START: t("components.hw.hwCard.statusLabel.nStart"),
+  OVER: t("components.hw.hwCard.statusLabel.over"),
 };
 const STATUS_CLASS = {
   [STATUS_LABEL.RUNNING]: "badge-success",
@@ -51,13 +54,13 @@ const state = computed(() => {
 
       <div class="flex flex-wrap lg:flex-nowrap lg:gap-x-8">
         <div class="mb-8 w-full lg:flex-[2_1_0%]">
-          <div class="card-title">Availability</div>
+          <div class="card-title">{{ t("components.hw.hwCard.availability.text") }}</div>
           <div class="mt-2 flex flex-wrap overflow-x-auto lg:flex-nowrap">
             <table class="table-compact table w-full">
               <thead>
                 <tr>
-                  <th>From</th>
-                  <th>Due</th>
+                  <th>{{t("components.hw.hwCard.availability.from")}}</th>
+                  <th>{{t("components.hw.hwCard.availability.due")}}</th>
                 </tr>
               </thead>
               <tbody>
