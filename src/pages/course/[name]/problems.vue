@@ -61,7 +61,7 @@ const maxPage = computed(() => {
                   <th>{{ t("course.problems.id") }}</th>
                   <th>{{ t("course.problems.name") }}</th>
                   <th>{{ t("course.problems.tags") }}</th>
-                  <th>{{ t("course.problems.quota ") }}</th>
+                  <th>{{ t("course.problems.quota") }}</th>
                   <th></th>
                 </tr>
               </thead>
