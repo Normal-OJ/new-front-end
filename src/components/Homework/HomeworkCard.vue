@@ -59,8 +59,8 @@ const state = computed(() => {
             <table class="table-compact table w-full">
               <thead>
                 <tr>
-                  <th>{{t("components.hw.hwCard.availability.from")}}</th>
-                  <th>{{t("components.hw.hwCard.availability.due")}}</th>
+                  <th>{{ t("components.hw.hwCard.availability.from") }}</th>
+                  <th>{{ t("components.hw.hwCard.availability.due") }}</th>
                 </tr>
               </thead>
               <tbody>
@@ -74,17 +74,17 @@ const state = computed(() => {
         </div>
 
         <div class="mb-8 w-full lg:flex-[3_1_0%]">
-          <div class="card-title">Problems</div>
+          <div class="card-title">{{ t("components.hw.hwCard.problems.text") }}</div>
           <table class="table-compact mt-2 table w-full">
             <thead>
               <tr>
-                <th>#</th>
-                <th>PID</th>
-                <th>Name</th>
-                <th>Quota</th>
-                <th>Score</th>
-                <th>Stats</th>
-                <th v-if="session.isAdmin">Copycat</th>
+                <th>{{ t("components.hw.hwCard.problems.id") }}</th>
+                <th>{{ t("components.hw.hwCard.problems.pid") }}</th>
+                <th>{{ t("components.hw.hwCard.problems.name") }}</th>
+                <th>{{ t("components.hw.hwCard.problems.quota") }}</th>
+                <th>{{ t("components.hw.hwCard.problems.score") }}</th>
+                <th>{{ t("components.hw.hwCard.problems.stats") }}</th>
+                <th v-if="session.isAdmin">{{ t("components.hw.hwCard.problems.copycat") }}</th>
               </tr>
             </thead>
             <tbody>
@@ -139,17 +139,17 @@ const state = computed(() => {
 
       <div class="flex flex-wrap lg:flex-nowrap lg:gap-x-8">
         <div class="w-full lg:flex-1">
-          <div class="card-title">Description</div>
+          <div class="card-title">{{ t("components.hw.hwCard.description.text") }}</div>
           <markdown-renderer class="mt-2" :md="homework.markdown" />
         </div>
       </div>
 
       <div v-if="homework.id && !preview && session.isAdmin" class="card-actions justify-end">
         <router-link class="btn mr-3" :to="`/course/${$route.params.name}/homeworks/${homework.id}/edit`">
-          <i-uil-edit class="mr-1 lg:h-5 lg:w-5" /> Edit
+          <i-uil-edit class="mr-1 lg:h-5 lg:w-5" /> {{ t("components.hw.hwCard.description.edit") }}
         </router-link>
         <router-link class="btn" :to="`/course/${$route.params.name}/homeworks/${homework.id}/stats`">
-          <i-uil-chart-line class="mr-1 lg:h-5 lg:w-5" /> Stats
+          <i-uil-chart-line class="mr-1 lg:h-5 lg:w-5" /> {{ t("components.hw.hwCard.description.stats") }}
         </router-link>
       </div>
     </div>

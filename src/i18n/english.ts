@@ -132,7 +132,21 @@ export default {
           from: "From",
           due: "Due",
         },
-        
+        problems: {
+          text: "Problems",
+          id: "#",
+          pid: "PID",
+          name: "Name",
+          quota: "Quota",
+          score: "Score",
+          stats: "Stats",
+          copycat: "Copycat",
+        },
+        description: {
+          text: "Description",
+          edit: "Edit",
+          stats: "Stats",
+        },
       },
     },
   },
