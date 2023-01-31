@@ -52,7 +52,7 @@ export default {
       id: "題號",
       name: "題名",
       tags: "標籤",
-      quota: "剩餘繳交額度",
+      quota: "額度",
     },
     submissions: {
       text: "繳交狀態",
@@ -118,6 +118,37 @@ export default {
   ann: {
     id: {
       back: "返回",
+    },
+  },
+  components: {
+    hw: {
+      hwCard: {
+        statusLabel: {
+          running: "進行中",
+          nStart: "未開始",
+          over: "已結束",
+        },
+        availability:{
+          text: "期限",
+          from: "自",
+          due: "至",
+        },
+        problems: {
+          text: "題目",
+          id: "編號",
+          pid: "題號",
+          name: "題名",
+          quota: "額度",
+          score: "得分",
+          stats: "狀態",
+          copycat: "抄襲",
+        },
+        description: {
+          text: "說明",
+          edit: "編輯",
+          stats: "狀態",
+        },
+      },
     },
   },
 };
