@@ -72,6 +72,39 @@ export default {
         time: "time",
       },
     },
+    submission: {
+      title: "Submission ",
+      general: {
+        title: "General",
+        problem: "Problem",
+        user: "User",
+        status: "Status",
+        rt: "Run Time",
+        mem: "Memory",
+        score: "Score",
+        lang: "Lang",
+        time: "Time",
+      },
+      detail: {
+        title: "Detail",
+        desc: "Pending submission will be refetched automatically.",
+        id: "#",
+        status: "Status",
+        rt: "Run Time",
+        mem: "Memory",
+        score: "Score",
+        overall: "Overall",
+        result: {
+          hide: "Hide all results",
+          show: "Show all results",
+        },
+      },
+      source: {
+        text: "Source",
+        copied: "Copied!",
+        copy: "Copy",
+      },
+    },
   },
   index: {
     ann: "Announcements",
@@ -206,6 +239,9 @@ export default {
       prob: "Problems",
       submit: "Submissions",
     }, 
+    courseTopBar: {
+
+    },
     sideBar: {
       home: "Home",
       course: "Course",
