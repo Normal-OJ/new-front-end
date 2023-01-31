@@ -47,6 +47,13 @@ export default {
         text: "Submit",
       },
     },
+    problems: {
+      text: "Problems",
+      id: "ID",
+      name: "Name",
+      tags: "Tags",
+      quota: "Quota",
+    },
   },
   index: {
     ann: "Announcements",
