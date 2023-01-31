@@ -87,7 +87,7 @@ export default {
       },
       detail: {
         title: "細節",
-        desc: "作業正在評分，頁面將會自動更新。",
+        desc: "作業正在批改，頁面將會自動更新。",
         id: "子任務",
         status: "評判結果",
         rt: "執行時間",
@@ -243,6 +243,19 @@ export default {
       about: "關於",
       admin: "管理",
       profile: "個人", 
+    },
+  },
+  constant: {
+    submissionStatus: {
+      pending: "批改中",
+      ac: "接受",
+      wa: "答案錯誤",
+      ce: "編譯錯誤",
+      tle: "超出執行時間",
+      mle: "超出可用記憶體",
+      re: "執行時錯誤",
+      je: "評判錯誤",
+      ole: "超出輸出上限",
     },
   },
 };

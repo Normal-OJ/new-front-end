@@ -250,4 +250,17 @@ export default {
       profile: "Profile", 
     },
   },
+  constant: {
+    submissionStatus: {
+      pending: "Pending",
+      ac: "Accepted",
+      wa: "Wrong Answer",
+      ce: "Compile Error",
+      tle: "Time Limit Exceed",
+      mle: "Memory Limit Exceed",
+      re: "Runtime Error",
+      je: "Judge Error",
+      ole: "Output Limit Exceed",
+    },
+  },
 };
