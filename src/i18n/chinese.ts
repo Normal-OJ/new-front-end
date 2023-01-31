@@ -168,7 +168,7 @@ export default {
         },
       },
       probCard: {
-        title: "題目編號",
+        title: "題目編號 ",
         quota: "額度",
         score: "得分",
         submit: "提交",
