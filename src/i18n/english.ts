@@ -149,5 +149,12 @@ export default {
         },
       },
     },
+    sideBar: {
+      home: "Home",
+      course: "Course",
+      about: "About",
+      admin: "Admin",
+      profile: "Profile", 
+    },
   },
 };
