@@ -242,6 +242,12 @@ export default {
     courseTopBar: {
 
     },
+    loginSection: {
+      welcome: "Welcome back,",
+      signin: "Sign in",
+      forgot: "Forgot password?",
+      button: "Sign In",
+    },
     sideBar: {
       home: "Home",
       course: "Course",

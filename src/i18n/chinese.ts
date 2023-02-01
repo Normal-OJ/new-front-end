@@ -237,6 +237,13 @@ export default {
       prob: "題目",
       submit: "繳交狀態",
     }, 
+
+    loginSection: {
+      welcome: "歡迎回來,",
+      signin: "登入",
+      forgot: "忘記密碼?",
+      button: "登入",
+    },
     sideBar: {
       home: "首頁",
       course: "課程",

@@ -57,7 +57,7 @@ async function login() {
           <ui-spinner />
         </div>
         <div v-else class="card-title mb-2">
-          {{ session.isLogin ? `Welcome back, ${session.displayedName}` : "Sign in" }}
+          {{ session.isLogin ? `t("components.loginSection.welcome") ${session.displayedName}` : t("components.loginSection.welcome") }}
         </div>
         <template v-if="session.isNotLogin">
           <div class="alert alert-error shadow-lg" v-if="loginForm.isError">
@@ -94,7 +94,7 @@ async function login() {
               @keydown.enter="login"
             />
             <label class="label flex-row-reverse">
-              <a href="#" class="link-hover label-text-alt link">Forgot password?</a>
+              <a href="#" class="link-hover label-text-alt link">{{ t("components.loginSection.forgot") }}</a>
               <span
                 v-show="v$.password.$error"
                 class="label-text-alt text-error"
@@ -104,7 +104,7 @@ async function login() {
           </div>
           <div class="form-control mt-6">
             <button :class="['btn-primary btn', loginForm.isLoading && 'loading']" @click="login">
-              Sign In
+              {{ t("components.loginSection.button") }}
             </button>
           </div>
         </template>
