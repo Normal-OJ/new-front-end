@@ -243,7 +243,7 @@ export default {
 
     },
     loginSection: {
-      welcome: "Welcome back,",
+      welcome: "Welcome back, ",
       signin: "Sign in",
       forgot: "Forgot password?",
       button: "Sign In",

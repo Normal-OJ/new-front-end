@@ -239,7 +239,7 @@ export default {
     }, 
 
     loginSection: {
-      welcome: "歡迎回來,",
+      welcome: "歡迎回來， ",
       signin: "登入",
       forgot: "忘記密碼?",
       button: "登入",
