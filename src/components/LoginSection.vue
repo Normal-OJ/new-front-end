@@ -57,7 +57,7 @@ async function login() {
           <ui-spinner />
         </div>
         <div v-else class="card-title mb-2">
-          {{ session.isLogin ? t("components.loginSection.welcome") : t("components.loginSection.signin") }}{{ session.isLogin ? `${session.displayedName}` :  }}
+          {{ session.isLogin ? t("components.loginSection.welcome") : t("components.loginSection.signin") }} {{ session.isLogin ? `${session.displayedName}` : " " }}
         </div>
         <template v-if="session.isNotLogin">
           <div class="alert alert-error shadow-lg" v-if="loginForm.isError">
