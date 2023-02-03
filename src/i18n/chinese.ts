@@ -47,7 +47,33 @@ export default {
         text: "提交",
       },
     },
+    problems: {
+      text: "題目",
+      id: "題號",
+      name: "題名",
+      tags: "標籤",
+      quota: "剩餘繳交額度",
+    },
+    submissions: {
+      text: "繳交狀態",
+      problem: "題目",
+      status: "狀態",
+      lang: "語言",
+      clear: "清除",
+      table: {
+        id: "版本號碼 (id)",
+        pid: "題號 (pid)",
+        user: "使用者 (user)",
+        result: "結果 (result)",
+        score: "得分 (score)",
+        r_time: "執行時間 (run time)",
+        mem: "記憶體用量 (memory)",
+        lang: "語言 (lang)",
+        time: "時間 (time)",
+      },
+    },
   },
+  
   index: {
     ann: "公告",
     error: "噢不！載入公告時出現了技術錯誤。",

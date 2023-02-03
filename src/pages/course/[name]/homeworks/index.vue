@@ -46,7 +46,7 @@ function getProblemMeta(ids: number[]): ProblemMeta {
     <div class="card min-w-full">
       <div class="card-body">
         <div class="card-title mb-4 justify-between">
-          {{ t("course.hw.index") }}
+          {{ t("course.hw.index.title") }}
           <router-link
             v-if="session.isAdmin"
             class="btn-success btn"

@@ -10,10 +10,13 @@ import { formatTime } from "@/utils/formatTime";
 import { timeFromNow } from "@/utils/timeFromNow";
 import { useTitle, useClipboard } from "@vueuse/core";
 import { useProblemSelection } from "@/composables/useProblemSelection";
+import { useI18n } from "vue-i18n";
 
 const route = useRoute();
 const router = useRouter();
 const session = useSession();
+const {t} = useI18n();
+
 useTitle(`Submissions - ${route.params.name} | Normal OJ`);
 
 // url is the single source of truth
@@ -105,7 +108,7 @@ function copySubmissionLink(path: string) {
     <div class="card min-w-full">
       <div class="card-body">
         <div class="card-title justify-between">
-          Submissions
+          {{ t("course.submissions.text")}}
 
           <input
             v-if="session.isAdmin"
@@ -124,7 +127,7 @@ function copySubmissionLink(path: string) {
             class="select-bordered select w-full flex-1"
             @change="(event) => mutateFilter({ problemId: (event.target as HTMLSelectElement).value})"
           >
-            <option value="" selected>Problem</option>
+            <option value="" selected>{{ t("course.submissions.problem")}}</option>
             <option v-for="{ text, value } in problemSelections" :value="value">{{ text }}</option>
           </select>
 
@@ -133,7 +136,7 @@ function copySubmissionLink(path: string) {
             class="select-bordered select w-full flex-1"
             @change="(event) => mutateFilter({ status: (event.target as HTMLSelectElement).value})"
           >
-            <option value="" selected>Status</option>
+            <option value="" selected>{{ t("course.submissions.status") }}</option>
             <option v-for="{ text, value } in submissionStatusCodes" :value="value">{{ text }}</option>
           </select>
 
@@ -142,7 +145,7 @@ function copySubmissionLink(path: string) {
             class="select-bordered select w-full flex-1"
             @change="(event) => mutateFilter({ languageType: (event.target as HTMLSelectElement).value})"
           >
-            <option value="" selected>Language</option>
+            <option value="" selected>{{ t("course.submissions.lang")}}</option>
             <option v-for="{ text, value } in languageTypes" :value="value">{{ text }}</option>
           </select>
 
@@ -155,7 +158,7 @@ function copySubmissionLink(path: string) {
             class="btn"
             @click="mutateFilter({ problemId: '', status: '', languageType: '' })"
           >
-            <i-uil-filter-slash class="mr-1" /> Clear
+            <i-uil-filter-slash class="mr-1" /> {{ t("course.submissions.clear") }}
           </div>
         </div>
 
@@ -167,15 +170,15 @@ function copySubmissionLink(path: string) {
             <table class="table w-full">
               <thead>
                 <tr>
-                  <th>id</th>
-                  <th>pid</th>
-                  <th>user</th>
-                  <th>result</th>
-                  <th>score</th>
-                  <th>run time</th>
-                  <th>memory</th>
-                  <th>lang</th>
-                  <th>time</th>
+                  <th>{{ t("course.submissions.table.id") }}</th>
+                  <th>{{ t("course.submissions.table.pid") }}</th>
+                  <th>{{ t("course.submissions.table.user") }}</th>
+                  <th>{{ t("course.submissions.table.result") }}</th>
+                  <th>{{ t("course.submissions.table.score") }}</th>
+                  <th>{{ t("course.submissions.table.r_time") }}</th>
+                  <th>{{ t("course.submissions.table.mem") }}</th>
+                  <th>{{ t("course.submissions.table.lang") }}</th>
+                  <th>{{ t("course.submissions.table.time") }}</th>
                 </tr>
               </thead>
               <tbody>

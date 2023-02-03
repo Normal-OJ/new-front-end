@@ -5,10 +5,13 @@ import { computed, ref, watch, watchEffect } from "vue";
 import { fetcher } from "@/models/api";
 import { useSession } from "@/stores/session";
 import { useTitle } from "@vueuse/core";
+import { useI18n } from "vue-i18n";
 
 const session = useSession();
 const route = useRoute();
 const router = useRouter();
+const {t} = useI18n();
+
 useTitle(`Problems - ${route.params.name} | Normal OJ`);
 const {
   data: problems,
@@ -35,7 +38,7 @@ const maxPage = computed(() => {
     <div class="card min-w-full">
       <div class="card-body">
         <div class="card-title justify-between">
-          Problems
+          {{ t("course.problems.text") }}
 
           <router-link
             v-if="session.isAdmin"
@@ -55,10 +58,10 @@ const maxPage = computed(() => {
             <table class="table w-full">
               <thead>
                 <tr>
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Tags</th>
-                  <th>Quota</th>
+                  <th>{{ t("course.problems.id") }}</th>
+                  <th>{{ t("course.problems.name") }}</th>
+                  <th>{{ t("course.problems.tags") }}</th>
+                  <th>{{ t("course.problems.quota") }}</th>
                   <th></th>
                 </tr>
               </thead>
