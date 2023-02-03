@@ -3,7 +3,9 @@ import { toRef, computed, ref } from "vue";
 import useVuelidate from "@vuelidate/core";
 import { required, maxLength, minValue, helpers } from "@vuelidate/validators";
 import dayjs from "dayjs";
+import { useI18n } from "vue-i18n";
 
+const {t} = useI18n();
 interface Props {
   form: HomeworkForm;
   problemSelections: { text: string; value: string }[];

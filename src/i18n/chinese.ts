@@ -150,6 +150,24 @@ export default {
         },
       },
     },
+    problem: {
+      forms: {
+        probDescForm: {
+          desc: "說明",
+          input: "輸入",
+          output: "輸出",
+          hint: "提示",
+          err: {
+            input: "範例輸入錯誤: ",
+            output: "範例輸出錯誤: ",
+          },
+          sample: {
+            input: "範例輸入 ",
+            output: "範例輸出 ",
+          },
+        },
+      },
+    },    
     sideBar: {
       home: "首頁",
       course: "課程",

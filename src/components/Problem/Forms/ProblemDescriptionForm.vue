@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { inject, Ref } from "vue";
+import { useI18n } from "vue-i18n";
+
+const {t} = useI18n();
 
 defineProps<{
   // TODO: hard to type validator, does vuelidate have child component validation?
@@ -17,7 +20,7 @@ const problem = inject<Ref<ProblemForm>>("problem") as Ref<ProblemForm>;
 <template>
   <div class="form-control col-span-2 w-full">
     <label class="label">
-      <span class="label-text">Description</span>
+      <span class="label-text">{{ t("components.problem.forms.probDescForm.desc") }}</span>
     </label>
     <textarea
       :class="['textarea-bordered textarea h-24', v$.description.description.$error && 'textarea-error']"
@@ -34,7 +37,7 @@ const problem = inject<Ref<ProblemForm>>("problem") as Ref<ProblemForm>;
 
   <div class="form-control col-span-2 w-full">
     <label class="label">
-      <span class="label-text">Input</span>
+      <span class="label-text">{{ t("components.problem.forms.probDescForm.input") }}</span>
     </label>
     <textarea
       :class="['textarea-bordered textarea h-24', v$.description.input.$error && 'textarea-error']"
@@ -51,7 +54,7 @@ const problem = inject<Ref<ProblemForm>>("problem") as Ref<ProblemForm>;
 
   <div class="form-control col-span-2 w-full">
     <label class="label">
-      <span class="label-text">Output</span>
+      <span class="label-text">{{ t("components.problem.forms.probDescForm.output") }}</span>
     </label>
     <textarea
       :class="['textarea-bordered textarea h-24', v$.description.output.$error && 'textarea-error']"
@@ -68,7 +71,7 @@ const problem = inject<Ref<ProblemForm>>("problem") as Ref<ProblemForm>;
 
   <div class="form-control col-span-2 w-full">
     <label class="label">
-      <span class="label-text">Hint</span>
+      <span class="label-text">{{ t("components.problem.forms.probDescForm.hint") }}</span>
     </label>
     <textarea
       :class="['textarea-bordered textarea h-24', v$.description.hint.$error && 'textarea-error']"
@@ -85,17 +88,17 @@ const problem = inject<Ref<ProblemForm>>("problem") as Ref<ProblemForm>;
 
   <div class="col-span-2 flex w-full">
     <div class="rounded border border-error p-4" v-show="v$.description.sampleInput.$invalid">
-      Sample Input Error: {{ v$.description.sampleInput.$silentErrors[0]?.$message }}
+      {{ t("components.problem.forms.probDescForm.err.input") }}{{ v$.description.sampleInput.$silentErrors[0]?.$message }}
     </div>
     <div class="rounded border border-error p-4" v-show="v$.description.sampleOutput.$invalid">
-      Sample Output Error: {{ v$.description.sampleOutput.$silentErrors[0]?.$message }}
+      {{ t("components.problem.forms.probDescForm.err.output") }}{{ v$.description.sampleOutput.$silentErrors[0]?.$message }}
     </div>
   </div>
 
   <template v-for="(no, i) in problem.description.sampleInput.length">
     <div class="form-control w-full">
       <label class="label">
-        <span class="label-text">Sample Input {{ no }}</span>
+        <span class="label-text">{{ t("components.problem.forms.probDescForm.sample.input") }}{{ no }}</span>
       </label>
       <textarea
         class="textarea-bordered textarea h-24"
@@ -115,7 +118,7 @@ const problem = inject<Ref<ProblemForm>>("problem") as Ref<ProblemForm>;
 
     <div class="form-control w-full">
       <label class="label">
-        <span class="label-text">Sample Output {{ no }}</span>
+        <span class="label-text">{{ t("components.problem.forms.probDescForm.sample.input") }}{{ no }}</span>
       </label>
       <textarea
         class="textarea-bordered textarea h-24"
