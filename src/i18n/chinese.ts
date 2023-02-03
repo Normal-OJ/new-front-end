@@ -150,5 +150,12 @@ export default {
         },
       },
     },
+    sideBar: {
+      home: "首頁",
+      course: "課程",
+      about: "關於",
+      admin: "管理",
+      profile: "個人", 
+    },
   },
 };

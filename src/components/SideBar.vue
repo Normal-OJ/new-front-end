@@ -22,7 +22,7 @@ watchEffect(() => {
   theme.setIsDark(isDark.value);
 });
 
-const { locale } = useI18n();
+const { t, locale } = useI18n();
 const localeInStorate = useStorage("locale", locale);
 // initialize with the one in storage
 locale.value = localeInStorate.value;
@@ -50,19 +50,19 @@ const session = useSession();
     <li>
       <side-bar-link :class="{ 'btn-lg': !isMini, 'btn-active': matchRoute('/') }" to="/">
         <i-uil-home class="h-6 w-6" />
-        <span v-show="!isMini" class="text-sm">Home</span>
+        <span v-show="!isMini" class="text-sm">{{ t("components.sideBar.home") }}</span>
       </side-bar-link>
     </li>
     <li v-if="session.isLogin">
       <side-bar-link :class="{ 'btn-lg': !isMini, 'btn-active': matchRoute('/courses') }" to="/courses">
         <i-uil-book-alt class="h-6 w-6" />
-        <span v-show="!isMini" class="text-sm">Course</span>
+        <span v-show="!isMini" class="text-sm">{{ t("components.sideBar.course") }}</span>
       </side-bar-link>
     </li>
     <li>
       <side-bar-link :class="{ 'btn-lg': !isMini, 'btn-active': matchRoute('/about') }" to="/about">
         <i-uil-map-marker-info class="h-6 w-6" />
-        <span v-show="!isMini" class="text-sm">About</span>
+        <span v-show="!isMini" class="text-sm">{{ t("components.sideBar.about") }}</span>
       </side-bar-link>
     </li>
 
@@ -71,13 +71,13 @@ const session = useSession();
     <li v-if="session.isAdmin">
       <side-bar-link :class="{ 'btn-lg': !isMini, 'btn-active': matchRoute('/admin') }" to="/admin">
         <i-uil-constructor class="h-6 w-6" />
-        <span v-show="!isMini" class="text-sm">Admin</span>
+        <span v-show="!isMini" class="text-sm">{{ t("components.sideBar.admin") }}</span>
       </side-bar-link>
     </li>
     <li v-if="session.isLogin">
       <side-bar-link :class="{ 'btn-lg': !isMini, 'btn-active': matchRoute('/profile') }" to="/profile">
         <i-uil-user class="h-6 w-6" />
-        <span v-show="!isMini" class="text-sm">Profile</span>
+        <span v-show="!isMini" class="text-sm">{{ t("components.sideBar.profile") }}</span>
       </side-bar-link>
     </li>
     <li>
