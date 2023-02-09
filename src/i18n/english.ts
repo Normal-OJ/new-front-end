@@ -169,6 +169,36 @@ export default {
           },
         },
       },
+      probCard: {
+        title: "Problem #",
+        quota: "Quota",
+        score: "Score",
+        submit: "Submit",
+        stats: "Stats",
+        card: {
+          desc: "Description",
+          input: "Input",
+          output: "Output",
+          ex: "Examples",
+          sample: {
+            id: "#",
+            input: "Input",
+            output: "Output",
+            no: {
+              input: "no input",
+              output: "no output",
+            },
+          },
+          hint: "Hint",
+          subtasks: {
+            title: "Subtasks",
+            id: "#",
+            tl: "Time Limit",
+            ml: "Memory Limit",
+            score: "Score",
+          },
+        },
+      },
     },    
     sideBar: {
       home: "Home",
