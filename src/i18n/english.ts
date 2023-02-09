@@ -199,7 +199,13 @@ export default {
           },
         },
       },
-    },    
+    },  
+    courseSideBar: {
+      ann: "Announcements",
+      hw: "Homeworks",
+      prob: "Problems",
+      submit: "Submissions",
+    }, 
     sideBar: {
       home: "Home",
       course: "Course",
