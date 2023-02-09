@@ -251,6 +251,12 @@ export default {
       admin: "管理",
       profile: "個人", 
     },
+    dueCountDown: {
+      days:"日",
+      hours: "小時",
+      min: "分",
+      sec: "秒",
+    },
   },
   constant: {
     submissionStatus: {
