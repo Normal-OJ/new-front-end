@@ -32,12 +32,12 @@ export default {
     problem: {
       submit: {
         err: {
-          code: "請在此貼上你的原始碼以利提交。",
+          code: "請在此貼上你的原始碼以利繳交。",
           lang: "請選擇程式語言。",
           msg: "Oops! Something went wrong when submitting the code. Try again later.",
         },
         card: {
-          title: "提交至題目 #",
+          title: "繳交至題號 ",
           placeholder: "在此貼上程式碼",
         },
         lang: {
@@ -70,6 +70,39 @@ export default {
         mem: "記憶體用量 (memory)",
         lang: "語言 (lang)",
         time: "時間 (time)",
+      },
+    },
+    submission: {
+      title: "繳交版本號碼 ",
+      general: {
+        title: "總覽",
+        problem: "題號",
+        user: "使用者",
+        status: "評判結果",
+        rt: "執行時間",
+        mem: "記憶體用量",
+        score: "得分",
+        lang: "語言",
+        time: "繳交時間",
+      },
+      detail: {
+        title: "細節",
+        desc: "作業正在批改，頁面將會自動更新。",
+        id: "子任務",
+        status: "評判結果",
+        rt: "執行時間",
+        mem: "記憶體用量",
+        score: "得分",
+        overall: "整體結果",
+        result: {
+          hide: "隱藏所有結果",
+          show: "顯示所有結果",
+        },
+      },
+      source: {
+        text: "原始碼",
+        copied: "已複製！",
+        copy: "複製",
       },
     },
   },
@@ -210,6 +243,19 @@ export default {
       about: "關於",
       admin: "管理",
       profile: "個人", 
+    },
+  },
+  constant: {
+    submissionStatus: {
+      pending: "批改中",
+      ac: "接受",
+      wa: "答案錯誤",
+      ce: "編譯錯誤",
+      tle: "超出執行時間",
+      mle: "超出可用記憶體",
+      re: "執行時錯誤",
+      je: "評判錯誤",
+      ole: "超出輸出上限",
     },
   },
 };

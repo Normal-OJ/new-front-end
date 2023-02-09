@@ -72,6 +72,39 @@ export default {
         time: "time",
       },
     },
+    submission: {
+      title: "Submission ",
+      general: {
+        title: "General",
+        problem: "Problem",
+        user: "User",
+        status: "Status",
+        rt: "Run Time",
+        mem: "Memory",
+        score: "Score",
+        lang: "Lang",
+        time: "Time",
+      },
+      detail: {
+        title: "Detail",
+        desc: "Pending submission will be refetched automatically.",
+        id: "#",
+        status: "Status",
+        rt: "Run Time",
+        mem: "Memory",
+        score: "Score",
+        overall: "Overall",
+        result: {
+          hide: "Hide all results",
+          show: "Show all results",
+        },
+      },
+      source: {
+        text: "Source",
+        copied: "Copied!",
+        copy: "Copy",
+      },
+    },
   },
   index: {
     ann: "Announcements",
@@ -206,12 +239,28 @@ export default {
       prob: "Problems",
       submit: "Submissions",
     }, 
+    courseTopBar: {
+
+    },
     sideBar: {
       home: "Home",
       course: "Course",
       about: "About",
       admin: "Admin",
       profile: "Profile", 
+    },
+  },
+  constant: {
+    submissionStatus: {
+      pending: "Pending",
+      ac: "Accepted",
+      wa: "Wrong Answer",
+      ce: "Compile Error",
+      tle: "Time Limit Exceed",
+      mle: "Memory Limit Exceed",
+      re: "Runtime Error",
+      je: "Judge Error",
+      ole: "Output Limit Exceed",
     },
   },
 };
