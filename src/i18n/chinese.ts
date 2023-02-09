@@ -251,7 +251,7 @@ export default {
       admin: "管理",
       profile: "個人", 
     },
-    dueCountDown: {
+    dueCountdown: {
       days:"日",
       hours: "小時",
       min: "分",

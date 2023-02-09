@@ -47,25 +47,25 @@ setInterval(updateRemainTime, 1000);
         <template v-if="moreThan99Days">{{ ">" }}</template>
         <span :style="`--value: ${days}`"></span>
       </span>
-      <span class="text-sm">{{ t("components.dueCountDown.days") }}</span>
+      <span class="text-sm">{{ t("components.dueCountdown.days") }}</span>
     </div>
     <div class="flex flex-col">
       <span class="countdown font-mono text-3xl">
         <span :style="`--value: ${hours}`"></span>
       </span>
-      <span class="text-sm">{{ t("components.dueCountDown.hours") }}</span>
+      <span class="text-sm">{{ t("components.dueCountdown.hours") }}</span>
     </div>
     <div class="flex flex-col">
       <span class="countdown font-mono text-3xl">
         <span :style="`--value: ${minutes}`"></span>
       </span>
-      <span class="text-sm">{{ t("components.dueCountDown.min") }}</span>
+      <span class="text-sm">{{ t("components.dueCountdown.min") }}</span>
     </div>
     <div class="flex flex-col">
       <span class="countdown font-mono text-3xl">
         <span :style="`--value: ${seconds}`"></span>
       </span>
-      <span class="text-sm">{{ t("components.dueCountDown.sec") }}</span>
+      <span class="text-sm">{{ t("components.dueCountdown.sec") }}</span>
     </div>
   </div>
 </template>

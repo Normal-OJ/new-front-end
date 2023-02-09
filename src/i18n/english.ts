@@ -255,7 +255,7 @@ export default {
       admin: "Admin",
       profile: "Profile", 
     },
-    dueCountDown: {
+    dueCountdown: {
       days:"days",
       hours: "hours",
       min: "min",
