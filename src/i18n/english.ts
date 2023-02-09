@@ -46,6 +46,32 @@ export default {
         },
         text: "Submit",
       },
+      stats: {
+        title: "Stats for problem #",
+        general: {
+          tried: "Num of users tried",
+          ac: "Num of AC users",
+          acRatio: "AC Submission Ratio",
+          avg: "Average Score",
+          sd: "Standard Deviation",
+        },
+        table: {
+          rt: {
+            title: "Top 10 Run Time",
+            id: "#",
+            user: "User",
+            rt: "Run Time",
+            time: "Time",
+          },
+          mem: {
+            title: "Top 10 Memory Usage",
+            id: "#",
+            user: "User",
+            mem: "Memory Usage",
+            time: "Time",
+          },
+        },
+      },
     },
     problems: {
       text: "Problems",

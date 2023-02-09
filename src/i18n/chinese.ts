@@ -46,6 +46,32 @@ export default {
         },
         text: "提交",
       },
+      stats: {
+        title: "數據檢視－題號",
+        general: {
+          tried: "已嘗試使用者數量",
+          ac: "評判為接受使用者數量",
+          acRatio: "評判為接受比率",
+          avg: "平均分數",
+          sd: "標準差",
+        },
+        table: {
+          rt: {
+            title: "執行時間前十名",
+            id: "名次",
+            user: "使用者",
+            rt: "執行時間",
+            time: "繳交時間",
+          },
+          mem: {
+            title: "記憶體用量前十名",
+            id: "名次",
+            user: "使用者",
+            mem: "記憶體用量",
+            time: "繳交時間",
+          },
+        },
+      },
     },
     problems: {
       text: "題目",

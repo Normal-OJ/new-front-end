@@ -13,7 +13,9 @@ import { useAxios } from "@vueuse/integrations/useAxios";
 import { useRoute } from "vue-router";
 import { fetcher } from "@/models/api";
 import { useTitle } from "@vueuse/core";
+import { useI18n } from "vue-i18n";
 
+const {t} = useI18n();
 const route = useRoute();
 const theme = useTheme();
 useTitle(`Problem Stats - ${route.params.id} - ${route.params.name} | Normal OJ`);
@@ -99,7 +101,7 @@ const barOption = computed(() => ({
   <div class="card-container">
     <div class="card min-w-full">
       <div class="card-body">
-        <div class="card-title md:text-2xl lg:text-3xl">Stats for problem #{{ $route.params.id }}</div>
+        <div class="card-title md:text-2xl lg:text-3xl">{{ t("course.problem.stats.title") }}{{ $route.params.id }}</div>
 
         <div class="my-2" />
 
@@ -110,7 +112,7 @@ const barOption = computed(() => ({
           <template #data>
             <div class="stats stats-vertical lg:stats-horizontal">
               <div class="stat place-items-center">
-                <div class="stat-title">Num of users tried</div>
+                <div class="stat-title">{{ t("course.problem.stats.general.tried") }}</div>
                 <div class="stat-value">
                   <span v-if="!triedUserCount">-</span>
                   <template v-else>
@@ -120,7 +122,7 @@ const barOption = computed(() => ({
                 </div>
               </div>
               <div class="stat place-items-center">
-                <div class="stat-title">Num of AC users</div>
+                <div class="stat-title">{{ t("course.problem.stats.general.ac") }}</div>
                 <div class="stat-value">
                   <span v-if="!acUserRatio[0]">-</span>
                   <template v-else>
@@ -130,7 +132,7 @@ const barOption = computed(() => ({
                 </div>
               </div>
               <div class="stat place-items-center">
-                <div class="stat-title">AC Submission Ratio</div>
+                <div class="stat-title">{{ t("course.problem.stats.general.acRatio") }}</div>
                 <div class="stat-value">
                   <span v-if="!submissionCount || !stats">-</span>
                   <template v-else>
@@ -140,11 +142,11 @@ const barOption = computed(() => ({
                 </div>
               </div>
               <div class="stat place-items-center">
-                <div class="stat-title">Average Score</div>
+                <div class="stat-title">{{ t("course.problem.stats.general.avg") }}</div>
                 <div class="stat-value">{{ avgScore?.toFixed(2) || "-" }}</div>
               </div>
               <div class="stat place-items-center">
-                <div class="stat-title">Standard Deviation</div>
+                <div class="stat-title">{{ t("course.problem.stats.general.sd") }}</div>
                 <div class="stat-value">{{ stdScore?.toFixed(2) || "-" }}</div>
               </div>
             </div>
@@ -170,16 +172,16 @@ const barOption = computed(() => ({
 
         <div class="my-2" />
 
-        <div class="card-title md:text-xl lg:text-2xl">Top 10 Run Time</div>
+        <div class="card-title md:text-xl lg:text-2xl">{{ t("course.problem.stats.table.rt.title") }}</div>
         <div class="my-1" />
         <skeleton-table v-if="isLoading" :col="4" :row="10" />
         <table v-else class="table-compact table w-full">
           <thead>
             <tr>
-              <th>#</th>
-              <th>User</th>
-              <th>Run Time</th>
-              <th>Time</th>
+              <th>{{ t("course.problem.stats.table.rt.id") }}</th>
+              <th>{{ t("course.problem.stats.table.rt.user") }}</th>
+              <th>{{ t("course.problem.stats.table.rt.rt") }}</th>
+              <th>{{ t("course.problem.stats.table.rt.time") }}</th>
             </tr>
           </thead>
           <tbody>
@@ -194,16 +196,16 @@ const barOption = computed(() => ({
 
         <div class="my-5" />
 
-        <div class="card-title md:text-xl lg:text-2xl">Top 10 Memory Usage</div>
+        <div class="card-title md:text-xl lg:text-2xl">{{ t("course.problem.stats.table.mem.title") }}</div>
         <div class="my-1" />
         <skeleton-table v-if="isLoading" :col="4" :row="10" />
         <table v-else class="table-compact table w-full">
           <thead>
             <tr>
-              <th>#</th>
-              <th>User</th>
-              <th>Memory Usage</th>
-              <th>Time</th>
+              <th>{{ t("course.problem.stats.table.mem.id") }}</th>
+              <th>{{ t("course.problem.stats.table.mem.user") }}</th>
+              <th>{{ t("course.problem.stats.table.mem.mem") }}</th>
+              <th>{{ t("course.problem.stats.table.mem.time") }}</th>
             </tr>
           </thead>
           <tbody>
