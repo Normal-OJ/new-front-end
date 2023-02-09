@@ -106,7 +106,15 @@ export default {
       },
     },
   },
-  
+  courses: {
+    index: {
+      list: "課程清單",
+      table: {
+        course: "課程",
+        teacher: "教師",
+      },
+    },
+  },
   index: {
     ann: "公告",
     error: "噢不！載入公告時出現了技術錯誤。",

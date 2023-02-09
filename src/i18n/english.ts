@@ -106,6 +106,15 @@ export default {
       },
     },
   },
+  courses: {
+    index: {
+      list: "Course List",
+      table: {
+        course: "Course",
+        teacher: "Teacher",
+      },
+    },
+  },
   index: {
     ann: "Announcements",
     error: "Oops! Something went wrong when loading announcements.",
