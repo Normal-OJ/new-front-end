@@ -47,6 +47,7 @@ export default {
         text: "提交",
       },
       stats: {
+        pieTitle: "繳交結果",
         title: "數據檢視－題號",
         general: {
           tried: "已嘗試使用者數量",

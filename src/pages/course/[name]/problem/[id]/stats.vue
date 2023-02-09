@@ -61,7 +61,7 @@ const pieOption = computed(() => ({
   },
   series: [
     {
-      name: "Submission Result",
+      name: t("course.problem.stats.pieTitle"),
       type: "pie",
       radius: ["30%", "70%"],
       data: resultCounts.value.filter((item) => item.value > 0),

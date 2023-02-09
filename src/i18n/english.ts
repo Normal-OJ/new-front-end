@@ -47,6 +47,7 @@ export default {
         text: "Submit",
       },
       stats: {
+        pieTitle: "Submission Result",
         title: "Stats for problem #",
         general: {
           tried: "Num of users tried",

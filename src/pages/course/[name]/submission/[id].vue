@@ -12,6 +12,7 @@ import { useI18n } from "vue-i18n";
 
 
 const { t } = useI18n();
+
 const session = useSession();
 const route = useRoute();
 useTitle(`Submission - ${route.params.id} - ${route.params.name} | Normal OJ`);
