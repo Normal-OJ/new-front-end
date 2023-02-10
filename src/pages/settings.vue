@@ -3,6 +3,7 @@ import { watchEffect } from "vue";
 import { useStorage } from "@vueuse/core";
 import { useI18n } from "vue-i18n";
 import { useTitle } from "@vueuse/core";
+import dayjs from "dayjs";
 
 useTitle("Test I18n | Normal OJ");
 const { t, locale } = useI18n();
@@ -15,7 +16,18 @@ locale.value = localeInStorate.value;
 // if user change the value, update the storage
 watchEffect(() => {
   localeInStorate.value = locale.value;
-});
+  switch (locale.value) {
+    case 'chinese' : 
+      dayjs.locale('zh-tw');
+      break;
+    case 'english' :
+      dayjs.locale('en');
+      break;
+    case 'taiwanese' :
+      dayjs.locale('zh-tw');
+      break;
+  }
+  });
 </script>
 
 <template>
