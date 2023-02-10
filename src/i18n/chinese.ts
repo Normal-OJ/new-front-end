@@ -125,7 +125,7 @@ export default {
       hwCard: {
         statusLabel: {
           running: "進行中",
-          nStart: "未開始",
+          notStart: "未開始",
           over: "已結束",
         },
         availability:{
@@ -197,7 +197,7 @@ export default {
           },
         },
       },
-    },    
+    },
     sideBar: {
       home: "首頁",
       course: "課程",
