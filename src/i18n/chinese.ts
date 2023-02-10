@@ -125,7 +125,7 @@ export default {
       hwCard: {
         statusLabel: {
           running: "進行中",
-          nStart: "未開始",
+          notStart: "未開始",
           over: "已結束",
         },
         availability:{
@@ -140,13 +140,13 @@ export default {
           name: "題名",
           quota: "額度",
           score: "得分",
-          stats: "狀態",
+          stats: "數據",
           copycat: "抄襲",
         },
         description: {
           text: "說明",
           edit: "編輯",
-          stats: "狀態",
+          stats: "數據",
         },
       },
     },

@@ -124,7 +124,7 @@ export default {
       hwCard: {
         statusLabel: {
           running: "RUNNING",
-          nStart: "NOT START",
+          notStart: "NOT START",
           over: "OVER",
         },
         availability:{

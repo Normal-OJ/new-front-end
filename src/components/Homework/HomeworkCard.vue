@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<Props>(), {
 const session = useSession();
 const STATUS_LABEL = {
   RUNNING: t("components.hw.hwCard.statusLabel.running"),
-  NOT_START: t("components.hw.hwCard.statusLabel.nStart"),
+  NOT_START: t("components.hw.hwCard.statusLabel.notStart"),
   OVER: t("components.hw.hwCard.statusLabel.over"),
 };
 const STATUS_CLASS = {
