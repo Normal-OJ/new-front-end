@@ -124,7 +124,7 @@ export default {
       hwCard: {
         statusLabel: {
           running: "RUNNING",
-          nStart: "NOT START",
+          notStart: "NOT START",
           over: "OVER",
         },
         availability:{
@@ -205,7 +205,7 @@ export default {
       hw: "Homeworks",
       prob: "Problems",
       submit: "Submissions",
-    }, 
+    },
     sideBar: {
       home: "Home",
       course: "Course",
