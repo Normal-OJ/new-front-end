@@ -158,7 +158,7 @@ export default {
       hwCard: {
         statusLabel: {
           running: "進行中",
-          nStart: "未開始",
+          notStart: "未開始",
           over: "已結束",
         },
         availability:{
@@ -236,8 +236,7 @@ export default {
       hw: "作業",
       prob: "題目",
       submit: "繳交狀態",
-    }, 
-
+    },
     loginSection: {
       welcome: "歡迎回來， ",
       signin: "登入",
