@@ -10,9 +10,7 @@ import { useSession } from "@/stores/session";
 import { useTitle } from "@vueuse/core";
 import { useI18n } from "vue-i18n";
 
-
 const { t } = useI18n();
-
 const session = useSession();
 const route = useRoute();
 useTitle(`Submission - ${route.params.id} - ${route.params.name} | Normal OJ`);
@@ -64,7 +62,9 @@ async function rejudge() {
       <div class="card-body">
         <div class="flex flex-wrap items-start justify-between">
           <div class="flex flex-col gap-4">
-            <div class="card-title md:text-2xl lg:text-3xl">{{ t("course.submission.title") }}{{ $route.params.id }}</div>
+            <div class="card-title md:text-2xl lg:text-3xl">
+              {{ t("course.submission.title") }}{{ $route.params.id }}
+            </div>
           </div>
 
           <div
@@ -153,12 +153,16 @@ async function rejudge() {
                 <tr>
                   <td colspan="5">
                     <div
-                      class="btn-ghost btn-block btn-sm btn gap-x-3"
+                      class="btn btn-ghost btn-sm btn-block gap-x-3"
                       @click="expandTasks[taskIndex] = !expandTasks[taskIndex]"
                     >
                       <i-uil-angle-down v-if="!expandTasks[taskIndex]" />
                       <i-uil-angle-up v-else />
-                      {{ expandTasks[taskIndex] ?  t("course.submission.detail.result.hide")  : t("course.submission.detail.result.show")  }}
+                      {{
+                        expandTasks[taskIndex]
+                          ? t("course.submission.detail.result.hide")
+                          : t("course.submission.detail.result.show")
+                      }}
                     </div>
                   </td>
                 </tr>
@@ -184,7 +188,7 @@ async function rejudge() {
               <!-- TODO submission?.code should without ? -->
               <button
                 v-if="isSupported && submission"
-                class="btn-info btn-xs btn ml-3"
+                class="btn btn-info btn-xs ml-3"
                 @click="copy(submission?.code || '')"
               >
                 {{ copied ? t("course.submission.source.copied") : t("course.submission.source.copy") }}

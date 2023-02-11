@@ -193,10 +193,10 @@ export default {
       hwCard: {
         statusLabel: {
           running: "進行中",
-          nStart: "未開始",
+          notStart: "未開始",
           over: "已結束",
         },
-        availability:{
+        availability: {
           text: "期限",
           from: "自",
           due: "至",
@@ -271,8 +271,7 @@ export default {
       hw: "作業",
       prob: "題目",
       submit: "繳交狀態",
-    }, 
-
+    },
     loginSection: {
       welcome: "歡迎回來， ",
       signin: "登入",
@@ -284,10 +283,10 @@ export default {
       course: "課程",
       about: "關於",
       admin: "管理",
-      profile: "個人", 
+      profile: "個人",
     },
     dueCountdown: {
-      days:"日",
+      days: "日",
       hours: "小時",
       min: "分",
       sec: "秒",

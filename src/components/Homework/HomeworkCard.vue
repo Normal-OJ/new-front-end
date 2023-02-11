@@ -4,7 +4,7 @@ import { useSession } from "@/stores/session";
 import { formatTime } from "@/utils/formatTime";
 import { useI18n } from "vue-i18n";
 
-const {t} = useI18n();
+const { t } = useI18n();
 
 interface Props {
   homework: HomeworkListItem | HomeworkPreviewForm;
@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<Props>(), {
 const session = useSession();
 const STATUS_LABEL = {
   RUNNING: t("components.hw.hwCard.statusLabel.running"),
-  NOT_START: t("components.hw.hwCard.statusLabel.nStart"),
+  NOT_START: t("components.hw.hwCard.statusLabel.notStart"),
   OVER: t("components.hw.hwCard.statusLabel.over"),
 };
 const STATUS_CLASS = {
@@ -114,7 +114,7 @@ const state = computed(() => {
                 <td>
                   <div class="tooltip" data-tip="Stats">
                     <router-link
-                      class="btn-ghost btn-xs btn"
+                      class="btn-ghost btn btn-xs"
                       :to="`/course/${$route.params.name}/problem/${pid}/stats`"
                     >
                       <i-uil-chart-line class="lg:h-5 lg:w-5" />
@@ -124,7 +124,7 @@ const state = computed(() => {
                 <td v-if="session.isAdmin">
                   <div class="tooltip" data-tip="Copycat">
                     <router-link
-                      class="btn-ghost btn-xs btn"
+                      class="btn-ghost btn btn-xs"
                       :to="`/course/${$route.params.name}/problem/${pid}/copycat`"
                     >
                       <i-uil-file-exclamation-alt class="lg:h-5 lg:w-5" />
