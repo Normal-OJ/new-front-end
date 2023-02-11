@@ -1,12 +1,30 @@
 <script setup lang="ts">
+import { watchEffect } from "vue";
 import { useGlobal } from "@/stores/global";
 import { TransitionRoot } from "@headlessui/vue";
+import { useI18n } from "vue-i18n";
+import dayjs from "dayjs";
 
 const global = useGlobal();
+
+const { locale } = useI18n();
+watchEffect(() => {
+  switch (locale.value) {
+    case "chinese":
+      dayjs.locale("zh-tw");
+      break;
+    case "english":
+      dayjs.locale("en");
+      break;
+    case "taiwanese":
+      dayjs.locale("zh-tw");
+      break;
+  }
+});
 </script>
 
 <template>
-  <div class="drawer-mobile drawer h-screen w-screen">
+  <div class="drawer drawer-mobile h-screen w-screen">
     <input id="noj-drawer" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content">
       <top-bar class="lg:hidden" />
