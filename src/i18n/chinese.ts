@@ -115,6 +115,7 @@ export default {
       },
     },
   },
+  
   index: {
     ann: "公告",
     error: "噢不！載入公告時出現了技術錯誤。",
@@ -166,7 +167,7 @@ export default {
       hwCard: {
         statusLabel: {
           running: "進行中",
-          nStart: "未開始",
+          notStart: "未開始",
           over: "已結束",
         },
         availability:{
@@ -245,7 +246,6 @@ export default {
       prob: "題目",
       submit: "繳交狀態",
     }, 
-
     loginSection: {
       welcome: "歡迎回來， ",
       signin: "登入",
