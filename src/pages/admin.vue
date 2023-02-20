@@ -3,7 +3,7 @@ import { ROLE } from "@/constants";
 import api, { fetcher } from "@/models/api";
 import { useSession } from "@/stores/session";
 import useVuelidate from "@vuelidate/core";
-import { required, maxLength, between, integer, alphaNum } from "@vuelidate/validators";
+import { required, maxLength, between, integer, minLength } from "@vuelidate/validators";
 import { useAxios } from "@vueuse/integrations/useAxios";
 import axios from "axios";
 import { computed, ref, watchEffect } from "vue";
@@ -30,23 +30,27 @@ const {
   isLoading: fetchLoading,
   execute,
 } = useAxios<UserInfo[]>("/user", fetcher);
-const search = ref("");
+const searchName = ref("");
+const searchRole = ref(null);
 const filteredUsers = computed(() =>
-  users.value?.filter((d) => d.username.includes(search.value) || d.displayedName.includes(search.value)),
+  users.value
+    ?.filter((d) => d.username.includes(searchName.value) || d.displayedName.includes(searchName.value))
+    .filter((d) => searchRole.value == null || d.role === searchRole.value),
 );
 
 const edittingUsername = ref("");
 const isLoading = ref(false);
 const errorMsg = ref("");
-const userForm = ref<UserEditionForm>({
+const initialUserForm = {
   displayedName: "",
   role: 0,
   password: "",
-});
+};
+const userForm = ref<UserEditionForm>({ ...initialUserForm });
 const rules = {
   displayedName: { required, maxLength: maxLength(16) },
   role: { required, between: between(0, 2), integer },
-  password: { alphaNum },
+  password: { minLength: minLength(4) },
 };
 const v$ = useVuelidate(rules, userForm);
 function editUser(username: string) {
@@ -67,6 +71,7 @@ async function submit() {
     if (!userForm.value.password) userForm.value.password = null;
     await api.User.modify(edittingUsername.value, { ...userForm.value });
     execute();
+    userForm.value = { ...initialUserForm };
     edittingUsername.value = "";
   } catch (error) {
     if (axios.isAxiosError(error) && error.response?.data?.message) {
@@ -97,7 +102,21 @@ async function submit() {
 
         <div class="my-4" />
 
-        <input v-model="search" placeholder="search" type="text" class="input input-bordered my-1 max-w-xs" />
+        <div class="flex items-center gap-x-2">
+          <input
+            v-model="searchName"
+            placeholder="search name"
+            type="text"
+            class="input input-bordered my-1 max-w-xs"
+          />
+
+          <select v-model="searchRole" class="select select-bordered w-full max-w-xs">
+            <option :value="null">Select Role</option>
+            <option :value="0">Admin</option>
+            <option :value="1">Teacher</option>
+            <option :value="2">Student</option>
+          </select>
+        </div>
 
         <data-status-wrapper :error="fetchError" :is-loading="fetchLoading">
           <template #loading>
@@ -170,9 +189,9 @@ async function submit() {
                 <span class="label-text">Role</span>
               </label>
               <select v-model="v$.role.$model" class="select select-bordered w-full max-w-xs">
-                <option value="0">Admin</option>
-                <option value="1">Teacher</option>
-                <option value="2">Student</option>
+                <option :value="0">Admin</option>
+                <option :value="1">Teacher</option>
+                <option :value="2">Student</option>
               </select>
             </div>
 
