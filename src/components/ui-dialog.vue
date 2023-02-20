@@ -2,8 +2,6 @@
 import { TransitionRoot, TransitionChild, Dialog, DialogTitle } from "@headlessui/vue";
 
 defineProps<{
-  title: string;
-  content: string;
   modelValue: boolean;
 }>();
 const emits = defineEmits<{
@@ -42,16 +40,10 @@ function closeModal() {
         >
           <div class="modal-box">
             <DialogTitle as="h3" class="text-xl font-medium text-base-content">
-              {{ title }}
+              <slot name="title"></slot>
             </DialogTitle>
-            <div class="mt-2">
-              <p class="text-sm text-base-content">
-                {{ content }}
-              </p>
-            </div>
-
-            <div class="mt-4">
-              <button type="button" class="btn-info btn-sm btn" @click="closeModal">OK</button>
+            <div class="mt-2 text-base-content">
+              <slot name="content"></slot>
             </div>
           </div>
         </TransitionChild>

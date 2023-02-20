@@ -73,6 +73,10 @@ const Course = {
   create: (body: CourseForm) => fetcher.post("/course", body),
 };
 
+const User = {
+  modify: (username: string, body: UserEditionForm) => fetcher.patch(`/user/${username}`, body),
+};
+
 export default {
   Auth,
   Problem,
@@ -81,4 +85,5 @@ export default {
   Announcement,
   Homework,
   Course,
+  User,
 };

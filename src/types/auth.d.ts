@@ -21,3 +21,9 @@ interface UserEditorConfig {
 interface UserProperties extends User {
   editorConfig: UserEditorConfig;
 }
+
+interface UserEditionForm {
+  password: string | null;
+  displayedName: string;
+  role: number;
+}
