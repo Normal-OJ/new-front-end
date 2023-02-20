@@ -4,7 +4,7 @@ import { useStorage } from "@vueuse/core";
 import { useI18n } from "vue-i18n";
 import { useTitle } from "@vueuse/core";
 
-useTitle("Test I18n | Normal OJ");
+useTitle("Settings | Normal OJ");
 const { t, locale } = useI18n();
 
 const localeInStorate = useStorage("locale", "english");
