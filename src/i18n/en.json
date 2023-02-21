@@ -183,6 +183,7 @@
     "dispname": "Display Name",
     "email": "Email",
     "role": "Role",
+    "signOut": "Sign out",
     "pw": {
       "change": "Change Password",
       "success": "Password has been successfully changed",

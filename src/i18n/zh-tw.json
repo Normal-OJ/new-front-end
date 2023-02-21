@@ -183,6 +183,7 @@
     "dispname": "顯示名稱",
     "email": "電子郵件",
     "role": "角色",
+    "signOut": "登出",
     "pw": {
       "change": "變更密碼",
       "success": "密碼已成功變更",
