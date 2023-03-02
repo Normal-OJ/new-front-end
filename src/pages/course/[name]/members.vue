@@ -44,6 +44,7 @@ const rolesCanCreateCourse = [UserRole.Admin, UserRole.Teacher];
 const isOpen = ref(false);
 const newMembers = ref<File | null>();
 const newMembersCSVString = ref("");
+const forceUpdate = ref(false);
 const isProcessingSignup = ref(false);
 const errorMsg = ref("");
 const previewCSV = ref<{ headers?: string[]; body?: string[][] }>({});
@@ -63,7 +64,11 @@ async function submit() {
   if (!newMembersCSVString.value) return;
   isProcessingSignup.value = true;
   try {
-    await api.Auth.batchSignup({ newUsers: newMembersCSVString.value, course: route.params.name as string });
+    await api.Auth.batchSignup({
+      newUsers: newMembersCSVString.value,
+      force: forceUpdate.value,
+      course: route.params.name as string,
+    });
     router.go(0);
   } catch (error) {
     if (axios.isAxiosError(error) && error.response?.data?.message) {
@@ -134,16 +139,24 @@ async function submit() {
     <input v-model="isOpen" type="checkbox" id="my-modal" class="modal-toggle" />
     <div class="modal">
       <div class="modal-box">
-        {{ $t("course.members.csvUploadHint1") }}
-        <ul class="ml-4 list-disc">
-          <li v-for="h in ['username', 'email', 'password']">
-            <code>{{ h }}</code>
-          </li>
-          <li v-for="h in ['displayedName', 'role']">
-            <code>{{ h }}</code> (optional)
-          </li>
-        </ul>
-        {{ $t("course.members.csvUploadHint2") }}
+        <div>
+          {{ $t("course.members.csvUploadHint1") }}
+          <ul class="ml-4 list-disc">
+            <li v-for="h in ['username', 'email', 'password']">
+              <code>{{ h }}</code>
+            </li>
+            <li v-for="h in ['displayedName', 'role']">
+              <code>{{ h }}</code> (optional)
+            </li>
+          </ul>
+        </div>
+        <div>
+          {{ $t("course.members.csvUploadHint2") }}
+        </div>
+
+        <div class="mt-2 font-bold">
+          {{ $t("course.members.csvUploadHint3") }}
+        </div>
 
         <div class="my-4" />
 
@@ -152,6 +165,13 @@ async function submit() {
             <i-uil-times-circle />
             <span>{{ errorMsg }}</span>
           </div>
+        </div>
+
+        <div class="form-control my-4">
+          <label class="label cursor-pointer">
+            <span class="label-text">{{ $t("course.members.forceUpdate") }}</span>
+            <input type="checkbox" class="checkbox checkbox-primary" v-model="forceUpdate" />
+          </label>
         </div>
 
         <template v-if="!newMembers">

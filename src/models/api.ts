@@ -28,7 +28,8 @@ const Auth = {
   logout: () => fetcher.get("/auth/session"),
   changePassword: (body: { oldPassword: string; newPassword: string }) =>
     fetcher.post("/auth/change-password", body),
-  batchSignup: (body: { newUsers: string; course: string }) => fetcher.post("/auth/batch-signup", body),
+  batchSignup: (body: { newUsers: string; force: boolean; course: string }) =>
+    fetcher.post("/auth/batch-signup", body),
 };
 
 const Problem = {

@@ -153,7 +153,9 @@
       "cancel": "取消",
       "submit": "送出",
       "csvUploadHint1": "上傳一個 csv 檔以批次新增學生，第一列 Headers 應為：",
-      "csvUploadHint2": "第二列開始每列為一個成員的資料"
+      "csvUploadHint2": "第二列開始每列為一個成員的資料",
+      "csvUploadHint3": "請注意若系統已有使用者使用了 CSV 中的 username 或 email，則該學生依舊會被加入課程，但其他欄位的資訊不會更新, 若要強制更新他的資訊請勾選下方的選項。",
+      "forceUpdate": "強制更新已存在的使用者的資訊"
     }
   },
   "courses": {
