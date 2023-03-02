@@ -152,9 +152,11 @@
       "sortBy": "Sort By",
       "cancel": "Cancel",
       "submit": "Submit",
-      "csvUploadHint1": "Please upload a CSV file to add members. The first row (header) of the csv should contain:",
-      "csvUploadHint2": "From the second row, fill each member's data in each row",
-      "csvUploadHint3": "Note that if we find a user with the same username or email in the database, the user will still be added into course, BUT other information will not be update UNLESS you check the checkbox below.",
+      "csvUploadHint": {
+        "header": "Please upload a CSV file to add members. The first row (header) of the csv should contain:",
+        "content": "From the second row, fill each member's data in each row",
+        "caution": "Note that if we find a user with the same username or email in the database, the user will still be added into course, BUT other information will not be update UNLESS you check the checkbox below."
+      },
       "forceUpdate": "Force update existing users' data"
     }
   },

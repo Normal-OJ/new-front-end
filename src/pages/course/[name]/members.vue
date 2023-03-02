@@ -140,7 +140,7 @@ async function submit() {
     <div class="modal">
       <div class="modal-box">
         <div>
-          {{ $t("course.members.csvUploadHint1") }}
+          {{ $t("course.members.csvUploadHint.header") }}
           <ul class="ml-4 list-disc">
             <li v-for="h in ['username', 'email', 'password']">
               <code>{{ h }}</code>
@@ -151,11 +151,11 @@ async function submit() {
           </ul>
         </div>
         <div>
-          {{ $t("course.members.csvUploadHint2") }}
+          {{ $t("course.members.csvUploadHint.content") }}
         </div>
 
         <div class="mt-2 font-bold">
-          {{ $t("course.members.csvUploadHint3") }}
+          {{ $t("course.members.csvUploadHint.caution") }}
         </div>
 
         <div class="my-4" />
