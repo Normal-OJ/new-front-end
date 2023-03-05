@@ -369,5 +369,10 @@
     "user": {
       "pwHint": "Leave this field empty wont change his/her password. Once password is changed, the user will be logged out automatically."
     }
+  },
+  "errorCode": {
+    "ERR001": "Login Failed: Your username/email or password is incorrect.",
+    "ERR002": "Login Failed: Your account is not activated yet, please go to https://v1.noj.tw to verify your email.",
+    "UNKNOWN": "Unknown Error, please contact teaching assistants or NOJ maintainers, or try again later."
   }
 }

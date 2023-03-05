@@ -6,15 +6,17 @@ import useVuelidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
 import api from "@/models/api";
 import axios from "axios";
+import { useI18n } from "vue-i18n";
 
 const router = useRouter();
 const session = useSession();
+const { t } = useI18n();
 
 const loginForm = reactive({
   username: "",
   password: "",
   isLoading: false,
-  isError: false,
+  errorMsg: "",
 });
 const rules = {
   username: { required },
@@ -37,8 +39,15 @@ async function login() {
     router.go(0);
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      loginForm.isError = true;
+      if (error.response?.data?.message === "Login Failed") {
+        loginForm.errorMsg = t("errorCode.ERR001");
+      } else if (error.response?.data?.message === "Invalid User") {
+        loginForm.errorMsg = t("errorCode.ERR002");
+      } else {
+        loginForm.errorMsg = t("errorCode.UNKNOWN");
+      }
     } else {
+      loginForm.errorMsg = t("errorCode.UNKNOWN");
       throw error;
     }
   } finally {
@@ -59,10 +68,10 @@ async function login() {
           {{ session.isLogin ? `${session.displayedName}` : " " }}
         </div>
         <template v-if="session.isNotLogin">
-          <div class="alert alert-error shadow-lg" v-if="loginForm.isError">
+          <div class="alert alert-error shadow-lg" v-if="loginForm.errorMsg">
             <div>
               <i-uil-times-circle />
-              <span>{{ $t("components.loginSection.loginFailed") }}</span>
+              <span>{{ loginForm.errorMsg }}</span>
             </div>
           </div>
           <div class="form-control">
