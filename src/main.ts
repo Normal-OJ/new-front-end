@@ -21,7 +21,7 @@ Sentry.init({
   integrations: [
     new BrowserTracing({
       routingInstrumentation: Sentry.vueRouterInstrumentation(router),
-      tracingOrigins: ["localhost", "noj.tw", /^\//],
+      tracingOrigins: ["localhost", "noj.tw", "nfe.pages.dev", /^\//],
     }),
   ],
   // Set tracesSampleRate to 1.0 to capture 100%
