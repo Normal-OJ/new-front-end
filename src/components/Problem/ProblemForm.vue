@@ -131,8 +131,9 @@ watch(
         <input
           type="checkbox"
           class="toggle toggle-success"
+          :true-value="1"
+          :false-value="0"
           :value="problem.status"
-          :checked="problem.status === 1"
           @change="update('status', (problem.status ^ 1) as 0 | 1)"
         />
       </label>

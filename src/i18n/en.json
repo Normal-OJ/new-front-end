@@ -93,8 +93,7 @@
       "name": "Name",
       "tags": "Tags",
       "quota": "Quota",
-      "new": "New",
-      "status": "Hidden"
+      "new": "New"
     },
     "submissions": {
       "text": "Submissions",

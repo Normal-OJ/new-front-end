@@ -5,8 +5,8 @@ declare enum ProblemType {
 }
 
 declare enum ProblemStatus {
-  Hidden = 1,
-  Visible = 0,
+  Online = 1,
+  Offline = 2,
 }
 
 interface ProblemTestCase {

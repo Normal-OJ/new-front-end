@@ -93,8 +93,7 @@
       "name": "題名",
       "tags": "標籤",
       "quota": "額度",
-      "new": "新增",
-      "status": "隱藏"
+      "new": "新增"
     },
     "submissions": {
       "text": "繳交狀態",

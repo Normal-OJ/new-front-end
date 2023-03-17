@@ -3,11 +3,10 @@ import { useAxios } from "@vueuse/integrations/useAxios";
 import { useRoute, useRouter } from "vue-router";
 import { computed, ref, watch, watchEffect } from "vue";
 import { fetcher } from "@/models/api";
-import { UserRole, useSession } from "@/stores/session";
+import { useSession } from "@/stores/session";
 import { useTitle } from "@vueuse/core";
 
 const session = useSession();
-const rolesCanReadProblemStatus = [UserRole.Admin, UserRole.Teacher];
 const route = useRoute();
 const router = useRouter();
 
@@ -59,9 +58,6 @@ const maxPage = computed(() => {
                 <tr>
                   <th>{{ $t("course.problems.id") }}</th>
                   <th>{{ $t("course.problems.name") }}</th>
-                  <th v-if="rolesCanReadProblemStatus.includes(session.role)">
-                    {{ $t("course.problems.status") }}
-                  </th>
                   <th>{{ $t("course.problems.tags") }}</th>
                   <th>{{ $t("course.problems.quota") }}</th>
                   <th></th>
@@ -69,9 +65,10 @@ const maxPage = computed(() => {
               </thead>
               <tbody>
                 <tr
-                  v-for="{ problemId, problemName, tags, quota, submitCount, status } in (
-                    problems || []
-                  ).slice((page - 1) * 10, page * 10)"
+                  v-for="{ problemId, problemName, tags, quota, submitCount } in (problems || []).slice(
+                    (page - 1) * 10,
+                    page * 10,
+                  )"
                   :key="problemId"
                   class="hover"
                 >
@@ -82,9 +79,6 @@ const maxPage = computed(() => {
                   </td>
                   <td>
                     {{ problemName }}
-                  </td>
-                  <td v-if="rolesCanReadProblemStatus.includes(session.role)">
-                    <span class="badge ml-1">{{ status === 0 ? "VISIBLE" : "HIDDEN" }}</span>
                   </td>
                   <td>
                     <span class="badge badge-info mr-1" v-for="tag in tags" :key="tag">{{ tag }}</span>
