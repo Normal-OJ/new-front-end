@@ -10,6 +10,7 @@ specifiers:
   '@types/katex': ^0.11.1
   '@types/markdown-it': ^12.2.3
   '@types/node': ^18.11.18
+  '@types/scrollmagic': ^2.0.3
   '@vitejs/plugin-vue': ^4.0.0
   '@vuelidate/core': ^2.0.0-alpha.34
   '@vuelidate/validators': ^2.0.0-alpha.26
@@ -33,6 +34,7 @@ specifiers:
   prettier: ^2.8.2
   prettier-plugin-tailwindcss: ^0.1.13
   query-string: ^7.1.1
+  scrollmagic: ^2.0.8
   tailwindcss: ^3.0.23
   typescript: ^4.9.4
   unplugin-icons: ^0.15.1
@@ -41,6 +43,7 @@ specifiers:
   vite-plugin-pages: ^0.28.0
   vue: ^3.2.45
   vue-echarts: ^6.0.2
+  vue-i18n: ^9.2.2
   vue-prism-editor: ^2.0.0-alpha.2
   vue-router: ^4.0.12
   vue-tsc: ^1.0.24
@@ -66,8 +69,10 @@ dependencies:
   markdown-it-texmath: 0.9.7
   pinia: 2.0.28_prq2uz4lho2pwp6irk4cfkrxwu
   query-string: 7.1.3
+  scrollmagic: 2.0.8
   vue: 3.2.45
   vue-echarts: 6.5.1_echarts@5.4.1+vue@3.2.45
+  vue-i18n: 9.2.2_vue@3.2.45
   vue-prism-editor: 2.0.0-alpha.2_vue@3.2.45
   vue-router: 4.1.6_vue@3.2.45
 
@@ -77,6 +82,7 @@ devDependencies:
   '@types/katex': 0.11.1
   '@types/markdown-it': 12.2.3
   '@types/node': 18.11.18
+  '@types/scrollmagic': 2.0.3
   '@vitejs/plugin-vue': 4.0.0_vite@4.0.4+vue@3.2.45
   autoprefixer: 10.4.13_postcss@8.4.21
   eslint: 8.31.0
@@ -395,6 +401,44 @@ packages:
       - supports-color
     dev: true
 
+  /@intlify/core-base/9.2.2:
+    resolution: {integrity: sha512-JjUpQtNfn+joMbrXvpR4hTF8iJQ2sEFzzK3KIESOx+f+uwIjgw20igOyaIdhfsVVBCds8ZM64MoeNSx+PHQMkA==}
+    engines: {node: '>= 14'}
+    dependencies:
+      '@intlify/devtools-if': 9.2.2
+      '@intlify/message-compiler': 9.2.2
+      '@intlify/shared': 9.2.2
+      '@intlify/vue-devtools': 9.2.2
+    dev: false
+
+  /@intlify/devtools-if/9.2.2:
+    resolution: {integrity: sha512-4ttr/FNO29w+kBbU7HZ/U0Lzuh2cRDhP8UlWOtV9ERcjHzuyXVZmjyleESK6eVP60tGC9QtQW9yZE+JeRhDHkg==}
+    engines: {node: '>= 14'}
+    dependencies:
+      '@intlify/shared': 9.2.2
+    dev: false
+
+  /@intlify/message-compiler/9.2.2:
+    resolution: {integrity: sha512-IUrQW7byAKN2fMBe8z6sK6riG1pue95e5jfokn8hA5Q3Bqy4MBJ5lJAofUsawQJYHeoPJ7svMDyBaVJ4d0GTtA==}
+    engines: {node: '>= 14'}
+    dependencies:
+      '@intlify/shared': 9.2.2
+      source-map: 0.6.1
+    dev: false
+
+  /@intlify/shared/9.2.2:
+    resolution: {integrity: sha512-wRwTpsslgZS5HNyM7uDQYZtxnbI12aGiBZURX3BTR9RFIKKRWpllTsgzHWvj3HKm3Y2Sh5LPC1r0PDCKEhVn9Q==}
+    engines: {node: '>= 14'}
+    dev: false
+
+  /@intlify/vue-devtools/9.2.2:
+    resolution: {integrity: sha512-+dUyqyCHWHb/UcvY1MlIpO87munedm3Gn6E9WWYdWrMuYLcoIoOEVDWSS8xSwtlPU+kA+MEQTP6Q1iI/ocusJg==}
+    engines: {node: '>= 14'}
+    dependencies:
+      '@intlify/core-base': 9.2.2
+      '@intlify/shared': 9.2.2
+    dev: false
+
   /@jridgewell/sourcemap-codec/1.4.14:
     resolution: {integrity: sha512-XPSJHWmi394fuUuzDnGz1wiKqWfo1yXecHQMRf2l6hztTO+nPru658AyDngaBe7isIxEkRsPR3FZh+s7iVa4Uw==}
     dev: true
@@ -562,6 +606,10 @@ packages:
 
   /@types/node/18.11.18:
     resolution: {integrity: sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==}
+    dev: true
+
+  /@types/scrollmagic/2.0.3:
+    resolution: {integrity: sha512-bfTr5jGgcbBZa/KcbhbuT4Pj6LFYQE1e2NKa93++7oAnAG0+5rBijSbRCuPP5yoNgbxw6jLiUvEn99JYLi1I0A==}
     dev: true
 
   /@types/trusted-types/2.0.2:
@@ -2283,6 +2331,11 @@ packages:
     dependencies:
       queue-microtask: 1.2.3
 
+  /scrollmagic/2.0.8:
+    resolution: {integrity: sha512-UYXEGBPVLziovXl3FjHGkY9c4UXKUKopIdXwWR2JapWxCo0U345wYegi7rcsv5vHf/ktc1bSNWy4QRFiV+Yccw==}
+    engines: {node: '>=0.10.x'}
+    dev: false
+
   /shebang-command/2.0.0:
     resolution: {integrity: sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==}
     engines: {node: '>=8'}
@@ -2615,6 +2668,19 @@ packages:
       resize-detector: 0.3.0
       vue: 3.2.45
       vue-demi: 0.13.11_vue@3.2.45
+    dev: false
+
+  /vue-i18n/9.2.2_vue@3.2.45:
+    resolution: {integrity: sha512-yswpwtj89rTBhegUAv9Mu37LNznyu3NpyLQmozF3i1hYOhwpG8RjcjIFIIfnu+2MDZJGSZPXaKWvnQA71Yv9TQ==}
+    engines: {node: '>= 14'}
+    peerDependencies:
+      vue: ^3.0.0
+    dependencies:
+      '@intlify/core-base': 9.2.2
+      '@intlify/shared': 9.2.2
+      '@intlify/vue-devtools': 9.2.2
+      '@vue/devtools-api': 6.4.5
+      vue: 3.2.45
     dev: false
 
   /vue-prism-editor/2.0.0-alpha.2_vue@3.2.45:
