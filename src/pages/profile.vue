@@ -58,9 +58,9 @@ async function changePassword() {
   } catch (error) {
     if (axios.isAxiosError(error)) {
       if (error.response?.data.message === "Wrong Password") {
-        changePasswordForm.errorMsg = "Wrong Password";
+        changePasswordForm.errorMsg = t("profile.wrongPassword");
       } else {
-        changePasswordForm.errorMsg = "Operation failed, please try again later";
+        changePasswordForm.errorMsg = t("profile.operationFailed");
       }
     } else {
       throw error;
@@ -107,7 +107,7 @@ function clearForm() {
       </div>
       <div class="card-actions">
         <div class="mx-auto flex max-w-7xl gap-8 p-4">
-          <button class="btn btn-outline btn-error" @click="logout">{{ t("profile.signOut") }}</button>
+          <button class="btn-outline btn-error btn" @click="logout">{{ t("profile.signOut") }}</button>
         </div>
       </div>
 
@@ -137,7 +137,7 @@ function clearForm() {
             type="password"
             name="password"
             :placeholder="t('profile.pw.placeholder.new')"
-            :class="['input input-bordered', v$.newPassword.$error && 'input-error']"
+            :class="['input-bordered input', v$.newPassword.$error && 'input-error']"
           />
           <label class="label" v-show="v$.newPassword.$error">
             <span class="label-text-alt text-error" v-text="v$.newPassword.$errors[0]?.$message" />
@@ -152,7 +152,7 @@ function clearForm() {
             type="password"
             name="password"
             :placeholder="t('profile.pw.placeholder.again')"
-            :class="['input input-bordered', v$.confirmPassword.$error && 'input-error']"
+            :class="['input-bordered input', v$.confirmPassword.$error && 'input-error']"
           />
           <label class="label" v-show="v$.confirmPassword.$error">
             <span class="label-text-alt text-error" v-text="v$.confirmPassword.$errors[0]?.$message" />
@@ -167,7 +167,7 @@ function clearForm() {
             type="password"
             name="password"
             :placeholder="t('profile.pw.placeholder.current')"
-            :class="['input input-bordered', v$.oldPassword.$error && 'input-error']"
+            :class="['input-bordered input', v$.oldPassword.$error && 'input-error']"
             @keydown.enter="changePassword"
           />
           <label class="label" v-show="v$.oldPassword.$error">
@@ -176,7 +176,7 @@ function clearForm() {
         </div>
         <div class="form-control mt-6">
           <div
-            :class="['btn btn-primary', changePasswordForm.isLoading && 'loading']"
+            :class="['btn-primary btn', changePasswordForm.isLoading && 'loading']"
             @click="changePassword"
           >
             {{ t("profile.pw.submit") }}

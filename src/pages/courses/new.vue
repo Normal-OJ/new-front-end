@@ -6,8 +6,10 @@ import api from "@/models/api";
 import axios from "axios";
 import useVuelidate from "@vuelidate/core";
 import { required, maxLength } from "@vuelidate/validators";
+import { useI18n } from "vue-i18n";
 
 const router = useRouter();
+const { t } = useI18n();
 useTitle(`New Course | Normal OJ`);
 
 const newCourse = reactive<CourseForm>({
@@ -34,7 +36,7 @@ async function submit() {
     if (axios.isAxiosError(error) && error.response?.data?.message) {
       errorMsg.value = error.response.data.message;
     } else {
-      errorMsg.value = "Unknown error occurred :(";
+      errorMsg.value = t("courses.new.unknown-error-occurred");
     }
     throw error;
   } finally {
@@ -63,7 +65,7 @@ async function submit() {
           <input
             v-model="v$.course.$model"
             type="text"
-            :class="['input input-bordered w-full max-w-xs', v$.course.$error && 'input-error']"
+            :class="['input-bordered input w-full max-w-xs', v$.course.$error && 'input-error']"
           />
           <label class="label" v-show="v$.course.$error">
             <span class="label-text-alt text-error" v-text="v$.course.$errors[0]?.$message" />
@@ -77,7 +79,7 @@ async function submit() {
           <input
             v-model="v$.teacher.$model"
             type="text"
-            :class="['input input-bordered w-full max-w-xs', v$.teacher.$error && 'input-error']"
+            :class="['input-bordered input w-full max-w-xs', v$.teacher.$error && 'input-error']"
           />
           <label class="label" v-show="v$.teacher.$error">
             <span class="label-text-alt text-error" v-text="v$.teacher.$errors[0]?.$message" />
@@ -85,7 +87,7 @@ async function submit() {
         </div>
 
         <div class="mt-4 flex">
-          <button :class="['btn btn-success', isLoading && 'loading']" @click="submit">
+          <button :class="['btn-success btn', isLoading && 'loading']" @click="submit">
             <i-uil-file-upload-alt class="mr-1 lg:h-5 lg:w-5" /> {{ $t("courses.new.submit") }}
           </button>
         </div>

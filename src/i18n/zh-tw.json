@@ -174,7 +174,8 @@
       "title": "新增課程",
       "nameField": "課程名稱",
       "teacherField": "課程教師",
-      "submit": "送出"
+      "submit": "送出",
+      "unknown-error-occurred": "發生未知錯誤 :("
     }
   },
   "profile": {
@@ -201,7 +202,9 @@
         "current": "舊密碼"
       },
       "submit": "送出"
-    }
+    },
+    "wrongPassword": "密碼錯誤",
+    "operationFailed": "操作失敗，請稍後再重試"
   },
   "ann": {
     "id": {
@@ -371,7 +374,24 @@
   },
   "admin": {
     "user": {
-      "pwHint": "留空則不改變密碼，改變密碼後該使用者會被登出"
+      "pwHint": "留空則不改變密碼，改變密碼後該使用者會被登出",
+      "cancel": "取消",
+      "submit": "提交",
+      "password": "密碼",
+      "role": "角色",
+      "display-name": "顯示名稱",
+      "username": "帳號",
+      "editing": "正在編輯：{user}",
+      "student": "學生",
+      "teacher": "教師",
+      "admin": "管理員",
+      "select-role": "選擇角色",
+      "row-count": "資料筆數：{n}",
+      "search-name": "搜尋名稱"
+    },
+    "unknown-error-occurred": "發生未知錯誤 :(",
+    "tab": {
+      "user": "使用者"
     }
   },
   "errorCode": {

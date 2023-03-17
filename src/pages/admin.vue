@@ -8,10 +8,12 @@ import { useAxios } from "@vueuse/integrations/useAxios";
 import axios from "axios";
 import { computed, ref, watchEffect } from "vue";
 import { useRoute, useRouter } from "vue-router";
+import { useI18n } from "vue-i18n";
 
 const route = useRoute();
 const router = useRouter();
-const tabs = [{ text: "User", value: "user" }];
+const { t } = useI18n();
+const tabs = [{ text: t("admin.tab.user"), value: "user" }];
 watchEffect(() => {
   if (!route.query.tab || !tabs.some((d) => d.value === route.query.tab)) {
     router.push("/admin?tab=user");
@@ -77,7 +79,7 @@ async function submit() {
     if (axios.isAxiosError(error) && error.response?.data?.message) {
       errorMsg.value = error.response.data.message;
     } else {
-      errorMsg.value = "Unknown error occurred :(";
+      errorMsg.value = t("admin.unknown-error-occurred");
     }
     throw error;
   } finally {
@@ -103,16 +105,21 @@ async function submit() {
         <div class="my-4" />
 
         <div class="mb-4 flex items-center gap-x-4">
-          <input v-model="searchName" placeholder="Search Name" type="text" class="input input-bordered" />
+          <input
+            v-model="searchName"
+            :placeholder="$t('admin.user.search-name')"
+            type="text"
+            class="input-bordered input"
+          />
 
-          <select v-model="searchRole" class="select select-bordered">
-            <option :value="null">Select Role</option>
-            <option :value="0">Admin</option>
-            <option :value="1">Teacher</option>
-            <option :value="2">Student</option>
+          <select v-model="searchRole" class="select-bordered select">
+            <option :value="null">{{ $t("admin.user.select-role") }}</option>
+            <option :value="0">{{ $t("admin.user.admin") }}</option>
+            <option :value="1">{{ $t("admin.user.teacher") }}</option>
+            <option :value="2">{{ $t("admin.user.student") }}</option>
           </select>
 
-          <span>Row Count: {{ filteredUsers?.length }}</span>
+          <span>{{ $t("admin.user.row-count", { n: filteredUsers?.length }) }}</span>
         </div>
 
         <data-status-wrapper :error="fetchError" :is-loading="fetchLoading">
@@ -123,9 +130,9 @@ async function submit() {
             <table class="table-compact table w-full">
               <thead>
                 <tr>
-                  <th>username</th>
-                  <th>display name</th>
-                  <th>role</th>
+                  <th>{{ $t("admin.user.username") }}</th>
+                  <th>{{ $t("admin.user.display-name") }}</th>
+                  <th>{{ $t("admin.user.role") }}</th>
                   <th></th>
                 </tr>
               </thead>
@@ -135,7 +142,7 @@ async function submit() {
                   <td>{{ displayedName }}</td>
                   <td>{{ ROLE[role] }}</td>
                   <td>
-                    <div class="btn btn-ghost btn-circle btn-sm" @click="() => editUser(username)">
+                    <div class="btn-ghost btn-sm btn-circle btn" @click="() => editUser(username)">
                       <i-uil-pen />
                     </div>
                   </td>
@@ -146,7 +153,7 @@ async function submit() {
         </data-status-wrapper>
 
         <ui-dialog :modelValue="!!edittingUsername">
-          <template #title> Editing: {{ edittingUsername }}</template>
+          <template #title> {{ $t("admin.user.editing", { user: edittingUsername }) }}</template>
           <template #content>
             <div v-if="errorMsg" class="alert alert-error shadow-lg">
               <div>
@@ -157,24 +164,24 @@ async function submit() {
 
             <div class="form-control w-full max-w-xs">
               <label class="label">
-                <span class="label-text">Username</span>
+                <span class="label-text">{{ $t("admin.user.username") }}</span>
               </label>
               <input
                 :value="edittingUsername"
                 type="text"
                 disabled
-                class="input disabled input-bordered w-full max-w-xs"
+                class="input-bordered input disabled w-full max-w-xs"
               />
             </div>
 
             <div class="form-control w-full max-w-xs">
               <label class="label">
-                <span class="label-text">Display Name</span>
+                <span class="label-text">{{ $t("admin.user.display-name") }}</span>
               </label>
               <input
                 v-model="v$.displayedName.$model"
                 type="text"
-                :class="['input input-bordered w-full max-w-xs', v$.displayedName.$error && 'input-error']"
+                :class="['input-bordered input w-full max-w-xs', v$.displayedName.$error && 'input-error']"
               />
               <label class="label" v-show="v$.displayedName.$error">
                 <span class="label-text-alt text-error" v-text="v$.displayedName.$errors[0]?.$message" />
@@ -183,23 +190,23 @@ async function submit() {
 
             <div class="form-control w-full max-w-xs">
               <label class="label">
-                <span class="label-text">Role</span>
+                <span class="label-text">{{ $t("admin.user.role") }}</span>
               </label>
-              <select v-model="v$.role.$model" class="select select-bordered w-full max-w-xs">
-                <option :value="0">Admin</option>
-                <option :value="1">Teacher</option>
-                <option :value="2">Student</option>
+              <select v-model="v$.role.$model" class="select-bordered select w-full max-w-xs">
+                <option :value="0">{{ $t("admin.user.admin") }}</option>
+                <option :value="1">{{ $t("admin.user.teacher") }}</option>
+                <option :value="2">{{ $t("admin.user.student") }}</option>
               </select>
             </div>
 
             <div class="form-control w-full max-w-xs">
               <label class="label">
-                <span class="label-text">Password</span>
+                <span class="label-text">{{ $t("admin.user.password") }}</span>
               </label>
               <input
                 v-model="v$.password.$model"
                 type="password"
-                :class="['input input-bordered w-full max-w-xs', v$.password.$error && 'input-error']"
+                :class="['input-bordered input w-full max-w-xs', v$.password.$error && 'input-error']"
               />
               <label class="label">
                 <span :class="['label-text-alt', v$.password.$error && 'text-error']">
@@ -209,10 +216,12 @@ async function submit() {
             </div>
 
             <div class="mt-8 flex justify-between">
-              <button :class="['btn btn-success', isLoading && 'loading']" @click="submit">
-                <i-uil-file-upload-alt class="mr-1 lg:h-5 lg:w-5" /> Submit
+              <button :class="['btn-success btn', isLoading && 'loading']" @click="submit">
+                <i-uil-file-upload-alt class="mr-1 lg:h-5 lg:w-5" /> {{ $t("admin.user.submit") }}
               </button>
-              <button :class="['btn btn-ghost']" @click="edittingUsername = ''">Cancel</button>
+              <button :class="['btn-ghost btn']" @click="edittingUsername = ''">
+                {{ $t("admin.user.cancel") }}
+              </button>
             </div>
           </template>
         </ui-dialog>

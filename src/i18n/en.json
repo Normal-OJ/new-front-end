@@ -174,7 +174,8 @@
       "title": "New Course",
       "nameField": "Course Name",
       "teacherField": "Teacher",
-      "submit": "Submit"
+      "submit": "Submit",
+      "unknown-error-occurred": "Unknown error occurred :("
     }
   },
   "profile": {
@@ -201,7 +202,9 @@
         "current": "current password"
       },
       "submit": "Submit"
-    }
+    },
+    "wrongPassword": "Wrong Password",
+    "operationFailed": "Operation failed, please try again later"
   },
   "ann": {
     "id": {
@@ -372,7 +375,24 @@
   },
   "admin": {
     "user": {
-      "pwHint": "Leave this field empty wont change his/her password. Once password is changed, the user will be logged out automatically."
+      "pwHint": "Leave this field empty wont change his/her password. Once password is changed, the user will be logged out automatically.",
+      "cancel": "Cancel",
+      "submit": "Submit",
+      "password": "Password",
+      "role": "Role",
+      "display-name": "Display Name",
+      "username": "Username",
+      "editing": "Editing: {user}",
+      "student": "Student",
+      "teacher": "Teacher",
+      "admin": "Admin",
+      "select-role": "Select Role",
+      "row-count": "Row Count: {n}",
+      "search-name": "Search Name"
+    },
+    "unknown-error-occurred": "Unknown error occurred :(",
+    "tab": {
+      "user": "User"
     }
   },
   "errorCode": {
