@@ -64,7 +64,7 @@ async function submit() {
     const writer = new ZipWriter(blobWriter);
     await writer.add(`main${LANGUAGE_EXTENSION[form.lang]}`, new TextReader(form.code));
     await writer.close();
-    const blob = blobWriter.getData();
+    const blob = await blobWriter.getData();
     const formData = new FormData();
     formData.append("code", blob);
     const { submissionId } = (
@@ -113,7 +113,7 @@ async function submit() {
             </label>
             <select
               v-model="v$.lang.$model"
-              :class="['select select-bordered', v$.lang.$error && 'input-error']"
+              :class="['select-bordered select', v$.lang.$error && 'input-error']"
             >
               <option disabled :value="-1">{{ t("course.problem.submit.lang.select") }}</option>
               <option v-for="{ text, value } in langOptions" :key="value" :value="value">{{ text }}</option>
