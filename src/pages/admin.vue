@@ -8,6 +8,7 @@ import { useAxios } from "@vueuse/integrations/useAxios";
 import axios from "axios";
 import { computed, ref, watchEffect } from "vue";
 import { useRoute, useRouter } from "vue-router";
+import { useAsync } from "@/composables/useAsync";
 
 const route = useRoute();
 const router = useRouter();
@@ -28,7 +29,7 @@ const {
   data: users,
   error: fetchError,
   isLoading: fetchLoading,
-  execute,
+  execute: fetchUsers,
 } = useAxios<UserInfo[]>("/user", fetcher);
 const searchName = ref("");
 const searchRole = ref(null);
@@ -39,8 +40,6 @@ const filteredUsers = computed(() =>
 );
 
 const edittingUsername = ref("");
-const isLoading = ref(false);
-const errorMsg = ref("");
 const initialUserForm = {
   displayedName: "",
   role: 0,
@@ -63,26 +62,21 @@ function editUser(username: string) {
   };
   edittingUsername.value = username;
 }
+
+const {
+  isLoading,
+  errorMsg,
+  execute: modifyUser,
+} = useAsync(async () => {
+  if (!userForm.value.password) userForm.value.password = null;
+  await api.User.modify(edittingUsername.value, { ...userForm.value });
+  fetchUsers();
+  userForm.value = { ...initialUserForm };
+  edittingUsername.value = "";
+});
 async function submit() {
   if (!(await v$.value.$validate())) return;
-
-  isLoading.value = true;
-  try {
-    if (!userForm.value.password) userForm.value.password = null;
-    await api.User.modify(edittingUsername.value, { ...userForm.value });
-    execute();
-    userForm.value = { ...initialUserForm };
-    edittingUsername.value = "";
-  } catch (error) {
-    if (axios.isAxiosError(error) && error.response?.data?.message) {
-      errorMsg.value = error.response.data.message;
-    } else {
-      errorMsg.value = "Unknown error occurred :(";
-    }
-    throw error;
-  } finally {
-    isLoading.value = false;
-  }
+  modifyUser();
 }
 </script>
 
@@ -135,7 +129,7 @@ async function submit() {
                   <td>{{ displayedName }}</td>
                   <td>{{ ROLE[role] }}</td>
                   <td>
-                    <div class="btn btn-ghost btn-circle btn-sm" @click="() => editUser(username)">
+                    <div class="btn btn-circle btn-ghost btn-sm" @click="() => editUser(username)">
                       <i-uil-pen />
                     </div>
                   </td>
