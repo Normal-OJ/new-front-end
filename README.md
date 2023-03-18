@@ -2,9 +2,9 @@
 
 ## Development
 
-Issues and PRs are welcome, please refer to [contribution guide](CONTRIBUTING.md)
+Issues and PRs are welcome, please read the [contribution guide](CONTRIBUTING.md).
 
-Clone the repo, then install the dependencies by running:
+Clone the repo, then install the dependencies by [pnpm](https://pnpm.io/installation):
 ```bash
 cd new-front-end
 pnpm install
