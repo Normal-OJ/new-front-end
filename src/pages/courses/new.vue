@@ -27,7 +27,6 @@ const v$ = useVuelidate(rules, newCourse);
 
 async function submit() {
   if (!(await v$.value.$validate())) return;
-
   isLoading.value = true;
   try {
     await api.Course.create({ ...newCourse });

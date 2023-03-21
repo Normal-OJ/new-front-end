@@ -44,7 +44,13 @@ const rules = {
   quota: { required, minValue: minValue(-1) },
   type: {},
   status: {},
-  testCaseInfo: {},
+  testCaseInfo: {
+    tasks: helpers.withMessage(
+      "The sum of all subtasks should be 100",
+      (tasks: ProblemTestCase[]) =>
+        tasks.reduce((acc: number, cur: ProblemTestCase) => acc + cur.taskScore, 0) === 100,
+    ),
+  },
   canViewStdout: {},
   defaultCode: {},
 };
@@ -116,7 +122,7 @@ watch(
       </label>
       <input
         type="text"
-        :class="['input input-bordered w-full max-w-xs', v$.problemName.$error && 'input-error']"
+        :class="['input-bordered input w-full max-w-xs', v$.problemName.$error && 'input-error']"
         :value="problem.problemName"
         @input="update('problemName', ($event.target as HTMLInputElement).value)"
       />
@@ -130,7 +136,7 @@ watch(
         <span class="label-text">{{ $t("components.problem.forms.hiddenToggle") }}</span>
         <input
           type="checkbox"
-          class="toggle toggle-success"
+          class="toggle-success toggle"
           :value="problem.status"
           :checked="problem.status === 1"
           @change="update('status', (problem.status ^ 1) as 0 | 1)"
@@ -144,7 +150,7 @@ watch(
       </label>
       <input
         type="text"
-        :class="['input input-bordered w-full max-w-xs', v$.quota.$error && 'input-error']"
+        :class="['input-bordered input w-full max-w-xs', v$.quota.$error && 'input-error']"
         :value="problem.quota"
         @input="update('quota', Number(($event.target as HTMLInputElement).value))"
       />
@@ -161,7 +167,7 @@ watch(
       </label>
       <input
         type="text"
-        :class="['input input-bordered w-full max-w-xs', v$.tags.$error && 'input-error']"
+        :class="['input-bordered input w-full max-w-xs', v$.tags.$error && 'input-error']"
         :value="problem.tags.join(',')"
         @input="update('tags', ($event.target as HTMLInputElement).value.split(','))"
       />
@@ -177,7 +183,7 @@ watch(
         <span class="label-text">{{ $t("components.problem.forms.type") }}</span>
       </label>
       <select
-        class="select select-bordered w-full max-w-xs"
+        class="select-bordered select w-full max-w-xs"
         :value="problem.type"
         @input="update('type', Number(($event.target as HTMLSelectElement).value) as 0 | 1 | 2)"
       >
@@ -205,12 +211,12 @@ watch(
       <div class="form-control col-span-2 w-full">
         <label class="label justify-start">
           <span class="label-text">{{ $t("components.problem.forms.testdata") }}</span>
-          <label for="testdata-description" class="modal-button btn btn-xs ml-3">{{
+          <label for="testdata-description" class="modal-button btn-xs btn ml-3">{{
             $t("components.problem.forms.howToPack")
           }}</label>
         </label>
         <div
-          :class="['textarea textarea-bordered w-full p-4', isDrag ? 'border-accent' : '']"
+          :class="['textarea-bordered textarea w-full p-4', isDrag ? 'border-accent' : '']"
           @drop.prevent="$emit('update:testdata', $event.dataTransfer?.files?.[0])"
           @dragover.prevent="isDrag = true"
           @dragleave="isDrag = false"
@@ -227,7 +233,7 @@ watch(
           <template v-else>
             <div class="flex">
               <span class="mr-3">{{ testdata.name }}</span>
-              <button class="btn btn-sm" @click="$emit('update:testdata', null)">
+              <button class="btn-sm btn" @click="$emit('update:testdata', null)">
                 <i-uil-times />
               </button>
             </div>
@@ -245,7 +251,7 @@ watch(
               </label>
               <input
                 type="text"
-                class="input input-bordered w-full max-w-xs"
+                class="input-bordered input w-full max-w-xs"
                 :value="problem.testCaseInfo.tasks[i].caseCount"
                 readonly
               />
@@ -257,7 +263,7 @@ watch(
               </label>
               <input
                 type="text"
-                class="input input-bordered w-full max-w-xs"
+                class="input-bordered input w-full max-w-xs"
                 :value="problem.testCaseInfo.tasks[i].taskScore"
                 @input="
                   update('testCaseInfo', {
@@ -281,7 +287,7 @@ watch(
               </label>
               <input
                 type="text"
-                class="input input-bordered w-full max-w-xs"
+                class="input-bordered input w-full max-w-xs"
                 :value="problem.testCaseInfo.tasks[i].memoryLimit"
                 @input="
                   update('testCaseInfo', {
@@ -305,7 +311,7 @@ watch(
               </label>
               <input
                 type="text"
-                class="input input-bordered w-full max-w-xs"
+                class="input-bordered input w-full max-w-xs"
                 :value="problem.testCaseInfo.tasks[i].timeLimit"
                 @input="
                   update('testCaseInfo', {
@@ -330,7 +336,7 @@ watch(
     <ProblemTestdataDescriptionModal />
   </div>
   <div class="mt-4 flex justify-end">
-    <button :class="['btn btn-success', isLoading && 'loading']" @click="submit">
+    <button :class="['btn-success btn', isLoading && 'loading']" @click="submit">
       <i-uil-file-upload-alt class="mr-1 lg:h-5 lg:w-5" /> {{ $t("components.problem.forms.submit") }}
     </button>
   </div>
