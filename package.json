@@ -6,7 +6,8 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "cf-build": "npm install -g pnpm && pnpm run build"
+    "cf-build": "npm install -g pnpm && pnpm run build",
+    "lint": "eslint --ext .ts . && prettier --check ."
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.7",

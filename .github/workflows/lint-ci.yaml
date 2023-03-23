@@ -1,0 +1,24 @@
+name: Lint CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
+      - name: Use Node.js v16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16.x"
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Run ESLint and Prettier
+        run: pnpm run lint
