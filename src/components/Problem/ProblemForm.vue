@@ -45,11 +45,11 @@ const rules = {
   type: {},
   status: {},
   testCaseInfo: {
-    tasks: helpers.withMessage(
-      "The sum of all subtasks should be 100",
-      (tasks: ProblemTestCase[]) =>
-        tasks.reduce((acc: number, cur: ProblemTestCase) => acc + cur.taskScore, 0) === 100,
-    ),
+    tasks: {
+      scoreSum: helpers.withMessage("The sum of all subtasks should be 100", (tasks: ProblemTestCase[]) => {
+        return tasks.reduce((acc: number, cur: ProblemTestCase) => acc + cur.taskScore, 0) === 100;
+      }),
+    },
   },
   canViewStdout: {},
   defaultCode: {},
