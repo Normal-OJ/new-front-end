@@ -46,9 +46,12 @@ const rules = {
   status: {},
   testCaseInfo: {
     tasks: {
-      scoreSum: helpers.withMessage("The sum of all subtasks should be 100", (tasks: ProblemTestCase[]) => {
-        return tasks.reduce((acc: number, cur: ProblemTestCase) => acc + cur.taskScore, 0) === 100;
-      }),
+      scoreSum: helpers.withMessage(
+        "The sum of all subtasks score should be 100",
+        (tasks: ProblemTestCase[]) => {
+          return tasks.reduce((acc: number, cur: ProblemTestCase) => acc + cur.taskScore, 0) === 100;
+        },
+      ),
     },
   },
   canViewStdout: {},
@@ -241,6 +244,11 @@ watch(
         </div>
       </div>
 
+      <label
+        class="label text-error"
+        v-show="v$.testCaseInfo.tasks.$error"
+        v-text="v$.testCaseInfo.tasks.$errors[0]?.$message"
+      />
       <template v-for="(no, i) in problem.testCaseInfo.tasks.length">
         <div class="col-span-2">
           <div class="font-semibold">{{ $t("components.problem.forms.subtask", { no }) }}</div>
