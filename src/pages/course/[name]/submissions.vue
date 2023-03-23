@@ -113,7 +113,7 @@ function copySubmissionLink(path: string) {
             v-model="searchUsername"
             type="text"
             placeholder="Username (exact match)"
-            class="input input-bordered w-full max-w-xs"
+            class="input-bordered input w-full max-w-xs"
             @keydown.enter="mutateFilter({ username: searchUsername })"
           />
         </div>
@@ -122,7 +122,7 @@ function copySubmissionLink(path: string) {
         <div class="mb-4 flex items-end gap-x-4">
           <select
             :value="routeQuery.filter.problemId"
-            class="select select-bordered w-full flex-1"
+            class="select-bordered select w-full flex-1"
             @change="(event) => mutateFilter({ problemId: (event.target as HTMLSelectElement).value})"
           >
             <option value="" selected>{{ $t("course.submissions.problem") }}</option>
@@ -131,7 +131,7 @@ function copySubmissionLink(path: string) {
 
           <select
             :value="routeQuery.filter.status"
-            class="select select-bordered w-full flex-1"
+            class="select-bordered select w-full flex-1"
             @change="(event) => mutateFilter({ status: (event.target as HTMLSelectElement).value})"
           >
             <option value="" selected>{{ $t("course.submissions.status") }}</option>
@@ -140,7 +140,7 @@ function copySubmissionLink(path: string) {
 
           <select
             :value="routeQuery.filter.languageType"
-            class="select select-bordered w-full flex-1"
+            class="select-bordered select w-full flex-1"
             @change="(event) => mutateFilter({ languageType: (event.target as HTMLSelectElement).value})"
           >
             <option value="" selected>{{ $t("course.submissions.lang") }}</option>

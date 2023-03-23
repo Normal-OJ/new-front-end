@@ -5,7 +5,5 @@
   "trailingComma": "all",
   "semi": true,
   "singleQuote": false,
-  "plugins": [
-    "./node_modules/prettier-plugin-tailwindcss/dist/index.js"
-  ]
+  "plugins": ["./node_modules/prettier-plugin-tailwindcss/dist/index.js"]
 }

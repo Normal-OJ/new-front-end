@@ -151,7 +151,7 @@ async function rejudge() {
                 <tr>
                   <td colspan="5">
                     <div
-                      class="btn btn-ghost btn-sm btn-block gap-x-3"
+                      class="btn btn-ghost btn-block btn-sm gap-x-3"
                       @click="expandTasks[taskIndex] = !expandTasks[taskIndex]"
                     >
                       <i-uil-angle-down v-if="!expandTasks[taskIndex]" />
@@ -186,7 +186,7 @@ async function rejudge() {
               <!-- TODO submission?.code should without ? -->
               <button
                 v-if="isSupported && submission"
-                class="btn btn-info btn-xs ml-3"
+                class="btn-info btn btn-xs ml-3"
                 @click="copy(submission?.code || '')"
               >
                 {{ copied ? $t("course.submission.source.copied") : $t("course.submission.source.copy") }}

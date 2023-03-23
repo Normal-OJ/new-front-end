@@ -68,7 +68,7 @@ async function submit() {
       </label>
       <input
         type="text"
-        :class="['input input-bordered w-full max-w-xs', v$.name.$error && 'input-error']"
+        :class="['input-bordered input w-full max-w-xs', v$.name.$error && 'input-error']"
         :value="form.name"
         @input="updateForm('name', ($event.target as HTMLInputElement).value)"
       />
@@ -97,7 +97,7 @@ async function submit() {
       </label>
       <input
         type="datetime-local"
-        class="input input-bordered w-full max-w-xs"
+        class="input-bordered input w-full max-w-xs"
         :value="startDateTime"
         @change="handleStartDateTimeInput"
       />
@@ -112,7 +112,7 @@ async function submit() {
       </label>
       <input
         type="datetime-local"
-        class="input input-bordered w-full max-w-xs"
+        class="input-bordered input w-full max-w-xs"
         :value="endDateTime"
         @change="handleEndDateTimeInput"
       />
@@ -126,7 +126,7 @@ async function submit() {
         <span class="label-text">{{ $t("components.hw.form.descField") }}</span>
       </label>
       <textarea
-        class="textarea textarea-bordered h-24"
+        class="textarea-bordered textarea h-24"
         :value="form.markdown"
         @input="updateForm('markdown', ($event.target as HTMLTextAreaElement).value)"
       />
@@ -136,7 +136,7 @@ async function submit() {
     </div>
   </div>
   <div class="mt-4 flex justify-end">
-    <button :class="['btn btn-success', isLoading && 'loading']" @click="submit">
+    <button :class="['btn-success btn', isLoading && 'loading']" @click="submit">
       <i-uil-file-upload-alt class="mr-1 lg:h-5 lg:w-5" /> {{ $t("components.hw.form.submit") }}
     </button>
   </div>

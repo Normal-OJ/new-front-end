@@ -32,7 +32,7 @@ const { data: announcements, error, isLoading } = useAxios<AnnouncementList>("/a
               <tbody>
                 <tr v-for="{ title, createTime, annId } in announcements" :key="annId" class="hover">
                   <td>
-                    <router-link :to="`/announcements/${annId}`" class="link link-hover">
+                    <router-link :to="`/announcements/${annId}`" class="link-hover link">
                       {{ title }}
                     </router-link>
                   </td>
@@ -40,7 +40,7 @@ const { data: announcements, error, isLoading } = useAxios<AnnouncementList>("/a
                   <td v-if="session.isAdmin">
                     <div class="tooltip" data-tip="Edit">
                       <router-link
-                        class="btn btn-ghost btn-circle btn-sm"
+                        class="btn btn-ghost btn-sm btn-circle"
                         :to="`/course/Public/announcements/${annId}/edit`"
                       >
                         <i-uil-edit class="lg:h-5 lg:w-5" />

@@ -93,7 +93,7 @@ async function submit() {
 
           <div class="flex-1" />
 
-          <label v-if="rolesCanCreateCourse.includes(session.role)" for="my-modal" class="btn btn-success">
+          <label v-if="rolesCanCreateCourse.includes(session.role)" for="my-modal" class="btn-success btn">
             <i-uil-plus-circle class="mr-1 lg:h-5 lg:w-5" /> {{ $t("course.members.new") }}
           </label>
         </div>
@@ -103,7 +103,7 @@ async function submit() {
             <label class="label">
               <span class="label-text">{{ $t("course.members.sortBy") }}</span>
             </label>
-            <select v-model="sortBy" class="select select-bordered w-full max-w-xs">
+            <select v-model="sortBy" class="select-bordered select w-full max-w-xs">
               <option :value="MemberTableColumn.USERNAME">Username</option>
               <option :value="MemberTableColumn.DISPLAYED_NAME">Display Name</option>
               <option :value="MemberTableColumn.ROLE">Role</option>
@@ -170,7 +170,7 @@ async function submit() {
         <div class="form-control my-4">
           <label class="label cursor-pointer">
             <span class="label-text">{{ $t("course.members.forceUpdate") }}</span>
-            <input type="checkbox" class="checkbox checkbox-primary" v-model="forceUpdate" />
+            <input type="checkbox" class="checkbox-primary checkbox" v-model="forceUpdate" />
           </label>
         </div>
 
@@ -205,7 +205,7 @@ async function submit() {
         </template>
         <div class="modal-action">
           <label for="my-modal" class="btn btn-ghost">{{ $t("course.members.cancel") }}</label>
-          <div :class="['btn btn-success ml-3', isProcessingSignup && 'loading']" @click="submit">
+          <div :class="['btn-success btn ml-3', isProcessingSignup && 'loading']" @click="submit">
             {{ $t("course.members.submit") }}
           </div>
         </div>

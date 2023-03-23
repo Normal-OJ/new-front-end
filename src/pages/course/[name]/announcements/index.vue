@@ -25,7 +25,7 @@ const {
           {{ $t("course.ann.index.title") }}
           <router-link
             v-if="session.isAdmin"
-            class="btn btn-success"
+            class="btn-success btn"
             :to="`/course/${$route.params.name}/announcements/new`"
           >
             <i-uil-plus-circle class="mr-1 lg:h-5 lg:w-5" /> {{ $t("course.ann.index.new") }}
@@ -53,7 +53,7 @@ const {
                   <td>
                     <router-link
                       :to="`/course/${$route.params.name}/announcements/${annId}`"
-                      class="link link-hover"
+                      class="link-hover link"
                     >
                       {{ title }}
                     </router-link>
@@ -63,7 +63,7 @@ const {
                   <td v-if="session.isAdmin">
                     <div class="tooltip" data-tip="Edit">
                       <router-link
-                        class="btn btn-ghost btn-circle btn-sm"
+                        class="btn btn-ghost btn-sm btn-circle"
                         :to="`/course/${$route.params.name}/announcements/${annId}/edit`"
                       >
                         <i-uil-edit class="lg:h-5 lg:w-5" />

@@ -142,7 +142,7 @@ async function submit() {
                   <td>{{ displayedName }}</td>
                   <td>{{ ROLE[role] }}</td>
                   <td>
-                    <div class="btn-ghost btn-sm btn-circle btn" @click="() => editUser(username)">
+                    <div class="btn btn-ghost btn-sm btn-circle" @click="() => editUser(username)">
                       <i-uil-pen />
                     </div>
                   </td>
@@ -216,10 +216,10 @@ async function submit() {
             </div>
 
             <div class="mt-8 flex justify-between">
-              <button :class="['btn-success btn', isLoading && 'loading']" @click="submit">
+              <button :class="['btn btn-success', isLoading && 'loading']" @click="submit">
                 <i-uil-file-upload-alt class="mr-1 lg:h-5 lg:w-5" /> {{ $t("admin.user.submit") }}
               </button>
-              <button :class="['btn-ghost btn']" @click="edittingUsername = ''">
+              <button :class="['btn btn-ghost']" @click="edittingUsername = ''">
                 {{ $t("admin.user.cancel") }}
               </button>
             </div>

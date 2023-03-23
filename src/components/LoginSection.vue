@@ -83,7 +83,7 @@ async function login() {
               type="text"
               name="username"
               :placeholder="$t('components.loginSection.placeholder.username')"
-              :class="['input input-bordered', v$.username.$error && 'input-error']"
+              :class="['input-bordered input', v$.username.$error && 'input-error']"
             />
             <label class="label" v-show="v$.username.$error">
               <span class="label-text-alt text-error" v-text="v$.username.$errors[0]?.$message" />
@@ -98,11 +98,11 @@ async function login() {
               type="password"
               name="password"
               :placeholder="$t('components.loginSection.placeholder.pw')"
-              :class="['input input-bordered', v$.password.$error && 'input-error']"
+              :class="['input-bordered input', v$.password.$error && 'input-error']"
               @keydown.enter="login"
             />
             <label class="label flex-row-reverse">
-              <a href="#" class="link link-hover label-text-alt">{{
+              <a href="#" class="link-hover label-text-alt link">{{
                 $t("components.loginSection.forgot")
               }}</a>
               <span
@@ -113,7 +113,7 @@ async function login() {
             </label>
           </div>
           <div class="form-control mt-6">
-            <button :class="['btn btn-primary', loginForm.isLoading && 'loading']" @click="login">
+            <button :class="['btn-primary btn', loginForm.isLoading && 'loading']" @click="login">
               {{ $t("components.loginSection.button") }}
             </button>
           </div>

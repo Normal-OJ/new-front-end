@@ -107,7 +107,7 @@ function clearForm() {
       </div>
       <div class="card-actions">
         <div class="mx-auto flex max-w-7xl gap-8 p-4">
-          <button class="btn-outline btn-error btn" @click="logout">{{ t("profile.signOut") }}</button>
+          <button class="btn btn-outline btn-error" @click="logout">{{ t("profile.signOut") }}</button>
         </div>
       </div>
 

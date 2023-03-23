@@ -1,7 +1,7 @@
 <template>
   <div class="navbar rounded-box shadow-md">
     <div class="navbar-start">
-      <label for="noj-drawer" class="btn btn-circle btn-ghost drawer-button">
+      <label for="noj-drawer" class="btn btn-ghost drawer-button btn-circle">
         <i-uil-bars class="h-6 w-6" />
       </label>
     </div>
