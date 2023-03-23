@@ -11,7 +11,7 @@ function initializeMap(allowedLanguages: number) {
   return m;
 }
 
-export function useSourceLang(allowedLanguages: number = 0) {
+export function useSourceLang(allowedLanguages = 0) {
   const selectedLangs = ref<number[]>(initializeMap(allowedLanguages));
   const readableLang = computed<string>(() => {
     return LANGUAGE_OPTIONS.filter(({ mask }) => selectedLangs.value.includes(mask))

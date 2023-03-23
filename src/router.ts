@@ -9,7 +9,7 @@ const router = createRouter({
 
 const publicPages = [/^\/$/, /^\/about$/, /^\/announcements\/[0-9A-Fa-f]+$/, /^\/settings$/];
 
-router.beforeEach(async (to, from) => {
+router.beforeEach(async (to) => {
   const session = useSession();
   if (session.isNotValidated) {
     await session.validateSession();
