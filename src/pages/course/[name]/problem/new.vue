@@ -55,12 +55,6 @@ async function submit() {
     alert("Testdata not provided");
     return;
   }
-  const scoreSum = newProblem.value.testCaseInfo.tasks.reduce((acc, cur) => acc + cur.taskScore, 0);
-  if (scoreSum !== 100) {
-    alert("Please make sure the sum of subtask scores is 100");
-    return;
-  }
-
   formElement.value.isLoading = true;
   try {
     const { problemId } = (
