@@ -47,3 +47,9 @@ export const SUBMISSION_STATUS_REPR = {
     color: "#BF360C",
   },
 } as const;
+
+export const LOCAL_STORAGE_KEY = {
+  MINI_SIDEBAR: "mini-sidebar",
+  LOCALE: "locale",
+  LAST_USED_LANG: "last-used-lang",
+};

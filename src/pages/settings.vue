@@ -3,11 +3,12 @@ import { watchEffect } from "vue";
 import { useStorage } from "@vueuse/core";
 import { useI18n } from "vue-i18n";
 import { useTitle } from "@vueuse/core";
+import { LOCAL_STORAGE_KEY } from "@/constants";
 
 useTitle("Settings | Normal OJ");
 const { t, locale } = useI18n();
 
-const localeInStorate = useStorage("locale", "english");
+const localeInStorate = useStorage(LOCAL_STORAGE_KEY.LOCALE, "english");
 
 // initialize with the one in storage
 locale.value = localeInStorate.value;

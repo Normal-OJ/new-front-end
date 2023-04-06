@@ -5,6 +5,7 @@ import { useDark, useToggle } from "@vueuse/core";
 import { useSession } from "@/stores/session";
 import { watchEffect } from "vue";
 import { useStorage } from "@vueuse/core";
+import { LOCAL_STORAGE_KEY } from "@/constants";
 
 const isDark = useDark({
   selector: "html",
@@ -14,7 +15,7 @@ const isDark = useDark({
 });
 const toggleDark = useToggle(isDark);
 
-const isMini = useStorage("mini-sidebar", false);
+const isMini = useStorage(LOCAL_STORAGE_KEY.MINI_SIDEBAR, false);
 
 const theme = useTheme();
 watchEffect(() => {

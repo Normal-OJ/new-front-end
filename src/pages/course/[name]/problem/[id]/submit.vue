@@ -7,8 +7,8 @@ import { useRoute, useRouter } from "vue-router";
 import useVuelidate from "@vuelidate/core";
 import { required, between, helpers } from "@vuelidate/validators";
 import api, { fetcher } from "@/models/api";
-import { useTitle } from "@vueuse/core";
-import { LANGUAGE_OPTIONS } from "@/constants";
+import { useTitle, useStorage } from "@vueuse/core";
+import { LANGUAGE_OPTIONS, LOCAL_STORAGE_KEY } from "@/constants";
 import { useI18n } from "vue-i18n";
 
 const route = useRoute();
@@ -18,9 +18,10 @@ useTitle(`Submit - ${route.params.id} - ${route.params.name} | Normal OJ`);
 const router = useRouter();
 const { data: problem, error, isLoading } = useAxios<Problem>(`/problem/view/${route.params.id}`, fetcher);
 
+const lang = useStorage(LOCAL_STORAGE_KEY.LAST_USED_LANG, -1);
 const form = reactive({
   code: "",
-  lang: -1,
+  lang,
   isLoading: false,
   isSubmitError: false,
 });
