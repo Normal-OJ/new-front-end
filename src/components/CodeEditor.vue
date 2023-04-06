@@ -34,8 +34,10 @@ const highlighter = (code: string) => {
 .prism-editor__editor {
   white-space: pre !important;
   width: 0px !important;
+  tab-size: 4 !important;
 }
 .prism-editor__container {
   overflow-x: scroll !important;
+  tab-size: 4;
 }
 </style>
