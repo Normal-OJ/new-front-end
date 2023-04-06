@@ -11,7 +11,7 @@ If you have found a bug in our project or would like to request a new feature, p
 If you'd like to contribute code to our project, please follow these steps:
 
 1. Comment on the issue you'd like to work on (or open a new issue if there isn't one yet) to let us know you're interested in working on it.
-2. Make sure you have NODE=16.13.1 installed on your local machine (or docker/VM) before running the dev server. To know how to run the dev server please refer to `README.md`.
+2. Make sure you have NODE=16.14.0 installed on your local machine (or docker/VM) before running the dev server. To know how to run the dev server please refer to `README.md`.
 3. We use `.eslintrc.js` and `.prettierrc` to lint and format the code, so please make sure your code adheres to these standards.
 4. We recommend using VSCode & Volar for development.
 5. Use [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) to write your commit message.
