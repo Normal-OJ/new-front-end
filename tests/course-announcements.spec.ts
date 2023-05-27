@@ -8,14 +8,15 @@ test.beforeEach(async ({ page }) => {
 async function assertAnnouncementsList(page: Page) {
   await expect(page.locator(".card-title").first()).toHaveText("Announcements");
 
-  // TODO: use nth to ensure the order of cells, refer to hw test
-  await expect(page.getByRole("cell", { name: "Title" })).toBeVisible();
-  await expect(page.getByRole("cell", { name: "Author" })).toBeVisible();
-  await expect(page.getByRole("cell", { name: "Create At" })).toBeVisible();
-
-  await expect(page.getByRole("cell", { name: "測試、測試" })).toBeVisible();
-  await expect(page.getByRole("cell", { name: "bogay" })).toBeVisible();
-  await expect(page.getByRole("cell", { name: "2023-01-08 03:01" })).toBeVisible();
+  const table = await page.locator(".card table").first();
+  await expect(table.locator("tr")).toHaveCount(6);
+  await expect(table.locator("th")).toHaveCount(3);
+  await expect(table.locator("th")).toHaveText(["Title", "Author", "Create At"], { ignoreCase: true });
+  await expect(table.locator("tbody tr").first().locator("td")).toHaveText([
+    "測試、測試",
+    "bogay",
+    "2023-01-08 03:01",
+  ]);
 }
 
 async function assertAnnouncementPage(page: Page) {
@@ -25,7 +26,7 @@ async function assertAnnouncementPage(page: Page) {
   await expect(page.getByText("Posted by bogay at 2023-01-08 03:01")).toBeVisible();
 }
 
-test("Read announcement in 'Test' course", async ({ page }) => {
+test("Student can see announcements", async ({ page }) => {
   await page.getByRole("link", { name: "Course" }).click();
   await page.getByRole("link", { name: "Test" }).click();
 
@@ -36,7 +37,7 @@ test("Read announcement in 'Test' course", async ({ page }) => {
   await assertAnnouncementPage(page);
 });
 
-test("Breadcrumbs in course announcement page", async ({ page }) => {
+test("User can interact with Breadcrumbs", async ({ page }) => {
   await page.getByRole("link", { name: "Course" }).click();
   await page.getByRole("link", { name: "Test" }).click();
   await page.getByRole("link", { name: "測試、測試" }).click();
@@ -57,14 +58,18 @@ test("Breadcrumbs in course announcement page", async ({ page }) => {
   await expect(page.locator(".breadcrumbs > ul > li").nth(2)).toHaveText(announcementId);
 });
 
-test.skip("Create announcement in 'Test' course", async () => {
+test.skip("Student should not see Create, Update, Delete button", async () => {
   // TODO
 });
 
-test.skip("Update announcement in 'Test' course", async () => {
+test.skip("Admin & Teacher can create announcement", async () => {
   // TODO
 });
 
-test.skip("Delete announcement in 'Test' course", async () => {
+test.skip("Admin & Teacher can update announcement", async () => {
+  // TODO
+});
+
+test.skip("Admin & Teacher can delete announcement", async () => {
   // TODO
 });
