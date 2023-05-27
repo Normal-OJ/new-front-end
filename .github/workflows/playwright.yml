@@ -26,7 +26,7 @@ jobs:
     - name: Run Playwright tests
       run: pnpm exec playwright test
     - name: Disable gitignore rule to report
-      # if: github.ref == 'refs/heads/main'
+      if: github.ref == 'refs/heads/main'
       run: git update-index --skip-worktree playwright-report/
     - name: Publish coverage report to gh-pages branch
       # if: github.ref == 'refs/heads/main'
