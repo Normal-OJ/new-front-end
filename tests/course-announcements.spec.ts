@@ -8,6 +8,7 @@ test.beforeEach(async ({ page }) => {
 async function assertAnnouncementsList(page: Page) {
   await expect(page.locator(".card-title").first()).toHaveText("Announcements");
 
+  // TODO: use nth to ensure the order of cells, refer to hw test
   await expect(page.getByRole("cell", { name: "Title" })).toBeVisible();
   await expect(page.getByRole("cell", { name: "Author" })).toBeVisible();
   await expect(page.getByRole("cell", { name: "Create At" })).toBeVisible();
@@ -54,4 +55,16 @@ test("Breadcrumbs in course announcement page", async ({ page }) => {
   await expect(page.locator(".breadcrumbs > ul > li").nth(2)).toHaveText(/[\da-z]{24}/);
   const announcementId = page.url().split("/").at(-1) as string;
   await expect(page.locator(".breadcrumbs > ul > li").nth(2)).toHaveText(announcementId);
+});
+
+test.skip("Create announcement in 'Test' course", async () => {
+  // TODO
+});
+
+test.skip("Update announcement in 'Test' course", async () => {
+  // TODO
+});
+
+test.skip("Delete announcement in 'Test' course", async () => {
+  // TODO
 });
