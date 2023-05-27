@@ -1,13 +1,8 @@
 import { test, expect } from "@playwright/test";
+import { login } from "./utils/arranges";
 
 test("successful login with username", async ({ page }) => {
-  await page.goto("https://noj.tw/");
-  await page.getByPlaceholder("username or email").click();
-  await page.getByPlaceholder("username or email").fill("e2e-test");
-  await page.getByPlaceholder("password").click();
-  await page.getByPlaceholder("password").fill("tset-e2e");
-  await page.getByRole("button", { name: "Sign In" }).click();
-  await expect(page.locator(".card-title.mb-2").first()).toHaveText(/Welcome back, .*/);
+  await login(page);
 });
 
 test("successful login with email", async ({ page }) => {
