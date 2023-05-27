@@ -1,5 +1,7 @@
 # NOJ second frontend (v2.noj.tw)
 
+[![Coverage Badge](https://github.com/Normal-OJ/new-front-end/actions/workflows/playwright.yml/badge.svg)](https://normal-oj.github.io/new-front-end/index.html)
+
 ## Development
 
 Issues and PRs are welcome, please read the [contribution guide](CONTRIBUTING.md).
