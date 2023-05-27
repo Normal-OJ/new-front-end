@@ -29,7 +29,7 @@ jobs:
       if: github.ref == 'refs/heads/main'
       run: git update-index --skip-worktree playwright-report/
     - name: Publish coverage report to gh-pages branch
-      # if: github.ref == 'refs/heads/main'
+      if: github.ref == 'refs/heads/main'
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
