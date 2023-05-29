@@ -23,6 +23,7 @@ declare module "@vue/runtime-core" {
     IUilBars: typeof import("~icons/uil/bars")["default"];
     IUilBookAlt: typeof import("~icons/uil/book-alt")["default"];
     IUilChartLine: typeof import("~icons/uil/chart-line")["default"];
+    IUilCheck: typeof import("~icons/uil/check")["default"];
     IUilCheckCircle: typeof import("~icons/uil/check-circle")["default"];
     IUilConstructor: typeof import("~icons/uil/constructor")["default"];
     IUilEdit: typeof import("~icons/uil/edit")["default"];
@@ -34,11 +35,15 @@ declare module "@vue/runtime-core" {
     IUilLanguage: typeof import("~icons/uil/language")["default"];
     IUilLink: typeof import("~icons/uil/link")["default"];
     IUilMapMarkerInfo: typeof import("~icons/uil/map-marker-info")["default"];
+    IUilMinus: typeof import("~icons/uil/minus")["default"];
     IUilMoon: typeof import("~icons/uil/moon")["default"];
+    IUilPlus: typeof import("~icons/uil/plus")["default"];
     IUilPlusCircle: typeof import("~icons/uil/plus-circle")["default"];
     IUilRepeat: typeof import("~icons/uil/repeat")["default"];
     IUilSun: typeof import("~icons/uil/sun")["default"];
+    IUilTimes: typeof import("~icons/uil/times")["default"];
     IUilTimesCircle: typeof import("~icons/uil/times-circle")["default"];
+    IUilTrashAlt: typeof import("~icons/uil/trash-alt")["default"];
     IUilUser: typeof import("~icons/uil/user")["default"];
     JudgeStatus: typeof import("./../components/JudgeStatus.vue")["default"];
     LanguageMultiSelect: typeof import("./../components/Problem/Forms/LanguageMultiSelect.vue")["default"];

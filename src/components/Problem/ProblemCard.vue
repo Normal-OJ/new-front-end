@@ -70,6 +70,14 @@ function downloadTestCase(problemId: number) {
             >
               <i-uil-file-exclamation-alt class="lg:h-5 lg:w-5" />
             </router-link>
+            <router-link
+              v-if="session.isAdmin"
+              class="btn btn-ghost btn-sm btn-circle"
+              data-tip="Edit"
+              :to="`/course/${$route.params.name}/problem/${$route.params.id}/edit`"
+            >
+              <i-uil-edit class="lg:h-5 lg:w-5" />
+            </router-link>
             <button
               v-if="session.isAdmin"
               :class="['btn btn-ghost tooltip tooltip-bottom btn-sm', 'inline-flex']"
