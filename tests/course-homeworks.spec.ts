@@ -37,10 +37,10 @@ test("Student can see a running homework", async ({ page }) => {
   });
   const PID = await problemTable.locator("td").nth(1).innerText();
   await problemTable.locator("td").nth(1).locator("a").click();
-  await expect(page).toHaveURL(`https://noj.tw/course/Test/problem/${PID}`);
+  await expect(page).toHaveURL(`/course/Test/problem/${PID}`);
   await page.goBack();
   await problemTable.locator("td").nth(5).locator("a").click();
-  await expect(page).toHaveURL(`https://noj.tw/course/Test/problem/${PID}/stats`);
+  await expect(page).toHaveURL(`/course/Test/problem/${PID}/stats`);
   await page.goBack();
 
   await expect(card.locator(".card-title").nth(3)).toHaveText("Description");
@@ -68,19 +68,19 @@ test("Student can see a over homework", async ({ page }) => {
 
   let PID = await problemTable.locator("td").nth(1).innerText();
   await problemTable.locator("td").nth(1).locator("a").click();
-  await expect(page).toHaveURL(`https://noj.tw/course/Test/problem/${PID}`);
+  await expect(page).toHaveURL(`/course/Test/problem/${PID}`);
   await page.goBack();
   await problemTable.locator("td").nth(5).locator("a").click();
-  await expect(page).toHaveURL(`https://noj.tw/course/Test/problem/${PID}/stats`);
+  await expect(page).toHaveURL(`/course/Test/problem/${PID}/stats`);
   await page.goBack();
 
   await assertHomeworkProblemTable(problemTable);
   PID = await problemTable.locator("td").nth(7).innerText();
   await problemTable.locator("td").nth(7).locator("a").click();
-  await expect(page).toHaveURL(`https://noj.tw/course/Test/problem/${PID}`);
+  await expect(page).toHaveURL(`/course/Test/problem/${PID}`);
   await page.goBack();
   await problemTable.locator("td").nth(11).locator("a").click();
-  await expect(page).toHaveURL(`https://noj.tw/course/Test/problem/${PID}/stats`);
+  await expect(page).toHaveURL(`/course/Test/problem/${PID}/stats`);
   await page.goBack();
 
   await expect(card.locator(".card-title").nth(3)).toHaveText("Description");

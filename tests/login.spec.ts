@@ -6,7 +6,7 @@ test("successful login with username", async ({ page }) => {
 });
 
 test("successful login with email", async ({ page }) => {
-  await page.goto("https://noj.tw/");
+  await page.goto("/");
   await page.getByPlaceholder("username or email").click();
   await page.getByPlaceholder("username or email").fill("test@e2e.noj.tw");
   await page.getByPlaceholder("password").click();
@@ -16,7 +16,7 @@ test("successful login with email", async ({ page }) => {
 });
 
 test("successful login with using enter shortcut to submit", async ({ page }) => {
-  await page.goto("https://noj.tw/");
+  await page.goto("/");
   await page.getByPlaceholder("username or email").click();
   await page.getByPlaceholder("username or email").fill("test@e2e.noj.tw");
   await page.getByPlaceholder("password").click();
@@ -26,7 +26,7 @@ test("successful login with using enter shortcut to submit", async ({ page }) =>
 });
 
 test("failed login with incorrect username", async ({ page }) => {
-  await page.goto("https://noj.tw/");
+  await page.goto("/");
   await page.getByPlaceholder("username or email").click();
   await page.getByPlaceholder("username or email").fill("e2e-test-bad");
   await page.getByPlaceholder("password").click();
@@ -38,7 +38,7 @@ test("failed login with incorrect username", async ({ page }) => {
 });
 
 test("failed login with incorrect password", async ({ page }) => {
-  await page.goto("https://noj.tw/");
+  await page.goto("/");
   await page.getByPlaceholder("username or email").click();
   await page.getByPlaceholder("username or email").fill("e2e-test");
   await page.getByPlaceholder("password").click();

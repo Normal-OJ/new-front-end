@@ -1,7 +1,7 @@
 import { expect, Page } from "@playwright/test";
 
 export async function login(page: Page) {
-  await page.goto("https://noj.tw/");
+  await page.goto("/");
   await page.getByPlaceholder("username or email").click();
   await page.getByPlaceholder("username or email").fill("e2e-test");
   await page.getByPlaceholder("password").click();

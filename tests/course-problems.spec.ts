@@ -23,19 +23,19 @@ test("Student can see problem list", async ({ page }) => {
 
   let PID = await table.locator("td").nth(0).innerText();
   await table.locator("td").nth(0).locator("a").click();
-  await expect(page).toHaveURL(`https://noj.tw/course/Test/problem/${PID}`);
+  await expect(page).toHaveURL(`/course/Test/problem/${PID}`);
   await page.goBack();
   await table.locator("td").nth(4).locator("a").click();
-  await expect(page).toHaveURL(`https://noj.tw/course/Test/problem/${PID}/stats`);
+  await expect(page).toHaveURL(`/course/Test/problem/${PID}/stats`);
   await page.goBack();
 
   await assertProblemTable(table);
   PID = await table.locator("td").nth(5).innerText();
   await table.locator("td").nth(5).locator("a").click();
-  await expect(page).toHaveURL(`https://noj.tw/course/Test/problem/${PID}`);
+  await expect(page).toHaveURL(`/course/Test/problem/${PID}`);
   await page.goBack();
   await table.locator("td").nth(9).locator("a").click();
-  await expect(page).toHaveURL(`https://noj.tw/course/Test/problem/${PID}/stats`);
+  await expect(page).toHaveURL(`/course/Test/problem/${PID}/stats`);
   await page.goBack();
 
   await expect(page.locator(".card-actions .btn")).toHaveText([" « ", "1", " » "]);
