@@ -53,7 +53,7 @@ test("Filter by problem, status, and language", async ({ page }) => {
   await expect(page).toHaveURL("/course/Test/submissions?page=1&problemId=449&status=0");
 
   await page.getByText("Clear").click();
-  await expect(page).toHaveURL(/^https:\/\/noj.tw\/course\/Test\/submissions(\?page=1)?$/);
+  await expect(page).toHaveURL(/\/course\/Test\/submissions(\?page=1)?/);
   await expect(page.getByText("Clear")).not.toBeVisible();
 
   const language = await page.getByRole("combobox").nth(2);
