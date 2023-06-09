@@ -33,7 +33,7 @@ function downloadTestCase(problemId: number) {
         </div>
 
         <div class="flex flex-wrap items-center gap-y-4">
-          <div class="stats py-1">
+          <div class="stats">
             <div class="stat place-items-center py-0">
               <div class="stat-title">Quota</div>
               <div class="stat-value">
