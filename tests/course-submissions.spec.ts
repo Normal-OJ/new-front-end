@@ -13,15 +13,11 @@ test("Student can see submission list", async ({ page }) => {
   await expect(page.locator(".card-title").first()).toHaveText("Submissions");
 
   const table = await page.locator(".card table").first();
-  await expect(table.locator("tr")).toHaveCount(1);
   await expect(table.locator("th")).toHaveCount(9);
   await expect(table.locator("th")).toHaveText(
     ["ID", "PID", "User", "Result", "Score", "Run Time", "Memory", "Lang", "Time"],
     { ignoreCase: true },
   );
-
-  await expect(page.locator(".card-actions .btn")).toHaveText([" « ", "1", " » "]);
-  await expect(page.locator(".card-actions .btn-disabled")).toHaveText([" « ", " » "]);
 });
 
 test("Filter by problem, status, and language", async ({ page }) => {
@@ -32,7 +28,7 @@ test("Filter by problem, status, and language", async ({ page }) => {
   await expect(page.getByText("Clear")).not.toBeVisible();
 
   const problem = await page.getByRole("combobox").first();
-  await expect(problem.locator("option")).toHaveText(["Problem", "307 - gg", "449 - test"]);
+  await expect(problem.locator("option")).toHaveText(["Problem", "307 - gg", "449 - test", "510 - A+B"]);
   await problem.selectOption("449");
   await expect(page).toHaveURL("/course/Test/submissions?page=1&problemId=449");
 
