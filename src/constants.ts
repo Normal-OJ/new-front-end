@@ -53,3 +53,8 @@ export const LOCAL_STORAGE_KEY = {
   LOCALE: "locale",
   LAST_USED_LANG: "last-used-lang",
 };
+
+export const UNLIMITED_QUOTA = -1;
+export function isQuotaUnlimited(quota: number): boolean {
+  return quota === UNLIMITED_QUOTA;
+}

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useSession } from "@/stores/session";
 import api from "@/models/api";
+import { isQuotaUnlimited } from "@/constants";
 
 interface Props {
   problem: Problem;
@@ -36,7 +37,7 @@ function downloadTestCase(problemId: number) {
             <div class="stat place-items-center py-0">
               <div class="stat-title">{{ $t("components.problem.card.quota") }}</div>
               <div class="stat-value">
-                <template v-if="problem.quota === -1">
+                <template v-if="isQuotaUnlimited(problem.quota)">
                   <span class="text-sm">{{ $t("components.problem.card.unlimited") }}</span>
                 </template>
                 <template v-else>
