@@ -3,7 +3,7 @@ import { useAxios } from "@vueuse/integrations/useAxios";
 import { fetcher } from "@/models/api";
 
 type ProblemSelections = { value: string; text: string }[];
-type ProblemId2Meta = Record<string, { name: string | "-"; quota: number | "-" }>;
+export type ProblemId2Meta = Record<string, { name: string; quota: number }>;
 
 export function useProblemSelection(courseName: string) {
   const {
@@ -14,17 +14,19 @@ export function useProblemSelection(courseName: string) {
 
   const problemSelections = computed<ProblemSelections>(() => {
     if (!problems.value) return [];
-    return problems.value.map(({ problemId, problemName, quota }) => ({
+    return problems.value.map(({ problemId, problemName }) => ({
       value: problemId.toString(),
       text: `${problemId} - ${problemName}`,
-      quota: quota >= 0 ? quota : "-",
     }));
   });
 
   const problemId2Meta = computed<ProblemId2Meta>(() => {
     if (!problems.value) return {};
     return Object.fromEntries(
-      problems.value.map((p) => [p.problemId.toString(), { name: p.problemName, quota: p.quota }]),
+      problems.value.map(({ problemId, problemName, quota }) => [
+        problemId.toString(),
+        { name: problemName, quota },
+      ]),
     );
   });
 

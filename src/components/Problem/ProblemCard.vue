@@ -36,8 +36,13 @@ function downloadTestCase(problemId: number) {
             <div class="stat place-items-center py-0">
               <div class="stat-title">{{ $t("components.problem.card.quota") }}</div>
               <div class="stat-value">
-                <span>{{ problem.quota - problem.submitCount }}</span>
-                <span class="text-sm font-normal">{{ ` / ${problem.quota}` }}</span>
+                <template v-if="problem.quota === -1">
+                  <span class="text-sm">{{ $t("components.problem.card.unlimited") }}</span>
+                </template>
+                <template v-else>
+                  <span>{{ problem.quota - problem.submitCount }}</span>
+                  <span class="text-sm font-normal">{{ ` / ${problem.quota}` }}</span>
+                </template>
               </div>
             </div>
             <div class="stat place-items-center py-0">

@@ -89,7 +89,12 @@ const maxPage = computed(() => {
                   <td>
                     <span class="badge badge-info mr-1" v-for="tag in tags" :key="tag">{{ tag }}</span>
                   </td>
-                  <td>{{ quota - submitCount }} / {{ quota }}</td>
+                  <td>
+                    <template v-if="quota === -1">
+                      <span class="text-sm">{{ $t("components.problem.card.unlimited") }}</span>
+                    </template>
+                    <template v-else> {{ quota - submitCount }} / {{ quota }} </template>
+                  </td>
                   <td>
                     <div class="tooltip" data-tip="Stats">
                       <router-link
