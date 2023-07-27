@@ -3,12 +3,14 @@ import { computed } from "vue";
 import { useSession } from "@/stores/session";
 import { formatTime } from "@/utils/formatTime";
 import { useI18n } from "vue-i18n";
+import type { ProblemId2Meta } from "@/composables/useProblemSelection";
+import { isQuotaUnlimited } from "@/constants";
 
 const { t } = useI18n();
 
 interface Props {
   homework: HomeworkListItem | HomeworkPreviewForm;
-  problems: Record<string, { name: string | "-"; quota: number | "-" }>;
+  problems: ProblemId2Meta;
   preview?: boolean;
 }
 
@@ -101,6 +103,9 @@ const state = computed(() => {
                 </td>
                 <td>
                   <ui-spinner v-if="!problems[pid.toString()]" />
+                  <span v-else-if="isQuotaUnlimited(problems[pid.toString()].quota)" class="text-sm">{{
+                    $t("components.problem.card.unlimited")
+                  }}</span>
                   <span v-else>{{ problems[pid.toString()].quota }}</span>
                 </td>
                 <td>

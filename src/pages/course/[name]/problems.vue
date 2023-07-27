@@ -5,6 +5,7 @@ import { computed, ref, watch, watchEffect } from "vue";
 import { fetcher } from "@/models/api";
 import { UserRole, useSession } from "@/stores/session";
 import { useTitle } from "@vueuse/core";
+import { isQuotaUnlimited } from "@/constants";
 
 const session = useSession();
 const rolesCanReadProblemStatus = [UserRole.Admin, UserRole.Teacher];
@@ -89,7 +90,12 @@ const maxPage = computed(() => {
                   <td>
                     <span class="badge badge-info mr-1" v-for="tag in tags" :key="tag">{{ tag }}</span>
                   </td>
-                  <td>{{ quota - submitCount }} / {{ quota }}</td>
+                  <td>
+                    <template v-if="isQuotaUnlimited(quota)">
+                      <span class="text-sm">{{ $t("components.problem.card.unlimited") }}</span>
+                    </template>
+                    <template v-else> {{ quota - submitCount }} / {{ quota }} </template>
+                  </td>
                   <td>
                     <div class="tooltip" data-tip="Stats">
                       <router-link

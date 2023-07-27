@@ -325,7 +325,8 @@
           "ml": "Memory Limit",
           "score": "Score"
         },
-        "noContent": "no content"
+        "noContent": "no content",
+        "unlimited": "unlimited"
       }
     },
     "courseSideBar": {
