@@ -52,6 +52,7 @@ export const LOCAL_STORAGE_KEY = {
   MINI_SIDEBAR: "mini-sidebar",
   LOCALE: "locale",
   LAST_USED_LANG: "last-used-lang",
+  ADMIN_TAB: "admin-tab",
 };
 
 export const UNLIMITED_QUOTA = -1;
