@@ -74,14 +74,13 @@ const { data: announcements, error, isLoading } = useAxios<AnnouncementList>("/a
               </thead>
               <tbody>
                 <tr v-for="{ title, createTime, annId } in announcements" :key="annId" class="hover">
-                  <td class="max-w-lg">
-                    <router-link
-                      :to="`/announcements/${annId}`"
-                      class="link-hover link flex flex-col truncate text-lg"
-                    >
+                  <td class="min-w-[10rem] max-w-[12rem] truncate">
+                    <router-link :to="`/announcements/${annId}`" class="link-hover link max-w-full text-lg">
                       {{ title }}
-                      <span class="text-sm">{{ formatTime(createTime) }}</span>
                     </router-link>
+                    <br />
+                    <!-- we can't use flex if we want to truncate the text -->
+                    <span class="text-sm">{{ formatTime(createTime) }}</span>
                   </td>
                   <td v-if="session.isAdmin">
                     <div class="tooltip" data-tip="Edit">
