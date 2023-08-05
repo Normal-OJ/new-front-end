@@ -91,7 +91,7 @@ const session = useSession();
     </li>
     <li v-if="isDesktop">
       <label class="swap swap-rotate">
-        <input v-model="isMini" type="checkbox" />
+        <input v-model="isMiniStorage" type="checkbox" />
         <i-uil-angle-double-right class="swap-on h-6 w-6" />
         <i-uil-angle-double-left class="swap-off h-6 w-6" />
       </label>
