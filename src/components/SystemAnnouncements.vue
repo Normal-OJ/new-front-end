@@ -4,6 +4,10 @@ import { formatTime } from "@/utils/formatTime";
 import { useAxios } from "@vueuse/integrations/useAxios";
 import { fetcher } from "@/models/api";
 
+import useInteractions from "@/composables/useInteractions";
+
+const { isDesktop } = useInteractions();
+
 const session = useSession();
 
 const { data: announcements, error, isLoading } = useAxios<AnnouncementList>("/ann", fetcher);
@@ -11,7 +15,7 @@ const { data: announcements, error, isLoading } = useAxios<AnnouncementList>("/a
 
 <template>
   <div class="card-container">
-    <div class="card min-w-full">
+    <div v-if="isDesktop" class="card min-w-full">
       <div class="card-body">
         <div class="card-title mb-3">{{ $t("components.systemAnn.ann") }}</div>
         <div class="my-2" />
@@ -37,6 +41,48 @@ const { data: announcements, error, isLoading } = useAxios<AnnouncementList>("/a
                     </router-link>
                   </td>
                   <td>{{ formatTime(createTime) }}</td>
+                  <td v-if="session.isAdmin">
+                    <div class="tooltip" data-tip="Edit">
+                      <router-link
+                        class="btn btn-ghost btn-sm btn-circle"
+                        :to="`/course/Public/announcements/${annId}/edit`"
+                      >
+                        <i-uil-edit class="lg:h-5 lg:w-5" />
+                      </router-link>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </template>
+        </data-status-wrapper>
+      </div>
+    </div>
+    <div v-else class="card min-w-full">
+      <div class="card-body">
+        <data-status-wrapper :error="error" :is-loading="isLoading">
+          <template #loading>
+            <skeleton-table :col="1" :row="5" />
+          </template>
+          <template #data>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>{{ $t("components.systemAnn.ann") }}</th>
+                  <th v-if="session.isAdmin"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="{ title, createTime, annId } in announcements" :key="annId" class="hover">
+                  <td class="max-w-lg">
+                    <router-link
+                      :to="`/announcements/${annId}`"
+                      class="link-hover link flex flex-col truncate text-lg"
+                    >
+                      {{ title }}
+                      <span class="text-sm">{{ formatTime(createTime) }}</span>
+                    </router-link>
+                  </td>
                   <td v-if="session.isAdmin">
                     <div class="tooltip" data-tip="Edit">
                       <router-link
