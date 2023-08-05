@@ -20,9 +20,9 @@ const isDark = useDark({
 });
 const toggleDark = useToggle(isDark);
 
-const isMiniStorage = useStorage(LOCAL_STORAGE_KEY.MINI_SIDEBAR, false);
+const isMiniSidebarToggled = useStorage(LOCAL_STORAGE_KEY.MINI_SIDEBAR, false);
 
-const isMini = computed(() => isMiniStorage.value && isDesktop.value);
+const isMini = computed(() => isMiniSidebarToggled.value && isDesktop.value);
 
 const theme = useTheme();
 watchEffect(() => {
@@ -91,7 +91,7 @@ const session = useSession();
     </li>
     <li v-if="isDesktop">
       <label class="swap swap-rotate">
-        <input v-model="isMiniStorage" type="checkbox" />
+        <input v-model="isMiniSidebarToggled" type="checkbox" />
         <i-uil-angle-double-right class="swap-on h-6 w-6" />
         <i-uil-angle-double-left class="swap-off h-6 w-6" />
       </label>
