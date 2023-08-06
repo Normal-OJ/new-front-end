@@ -4,6 +4,10 @@ import { useAxios } from "@vueuse/integrations/useAxios";
 import { fetcher } from "@/models/api";
 import { useSession, UserRole } from "@/stores/session";
 
+import useInteractions from "@/composables/useInteractions";
+
+const { isDesktop } = useInteractions();
+
 useTitle("Courses | Normal OJ");
 const { data: courses, error, isLoading } = useAxios<CourseList>("/course", fetcher);
 
@@ -41,7 +45,11 @@ const rolesCanCreateCourse = [UserRole.Admin, UserRole.Teacher];
             </thead>
             <tbody>
               <tr v-for="{ course, teacher } in courses" :key="course" class="hover">
-                <td>
+                <td
+                  :class="{
+                    'min-w-[10rem] max-w-[12rem] whitespace-pre-wrap': !isDesktop,
+                  }"
+                >
                   <router-link :to="`/course/${course}`" class="link-hover link">{{ course }}</router-link>
                 </td>
                 <td>{{ teacher.username }}</td>
