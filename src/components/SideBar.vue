@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from "vue";
 import { useRoute } from "vue-router";
 import { useTheme } from "@/stores/theme";
 import { useDark, useToggle } from "@vueuse/core";
@@ -6,6 +7,10 @@ import { useSession } from "@/stores/session";
 import { watchEffect } from "vue";
 import { useStorage } from "@vueuse/core";
 import { LOCAL_STORAGE_KEY } from "@/constants";
+
+import useInteractions from "@/composables/useInteractions";
+
+const { isDesktop } = useInteractions();
 
 const isDark = useDark({
   selector: "html",
@@ -15,7 +20,9 @@ const isDark = useDark({
 });
 const toggleDark = useToggle(isDark);
 
-const isMini = useStorage(LOCAL_STORAGE_KEY.MINI_SIDEBAR, false);
+const isMiniSidebarToggled = useStorage(LOCAL_STORAGE_KEY.MINI_SIDEBAR, false);
+
+const isMini = computed(() => isMiniSidebarToggled.value && isDesktop.value);
 
 const theme = useTheme();
 watchEffect(() => {
@@ -33,7 +40,7 @@ const session = useSession();
 <template>
   <label for="noj-drawer" class="drawer-overlay"></label>
   <ul
-    :class="['menu w-96 flex-col overflow-y-auto bg-primary py-4 text-white', isMini ? 'lg:w-14' : 'lg:w-28']"
+    :class="['menu w-40 flex-col overflow-y-auto bg-primary py-4 text-white', isMini ? 'lg:w-14' : 'lg:w-28']"
   >
     <router-link class="my-2 flex cursor-pointer justify-center" to="/">
       <img src="../assets/logo.svg" alt="NOJ Logo" :class="['mb-2', isMini ? 'w-10' : 'w-14']" />
@@ -82,9 +89,9 @@ const session = useSession();
         <i-uil-moon v-else class="swap-off h-6 w-6" />
       </label>
     </li>
-    <li>
+    <li v-if="isDesktop">
       <label class="swap swap-rotate">
-        <input v-model="isMini" type="checkbox" />
+        <input v-model="isMiniSidebarToggled" type="checkbox" />
         <i-uil-angle-double-right class="swap-on h-6 w-6" />
         <i-uil-angle-double-left class="swap-off h-6 w-6" />
       </label>
