@@ -7,7 +7,13 @@ const router = createRouter({
   routes,
 });
 
-const publicPages = [/^\/$/, /^\/about$/, /^\/announcements\/[0-9A-Fa-f]+$/, /^\/settings$/];
+const publicPages = [
+  /^\/$/,
+  /^\/about$/,
+  /^\/announcements\/[0-9A-Fa-f]+$/,
+  /^\/settings$/,
+  /^\/reset_password$/,
+];
 
 router.beforeEach(async (to) => {
   const session = useSession();

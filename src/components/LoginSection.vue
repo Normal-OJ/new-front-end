@@ -110,7 +110,7 @@ async function login() {
               @keydown.enter="login"
             />
             <label class="label flex-row-reverse">
-              <a href="#" class="link-hover label-text-alt link">{{
+              <a href="reset_password" class="link-hover label-text-alt link">{{
                 $t("components.loginSection.forgot")
               }}</a>
               <span

@@ -60,6 +60,7 @@ declare module "@vue/runtime-core" {
     ProblemForm: typeof import("./../components/Problem/ProblemForm.vue")["default"];
     ProblemMultiSelect: typeof import("./../components/Homework/Fields/ProblemMultiSelect.vue")["default"];
     ProblemTestdataDescriptionModal: typeof import("./../components/Problem/Forms/ProblemTestdataDescriptionModal.vue")["default"];
+    ResetPassword: typeof import("./../components/ResetPassword.vue")["default"];
     RouterLink: typeof import("vue-router")["RouterLink"];
     RouterView: typeof import("vue-router")["RouterView"];
     SampleCodeBlock: typeof import("./../components/SampleCodeBlock.vue")["default"];
