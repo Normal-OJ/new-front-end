@@ -111,7 +111,8 @@
         "runtime": "run time",
         "memory": "memory",
         "lang": "lang",
-        "time": "time"
+        "time": "time",
+        "ipAddr": "IP Address"
       }
     },
     "submission": {
@@ -125,7 +126,8 @@
         "memory": "Memory",
         "score": "Score",
         "lang": "Lang",
-        "time": "Time"
+        "time": "Time",
+        "ipAddr": "IP Address"
       },
       "detail": {
         "title": "Detail",

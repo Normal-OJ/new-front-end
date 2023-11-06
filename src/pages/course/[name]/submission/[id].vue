@@ -97,6 +97,7 @@ async function rejudge() {
                       <th>{{ $t("course.submission.general.score") }}</th>
                       <th>{{ $t("course.submission.general.lang") }}</th>
                       <th>{{ $t("course.submission.general.time") }}</th>
+                      <th v-if="session.isAdmin">{{ $t("course.submission.general.ipAddr") }}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -116,6 +117,7 @@ async function rejudge() {
                       <td>{{ submission.score }}</td>
                       <td>{{ LANG[submission.languageType] }}</td>
                       <td>{{ formatTime(submission.timestamp) }}</td>
+                      <td v-if="session.isAdmin">{{ submission.ipAddr }}</td>
                     </tr>
                   </tbody>
                 </table>

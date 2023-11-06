@@ -35,6 +35,7 @@ interface SubmissionListItem {
   submissionId: string;
   timestamp: number;
   user: UserInfo;
+  ipAddr: string;
 }
 
 type SubmissionList = SubmissionListItem[];
