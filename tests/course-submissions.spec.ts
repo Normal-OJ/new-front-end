@@ -15,6 +15,23 @@ test("Student can see submission list", async ({ page }) => {
   const table = await page.locator(".card table").first();
   await expect(table.locator("th")).toHaveCount(9);
   await expect(table.locator("th")).toHaveText(
+    ["ID", "PID", "User", "Result", "Score", "Run Time", "Memory", "Lang", "Time"],
+    { ignoreCase: true },
+  );
+});
+
+test.skip("Admin can see submission list", async ({ page }) => {
+  // TODO: login as admin
+
+  await page.getByRole("link", { name: "Course" }).click();
+  await page.getByRole("link", { name: "Test" }).click();
+  await page.getByRole("link", { name: "Submissions" }).click();
+
+  await expect(page.locator(".card-title").first()).toHaveText("Submissions");
+
+  const table = await page.locator(".card table").first();
+  await expect(table.locator("th")).toHaveCount(9);
+  await expect(table.locator("th")).toHaveText(
     ["ID", "PID", "User", "Result", "Score", "Run Time", "Memory", "Lang", "Time", "IP Address"],
     { ignoreCase: true },
   );
