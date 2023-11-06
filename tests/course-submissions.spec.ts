@@ -15,7 +15,7 @@ test("Student can see submission list", async ({ page }) => {
   const table = await page.locator(".card table").first();
   await expect(table.locator("th")).toHaveCount(9);
   await expect(table.locator("th")).toHaveText(
-    ["ID", "PID", "User", "Result", "Score", "Run Time", "Memory", "Lang", "Time"],
+    ["ID", "PID", "User", "Result", "Score", "Run Time", "Memory", "Lang", "Time", "IP Address"],
     { ignoreCase: true },
   );
 });

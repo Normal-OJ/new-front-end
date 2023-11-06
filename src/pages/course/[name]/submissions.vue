@@ -177,6 +177,7 @@ function copySubmissionLink(path: string) {
                   <th>{{ $t("course.submissions.table.memory") }}</th>
                   <th>{{ $t("course.submissions.table.lang") }}</th>
                   <th>{{ $t("course.submissions.table.time") }}</th>
+                  <th v-if="session.isAdmin">{{ $t("course.submissions.table.ipAddr") }}</th>
                 </tr>
               </thead>
               <tbody>
@@ -235,6 +236,7 @@ function copySubmissionLink(path: string) {
                       <span>{{ timeFromNow(submission.timestamp) }}</span>
                     </div>
                   </td>
+                  <td v-if="session.isAdmin">{{ submission.ipAddr }}</td>
                 </tr>
               </tbody>
             </table>

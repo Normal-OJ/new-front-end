@@ -111,7 +111,8 @@
         "runtime": "執行時間",
         "memory": "記憶體用量",
         "lang": "語言",
-        "time": "繳交時間"
+        "time": "繳交時間",
+        "ipAddr": "IP 位址"
       }
     },
     "submission": {
@@ -125,7 +126,8 @@
         "memory": "記憶體用量",
         "score": "得分",
         "lang": "語言",
-        "time": "繳交時間"
+        "time": "繳交時間",
+        "ipAddr": "IP 位址"
       },
       "detail": {
         "title": "細節",
