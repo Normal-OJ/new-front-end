@@ -7,6 +7,11 @@ import { required } from "@vuelidate/validators";
 import api from "@/models/api";
 import axios from "axios";
 import { useI18n } from "vue-i18n";
+// @ts-ignore
+import cowsay from "cowsay2";
+
+const envMode = import.meta.env.MODE;
+const envApiBaseUrl = import.meta.env.VITE_APP_API_BASE_URL;
 
 const route = useRoute();
 const router = useRouter();
@@ -68,12 +73,15 @@ async function login() {
         <div v-if="session.isNotValidated" class="flex justify-center">
           <ui-spinner />
         </div>
-        <div v-else class="card-title mb-2">
-          {{
-            session.isLogin
-              ? $t("components.loginSection.welcome", { user: session.displayedName })
-              : $t("components.loginSection.signin")
-          }}
+        <div v-else>
+          <div class="card-title mb-2">
+            {{
+              session.isLogin
+                ? $t("components.loginSection.welcome", { user: session.displayedName })
+                : $t("components.loginSection.signin")
+            }}
+          </div>
+          <pre class="text-base-100" v-text="cowsay.say(`MODE=${envMode}; API_BASE_URL=${envApiBaseUrl}`)" />
         </div>
         <template v-if="session.isNotLogin">
           <div class="alert alert-error shadow-lg" v-if="loginForm.errorMsg">
