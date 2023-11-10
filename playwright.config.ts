@@ -71,7 +71,7 @@ export default defineConfig({
   ],
 
   webServer: {
-    command: "NODE_ENV=test pnpm run dev --port 3000",
+    command: "NODE_ENV=test pnpm preview --port 3000",
     url: "http://127.0.0.1:3000",
     reuseExistingServer: !process.env.CI,
   },
