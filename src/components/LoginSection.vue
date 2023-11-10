@@ -73,15 +73,12 @@ async function login() {
         <div v-if="session.isNotValidated" class="flex justify-center">
           <ui-spinner />
         </div>
-        <div v-else>
-          <div class="card-title mb-2">
-            {{
-              session.isLogin
-                ? $t("components.loginSection.welcome", { user: session.displayedName })
-                : $t("components.loginSection.signin")
-            }}
-          </div>
-          <pre class="text-base-100" v-text="cowsay.say(`MODE=${envMode}; API_BASE_URL=${envApiBaseUrl}`)" />
+        <div v-else class="card-title mb-2">
+          {{
+            session.isLogin
+              ? $t("components.loginSection.welcome", { user: session.displayedName })
+              : $t("components.loginSection.signin")
+          }}
         </div>
         <template v-if="session.isNotLogin">
           <div class="alert alert-error shadow-lg" v-if="loginForm.errorMsg">
@@ -134,6 +131,7 @@ async function login() {
             </button>
           </div>
         </template>
+        <pre class="text-base-100" v-text="cowsay.say(`MODE=${envMode}; API_BASE_URL=${envApiBaseUrl}`)" />
       </div>
     </div>
   </div>

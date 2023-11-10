@@ -33,6 +33,8 @@ Guidance of using playwright:
   Runs the tests in debug mode.
 - `pnpm exec playwright codegen`
   Auto generate tests with Codegen.
+- `pnpm exec playwright show-report`
+  Shows the test report in `./playwright-report`.
 
 And check out the following files:
 
