@@ -39,30 +39,26 @@ const navs = [
 </script>
 
 <template>
-  <template v-if="displayType === 'side'">
-    <ul class="menu menu-compact w-40 bg-base-100 p-2 lg:menu-normal">
-      <li
-        v-for="{ name, path } in navs"
-        :class="[{ 'border-l-4 border-blue-500': $route.path === `/course/${$route.params.name}${path}` }]"
-      >
-        <router-link :to="`/course/${$route.params.name}${path}`">{{ name }}</router-link>
-      </li>
-    </ul>
-  </template>
-  <template v-else>
-    <div class="scrollbar-hide w-full overflow-scroll">
-      <div class="tabs w-max">
-        <template v-for="{ name, path } in navs">
-          <a
-            class="tab tab-bordered h-10 w-32"
-            :class="{
-              'tab-active': $route.path === `/course/${$route.params.name}${path}`,
-            }"
-          >
-            <router-link :to="`/course/${$route.params.name}${path}`">{{ name }}</router-link>
-          </a>
-        </template>
-      </div>
+  <ul v-if="displayType === 'side'" class="menu menu-compact w-40 bg-base-100 p-2 lg:menu-normal">
+    <li
+      v-for="{ name, path } in navs"
+      :class="[{ 'border-l-4 border-blue-500': $route.path === `/course/${$route.params.name}${path}` }]"
+    >
+      <router-link :to="`/course/${$route.params.name}${path}`">{{ name }}</router-link>
+    </li>
+  </ul>
+  <div v-else class="scrollbar-hide w-full overflow-scroll">
+    <div class="tabs w-max">
+      <template v-for="{ name, path } in navs">
+        <a
+          class="tab tab-bordered h-10 w-32"
+          :class="{
+            'tab-active': $route.path === `/course/${$route.params.name}${path}`,
+          }"
+        >
+          <router-link :to="`/course/${$route.params.name}${path}`">{{ name }}</router-link>
+        </a>
+      </template>
     </div>
-  </template>
+  </div>
 </template>
