@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useAxios } from "@vueuse/integrations/useAxios";
 import { useRoute, useRouter } from "vue-router";
-import { computed, ref, watch } from "vue";
+import { computed, ref, watch, reactive } from "vue";
 import queryString from "query-string";
 import { fetcher } from "@/models/api";
 import { useSession } from "@/stores/session";
@@ -44,17 +44,37 @@ function mutatePage(newPage: number) {
     },
   });
 }
-function mutateFilter(newFilter: Partial<SubmissionListFilter>) {
+
+const currentFilter = reactive<SubmissionListFilter>({})
+function getFilteredSubmission() {
   router.replace({
     query: {
       page: 1,
       ...removeEmpty({
         ...routeQuery.value.filter,
-        ...newFilter,
+        ...currentFilter,
       }),
     },
   });
 }
+
+function clearAndReplaceUrl() {
+  for (const key in currentFilter) {
+    const typedKey: keyof SubmissionListFilter = key as keyof SubmissionListFilter;
+    currentFilter[typedKey] = "";
+  }
+  router.replace({
+    query: {
+      page: 1,
+      ...removeEmpty(currentFilter),
+    },
+  });
+}
+
+function mutateFilter(newFilter: Partial<SubmissionListFilter>) {
+  Object.assign(currentFilter, newFilter);
+}
+
 const getSubmissionsUrl = computed(() => {
   const query: SubmissionListQuery = {
     ...routeQuery.value.filter,
@@ -146,6 +166,9 @@ function copySubmissionLink(path: string) {
             <option value="" selected>{{ $t("course.submissions.lang") }}</option>
             <option v-for="{ text, value } in languageTypes" :value="value">{{ text }}</option>
           </select>
+          <div class="btn btn-primary" @click="getFilteredSubmission">
+            Update
+          </div>
 
           <div
             v-show="
@@ -154,7 +177,7 @@ function copySubmissionLink(path: string) {
               routeQuery.filter.languageType != null
             "
             class="btn"
-            @click="mutateFilter({ problemId: '', status: '', languageType: '' })"
+            @click="clearAndReplaceUrl"
           >
             <i-uil-filter-slash class="mr-1" /> {{ $t("course.submissions.clear") }}
           </div>
