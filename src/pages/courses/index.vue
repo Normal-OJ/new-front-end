@@ -44,7 +44,7 @@ const rolesCanCreateCourse = [UserRole.Admin, UserRole.Teacher];
               </tr>
             </thead>
             <tbody>
-              <tr v-for="{ course, teacher } in courses" :key="course" class="hover">
+              <tr v-for="{ course, teacher } in (courses ?? []).reverse()" :key="course" class="hover">
                 <td
                   :class="{
                     'min-w-[10rem] max-w-[12rem] whitespace-pre-wrap': !isDesktop,
