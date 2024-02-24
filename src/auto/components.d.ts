@@ -29,6 +29,7 @@ declare module '@vue/runtime-core' {
     IUilConstructor: typeof import('~icons/uil/constructor')['default']
     IUilEdit: typeof import('~icons/uil/edit')['default']
     IUilFacebook: typeof import('~icons/uil/facebook')['default']
+    IUilFileDownload: typeof import('~icons/uil/file-download')['default']
     IUilFileExclamationAlt: typeof import('~icons/uil/file-exclamation-alt')['default']
     IUilFileUploadAlt: typeof import('~icons/uil/file-upload-alt')['default']
     IUilFilterSlash: typeof import('~icons/uil/filter-slash')['default']
