@@ -99,6 +99,26 @@ const { copy, copied, isSupported } = useClipboard();
 function copySubmissionLink(path: string) {
   copy(new URL(path, window.location.origin).href);
 }
+
+async function downloadAllSubmissions() {
+  const query: SubmissionListQuery = {
+    ...routeQuery.value.filter,
+    offset: 0,
+    count: submissionCount.value ?? 0,
+    course: route.params.name as string,
+  };
+  const qs = queryString.stringify(query, { skipNull: true, skipEmptyString: true });
+  const url = `/submission?${qs}`;
+  const { data } = await fetcher.get<GetSubmissionListResponse>(url);
+  // download as json file
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+  const urlBlob = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = urlBlob;
+  a.download = "submissions.json";
+  a.click();
+  URL.revokeObjectURL(urlBlob);
+}
 </script>
 
 <template>
@@ -108,14 +128,20 @@ function copySubmissionLink(path: string) {
         <div class="card-title justify-between">
           {{ $t("course.submissions.text") }}
 
-          <input
-            v-if="session.isAdmin"
-            v-model="searchUsername"
-            type="text"
-            placeholder="Username (exact match)"
-            class="input-bordered input w-full max-w-xs"
-            @keydown.enter="mutateFilter({ username: searchUsername })"
-          />
+          <div v-if="session.isAdmin" class="flex justify-between gap-4">
+            <div class="tooltip tooltip-bottom" data-tip="Download submissions json file">
+              <div class="btn" @click="downloadAllSubmissions">
+                <i-uil-file-download class="h-5 w-5" />
+              </div>
+            </div>
+            <input
+              v-model="searchUsername"
+              type="text"
+              placeholder="Username (exact match)"
+              class="input-bordered input w-full max-w-xs"
+              @keydown.enter="mutateFilter({ username: searchUsername })"
+            />
+          </div>
         </div>
 
         <div class="my-2" />
