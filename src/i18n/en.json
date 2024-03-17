@@ -329,6 +329,11 @@
         },
         "noContent": "no content",
         "unlimited": "unlimited"
+      },
+      "infoCard": {
+        "score": "Score",
+        "tags": "Tags",
+        "quota": "Quota"
       }
     },
     "courseSideBar": {

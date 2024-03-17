@@ -3,9 +3,12 @@ import { computed } from "vue";
 import { useSession } from "@/stores/session";
 import { formatTime } from "@/utils/formatTime";
 import { useI18n } from "vue-i18n";
+import useInteractions from "@/composables/useInteractions";
+
 import type { ProblemId2Meta } from "@/composables/useProblemSelection";
 
 const { t } = useI18n();
+const { isDesktop } = useInteractions();
 
 interface Props {
   homework: HomeworkListItem | HomeworkPreviewForm;
@@ -76,7 +79,27 @@ const state = computed(() => {
 
         <div class="mb-8 w-full lg:flex-[3_1_0%]">
           <div class="card-title">{{ t("components.hw.card.problems.text") }}</div>
-          <homework-problems :homework="homework" :problems="problems" />
+          <homework-problems v-if="isDesktop" :homework="homework" :problems="problems" />
+          <div v-else class="w-full py-1">
+            <div class="flex w-full flex-wrap justify-center gap-1 sm:justify-start">
+              <template v-for="pid in homework.problemIds">
+                <problem-info-card
+                  class="w-full sm:w-72"
+                  :name="problems[pid.toString()].name"
+                  :id="pid"
+                  :quota="problems[pid.toString()].quota"
+                  :score="
+                    (
+                      homework.studentStatus[session.username] &&
+                      homework.studentStatus[session.username][pid.toString()]
+                    )?.score || 0
+                  "
+                  :show-stats="session.isAdmin"
+                  :show-copycat="session.isAdmin"
+                />
+              </template>
+            </div>
+          </div>
         </div>
       </div>
 
