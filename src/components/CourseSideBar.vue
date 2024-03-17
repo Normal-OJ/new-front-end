@@ -47,7 +47,7 @@ const navs = [
     </li>
   </ul>
   <div v-else class="scrollbar-hide w-full overflow-scroll">
-    <div class="tabs w-max">
+    <div class="tabs mx-auto w-max">
       <template v-for="{ name, path } in navs">
         <a
           class="tab tab-bordered h-10 w-32"
