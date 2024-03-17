@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from "vue";
 import { useTitle } from "@vueuse/core";
 import { useAxios } from "@vueuse/integrations/useAxios";
 import { fetcher } from "@/models/api";
@@ -10,6 +11,8 @@ const { isDesktop } = useInteractions();
 
 useTitle("Courses | Normal OJ");
 const { data: courses, error, isLoading } = useAxios<CourseList>("/course", fetcher);
+
+const displayedCourses = computed(() => [...(courses.value ?? [])].reverse());
 
 const session = useSession();
 const rolesCanCreateCourse = [UserRole.Admin, UserRole.Teacher];
@@ -44,7 +47,7 @@ const rolesCanCreateCourse = [UserRole.Admin, UserRole.Teacher];
               </tr>
             </thead>
             <tbody>
-              <tr v-for="{ course, teacher } in courses" :key="course" class="hover">
+              <tr v-for="{ course, teacher } in displayedCourses" :key="course" class="hover">
                 <td
                   :class="{
                     'min-w-[10rem] max-w-[12rem] whitespace-pre-wrap': !isDesktop,
