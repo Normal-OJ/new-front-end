@@ -16,6 +16,7 @@ declare module '@vue/runtime-core' {
     DueCountdown: typeof import('./../components/DueCountdown.vue')['default']
     HomeworkCard: typeof import('./../components/Homework/HomeworkCard.vue')['default']
     HomeworkForm: typeof import('./../components/Homework/HomeworkForm.vue')['default']
+    HomeworkProblems: typeof import('./../components/Homework/HomeworkProblems.vue')['default']
     IUilAngleDoubleDown: typeof import('~icons/uil/angle-double-down')['default']
     IUilAngleDoubleLeft: typeof import('~icons/uil/angle-double-left')['default']
     IUilAngleDoubleRight: typeof import('~icons/uil/angle-double-right')['default']
