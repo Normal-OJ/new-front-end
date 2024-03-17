@@ -48,8 +48,8 @@ const state = computed(() => {
 <template>
   <div class="card mx-auto w-full bg-base-100 shadow-xl">
     <div class="card-body">
-      <div class="flex items-start justify-between">
-        <div class="lg:text-2x card-title mb-8 md:text-xl">
+      <div class="flex flex-col items-start justify-between sm:flex-row">
+        <div class="lg:text-2x card-title md:mb-8 md:text-xl">
           {{ homework.name }}
           <div :class="['badge', STATUS_CLASS[state]]">{{ state }}</div>
         </div>
@@ -60,7 +60,7 @@ const state = computed(() => {
         <div class="mb-8 w-full lg:flex-[2_1_0%]">
           <div class="card-title">{{ t("components.hw.card.availability.text") }}</div>
           <div class="mt-2 flex flex-wrap overflow-x-auto lg:flex-nowrap">
-            <table class="table table-compact w-full">
+            <table v-if="isDesktop" class="table table-compact w-full">
               <thead>
                 <tr>
                   <th>{{ t("components.hw.card.availability.from") }}</th>
@@ -74,6 +74,15 @@ const state = computed(() => {
                 </tr>
               </tbody>
             </table>
+            <div v-else class="flex flex-wrap text-sm">
+              <div>
+                <span>{{ formatTime(homework.start) }}</span>
+              </div>
+              ~
+              <div>
+                <span>{{ formatTime(homework.end) }}</span>
+              </div>
+            </div>
           </div>
         </div>
 
