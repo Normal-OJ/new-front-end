@@ -63,6 +63,7 @@ declare module '@vue/runtime-core' {
     ProblemCard: typeof import('./../components/Problem/ProblemCard.vue')['default']
     ProblemDescriptionForm: typeof import('./../components/Problem/Forms/ProblemDescriptionForm.vue')['default']
     ProblemForm: typeof import('./../components/Problem/ProblemForm.vue')['default']
+    ProblemInfoCard: typeof import('./../components/Problem/ProblemInfoCard.vue')['default']
     ProblemMultiSelect: typeof import('./../components/Homework/Fields/ProblemMultiSelect.vue')['default']
     ProblemTestdataDescriptionModal: typeof import('./../components/Problem/Forms/ProblemTestdataDescriptionModal.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
