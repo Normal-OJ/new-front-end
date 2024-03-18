@@ -58,7 +58,7 @@
     "prettier": "^2.8.2",
     "prettier-plugin-tailwindcss": "^0.1.13",
     "tailwindcss": "^3.0.23",
-    "typescript": "^5.0.4",
+    "typescript": "^5.4.2",
     "unplugin-icons": "^0.15.1",
     "unplugin-vue-components": "^0.22.12",
     "vite": "^4.0.4",
