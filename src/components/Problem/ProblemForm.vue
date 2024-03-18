@@ -220,7 +220,7 @@ watch(
         </label>
         <div
           :class="['textarea-bordered textarea w-full p-4', isDrag ? 'border-accent' : '']"
-          @drop.prevent="$emit('update:testdata', $event.dataTransfer?.files?.[0])"
+          @drop.prevent="$emit('update:testdata', $event.dataTransfer!.files![0])"
           @dragover.prevent="isDrag = true"
           @dragleave="isDrag = false"
         >
@@ -230,7 +230,7 @@ watch(
               type="file"
               id="file-uploader"
               accept=".zip"
-              @change="$emit('update:testdata', ($event.target as HTMLInputElement).files?.[0])"
+              @change="$emit('update:testdata', ($event.target as HTMLInputElement).files![0])"
             />
           </template>
           <template v-else>
