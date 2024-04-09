@@ -336,7 +336,8 @@
       "infoCard": {
         "score": "Score",
         "tags": "Tags",
-        "quota": "Quota"
+        "quota": "Quota",
+        "unlimited": "unlimited"
       }
     },
     "courseSideBar": {

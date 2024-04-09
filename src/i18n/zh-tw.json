@@ -335,7 +335,8 @@
       "infoCard": {
         "score": "得分",
         "tags": "標籤",
-        "quota": "額度"
+        "quota": "額度",
+        "unlimited": "無限制"
       }
     },
     "courseSideBar": {
