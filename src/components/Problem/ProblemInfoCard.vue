@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { UNLIMITED_QUOTA } from "@/constants";
 import { useI18n } from "vue-i18n";
 
 interface Props {
@@ -22,13 +23,24 @@ withDefaults(defineProps<Props>(), {
   <div class="card card-compact max-w-full bg-base-200/50 shadow-xl">
     <div class="card-body">
       <router-link :to="`/course/${$route.params.name}/problem/${id}`">
-        <h2 class="card-title underline">{{ name }}</h2>
+        <h2
+          class="card-title underline"
+          :class="{
+            'text-success': score === 100,
+          }"
+        >
+          {{ name }}
+        </h2>
         <div class="flex flex-col gap-2">
           <div class="flex justify-between">
-            <span v-if="score !== undefined" class="text-lg font-bold">
-              {{ t("components.problem.infoCard.score") }} : {{ score }}
+            <span v-if="score !== undefined">
+              <span class="text-2xl font-bold"> {{ score }} </span>
+              <span class="text-xs">/ 100</span>
             </span>
-            <span class="font-semibold"> {{ t("components.problem.infoCard.quota") }} : {{ quota }} </span>
+            <span class="font-semibold lowercase">
+              {{ quota == UNLIMITED_QUOTA ? t("components.problem.infoCard.unlimited") : quota }}
+              {{ t("components.problem.infoCard.quota") }}
+            </span>
           </div>
           <div v-if="tags" class="flex flex-col">
             <span class="font-semibold"> {{ t("components.problem.infoCard.tags") }} : </span>
