@@ -30,6 +30,8 @@ const Auth = {
     fetcher.post("/auth/change-password", body),
   batchSignup: (body: { newUsers: string; force: boolean; course: string }) =>
     fetcher.post("/auth/batch-signup", body),
+  checkEmail: (body: { email: string }) => fetcher.post<CheckEmail>("/auth/check/email", body),
+  sendRecoveryEmail: (body: { email: string }) => fetcher.post("/auth/password-recovery", body),
 };
 
 const Problem = {

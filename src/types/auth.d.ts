@@ -27,3 +27,7 @@ interface UserEditionForm {
   displayedName: string;
   role: number;
 }
+
+interface CheckEmail {
+  valid: number; // 1 for valid/unused email
+}
