@@ -410,7 +410,8 @@
     "email": "Email address",
     "status": {
       "error": "Failed to send an email to you, we cannot find this email.",
-      "success": "Success, please check your inbox."
-    }
+      "success": "Email sent, please check your inbox."
+    },
+    "return-home": "Return Home"
   }
 }
