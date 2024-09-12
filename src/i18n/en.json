@@ -402,5 +402,15 @@
     "ERR001": "Login Failed: Your username/email or password is incorrect.",
     "ERR002": "Login Failed: Your account is not activated yet, please go to https://v1.noj.tw to verify your email.",
     "UNKNOWN": "Unknown Error, please contact teaching assistants or NOJ maintainers, or try again later."
+  },
+  "password_reset": {
+    "forgot-password": "Forgot password",
+    "description": "Please enter email address which you registered with, we'll send email to recovery your password.",
+    "submit": "Submit",
+    "email": "Email address",
+    "status": {
+      "error": "Failed to send an email to you, we cannot find this email.",
+      "success": "Success, please check your inbox."
+    }
   }
 }
