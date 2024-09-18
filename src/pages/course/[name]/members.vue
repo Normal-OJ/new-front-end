@@ -43,6 +43,7 @@ const rolesCanCreateCourse = [UserRole.Admin, UserRole.Teacher];
 
 const isOpen = ref(false);
 const newMembers = ref<File | null>();
+const shouldStandardizeUsername = ref(true);
 const newMembersCSVString = ref("");
 const forceUpdate = ref(false);
 const isProcessingSignup = ref(false);
@@ -72,7 +73,7 @@ watch(newMembers, () => {
   const reader = new FileReader();
   reader.onload = (evt) => {
     if (typeof evt.target?.result !== "string") return;
-    newMembersCSVString.value = standardizeUsername(evt.target?.result || "");
+    newMembersCSVString.value = evt.target?.result;
 
     const rows = newMembersCSVString.value.split("\n");
     previewCSV.value.headers = rows[0].split(",");
@@ -83,9 +84,13 @@ watch(newMembers, () => {
 async function submit() {
   if (!newMembersCSVString.value) return;
   isProcessingSignup.value = true;
+  const csv = shouldStandardizeUsername.value
+    ? standardizeUsername(newMembersCSVString.value)
+    : newMembersCSVString.value;
+
   try {
     await api.Auth.batchSignup({
-      newUsers: newMembersCSVString.value,
+      newUsers: csv,
       force: forceUpdate.value,
       course: route.params.name as string,
     });
@@ -179,6 +184,13 @@ async function submit() {
         </div>
 
         <div class="my-4" />
+
+        <div class="form-control">
+          <label class="label cursor-pointer">
+            <span class="label-text">{{ $t("course.members.standardizeUsername") }}</span>
+            <input v-model="shouldStandardizeUsername" type="checkbox" class="checkbox-primary checkbox" />
+          </label>
+        </div>
 
         <div class="alert alert-error shadow-lg" v-if="errorMsg">
           <div>
