@@ -163,7 +163,8 @@
         "content": "第二列開始每列為一個成員的資料",
         "caution": "請注意若系統已有使用者使用了 CSV 中的 username 或 email，則該學生依舊會被加入課程，但其他欄位的資訊不會更新, 若要強制更新他的資訊請勾選下方的選項。"
       },
-      "forceUpdate": "強制更新已存在的使用者的資訊"
+      "forceUpdate": "強制更新已存在的使用者的資訊",
+      "standardizeUsername": "統一使用者名稱（字母大寫）"
     }
   },
   "courses": {

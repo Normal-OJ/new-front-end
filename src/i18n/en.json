@@ -163,7 +163,8 @@
         "content": "From the second row, fill each member's data in each row",
         "caution": "Note that if we find a user with the same username or email in the database, the user will still be added into course, BUT other information will not be update UNLESS you check the checkbox below."
       },
-      "forceUpdate": "Force update existing users' data"
+      "forceUpdate": "Force update existing users' data",
+      "standardizeUsername": "Standardize Username (uppercase)"
     }
   },
   "courses": {
