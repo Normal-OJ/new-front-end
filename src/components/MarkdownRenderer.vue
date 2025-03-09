@@ -12,7 +12,7 @@ withDefaults(defineProps<Props>(), {
 <template>
   <div
     v-if="md"
-    class="prose-sm prose min-w-full prose-pre:bg-zinc-800 prose-pre:text-white md:prose-base"
+    class="prose prose-sm min-w-full md:prose-base prose-pre:bg-zinc-800 prose-pre:text-white"
     v-html="renderMarkdown(md)"
   />
   <span v-else class="italic opacity-70">{{ $t("components.markdownRenderer.noContent") }}</span>

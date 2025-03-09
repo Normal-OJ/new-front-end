@@ -25,7 +25,7 @@ const rolesCanCreateCourse = [UserRole.Admin, UserRole.Teacher];
         {{ $t("courses.index.list") }}
         <router-link
           v-if="rolesCanCreateCourse.includes(session.role)"
-          class="btn-success btn"
+          class="btn btn-success"
           to="/courses/new"
         >
           <i-uil-plus-circle class="mr-1 lg:h-5 lg:w-5" /> {{ $t("courses.index.new") }}
@@ -53,7 +53,7 @@ const rolesCanCreateCourse = [UserRole.Admin, UserRole.Teacher];
                     'min-w-[10rem] max-w-[12rem] whitespace-pre-wrap': !isDesktop,
                   }"
                 >
-                  <router-link :to="`/course/${course}`" class="link-hover link">{{ course }}</router-link>
+                  <router-link :to="`/course/${course}`" class="link link-hover">{{ course }}</router-link>
                 </td>
                 <td>{{ teacher.username }}</td>
               </tr>

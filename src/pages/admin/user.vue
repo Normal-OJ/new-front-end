@@ -79,10 +79,10 @@ async function submit() {
       v-model="searchName"
       :placeholder="$t('admin.user.search-name')"
       type="text"
-      class="input-bordered input"
+      class="input input-bordered"
     />
 
-    <select v-model="searchRole" class="select-bordered select">
+    <select v-model="searchRole" class="select select-bordered">
       <option :value="null">{{ $t("admin.user.select-role") }}</option>
       <option :value="0">{{ $t("admin.user.admin") }}</option>
       <option :value="1">{{ $t("admin.user.teacher") }}</option>
@@ -97,7 +97,7 @@ async function submit() {
       <skeleton-table :col="3" :row="5" />
     </template>
     <template #data>
-      <table class="table-compact table w-full">
+      <table class="table table-compact w-full">
         <thead>
           <tr>
             <th>{{ $t("admin.user.username") }}</th>
@@ -112,7 +112,7 @@ async function submit() {
             <td>{{ displayedName }}</td>
             <td>{{ ROLE[role] }}</td>
             <td>
-              <div class="btn btn-ghost btn-sm btn-circle" @click="() => editUser(username)">
+              <div class="btn btn-circle btn-ghost btn-sm" @click="() => editUser(username)">
                 <i-uil-pen />
               </div>
             </td>
@@ -140,7 +140,7 @@ async function submit() {
           :value="edittingUsername"
           type="text"
           disabled
-          class="input-bordered input disabled w-full max-w-xs"
+          class="input disabled input-bordered w-full max-w-xs"
         />
       </div>
 
@@ -151,7 +151,7 @@ async function submit() {
         <input
           v-model="v$.displayedName.$model"
           type="text"
-          :class="['input-bordered input w-full max-w-xs', v$.displayedName.$error && 'input-error']"
+          :class="['input input-bordered w-full max-w-xs', v$.displayedName.$error && 'input-error']"
         />
         <label class="label" v-show="v$.displayedName.$error">
           <span class="label-text-alt text-error" v-text="v$.displayedName.$errors[0]?.$message" />
@@ -162,7 +162,7 @@ async function submit() {
         <label class="label">
           <span class="label-text">{{ $t("admin.user.role") }}</span>
         </label>
-        <select v-model="v$.role.$model" class="select-bordered select w-full max-w-xs">
+        <select v-model="v$.role.$model" class="select select-bordered w-full max-w-xs">
           <option :value="0">{{ $t("admin.user.admin") }}</option>
           <option :value="1">{{ $t("admin.user.teacher") }}</option>
           <option :value="2">{{ $t("admin.user.student") }}</option>
@@ -176,7 +176,7 @@ async function submit() {
         <input
           v-model="v$.password.$model"
           type="password"
-          :class="['input-bordered input w-full max-w-xs', v$.password.$error && 'input-error']"
+          :class="['input input-bordered w-full max-w-xs', v$.password.$error && 'input-error']"
         />
         <label class="label">
           <span :class="['label-text-alt', v$.password.$error && 'text-error']">

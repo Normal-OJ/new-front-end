@@ -174,7 +174,7 @@ function exportCSV() {
             <label class="label">
               <span class="label-text">Sort By</span>
             </label>
-            <select v-model="sortBy" class="select-bordered select w-full max-w-xs">
+            <select v-model="sortBy" class="select select-bordered w-full max-w-xs">
               <option :value="Columns.USERNAME">Username</option>
               <option :value="Columns.SUM_DESC">Sum in descending</option>
               <option :value="Columns.SUM_ASC">Sum in ascending</option>
@@ -186,7 +186,7 @@ function exportCSV() {
             </label>
             <input
               type="datetime-local"
-              class="input-bordered input w-full max-w-xs"
+              class="input input-bordered w-full max-w-xs"
               :value="startDateTime"
               @change="setScoreboardBegin"
             />
@@ -197,7 +197,7 @@ function exportCSV() {
             </label>
             <input
               type="datetime-local"
-              class="input-bordered input w-full max-w-xs"
+              class="input input-bordered w-full max-w-xs"
               :value="endDateTime"
               @change="setScoreboardEnd"
             />
@@ -233,7 +233,7 @@ function exportCSV() {
                   <td v-for="pid in pids" :key="pid" class="p-0">
                     <div
                       v-if="row[`${pid}`]"
-                      :class="['flex h-full flex-col py-2 px-4 text-center', getCellColor(row[`${pid}`])]"
+                      :class="['flex h-full flex-col px-4 py-2 text-center', getCellColor(row[`${pid}`])]"
                     >
                       <div class="text-md">{{ row[`${pid}`].max }}</div>
                       <div class="text-xs">{{ row[`${pid}`].count }} tries</div>

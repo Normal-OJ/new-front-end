@@ -28,7 +28,7 @@ function downloadTestCase(problemId: number) {
             {{ $t("components.problem.card.title") }}{{ $route.params.id }} - {{ problem.problemName }}
           </div>
           <div class="flex">
-            <span class="badge-info badge mr-1" v-for="tag in problem.tags" :key="tag">{{ tag }}</span>
+            <span class="badge badge-info mr-1" v-for="tag in problem.tags" :key="tag">{{ tag }}</span>
           </div>
         </div>
 
@@ -70,7 +70,7 @@ function downloadTestCase(problemId: number) {
             </router-link>
             <router-link
               v-if="session.isAdmin"
-              :class="['btn btn-ghost tooltip tooltip-bottom btn-sm', 'inline-flex']"
+              :class="['btn tooltip tooltip-bottom btn-ghost btn-sm', 'inline-flex']"
               data-tip="Copycat"
               :to="`/course/${$route.params.name}/problem/${$route.params.id}/copycat`"
             >
@@ -78,7 +78,7 @@ function downloadTestCase(problemId: number) {
             </router-link>
             <router-link
               v-if="session.isAdmin"
-              class="btn btn-ghost btn-sm btn-circle"
+              class="btn btn-circle btn-ghost btn-sm"
               data-tip="Edit"
               :to="`/course/${$route.params.name}/problem/${$route.params.id}/edit`"
             >
@@ -86,7 +86,7 @@ function downloadTestCase(problemId: number) {
             </router-link>
             <button
               v-if="session.isAdmin"
-              :class="['btn btn-ghost tooltip tooltip-bottom btn-sm', 'inline-flex']"
+              :class="['btn tooltip tooltip-bottom btn-ghost btn-sm', 'inline-flex']"
               data-tip="Download test case"
               @click="downloadTestCase(Number.parseInt($route.params.id as string, 10))"
             >

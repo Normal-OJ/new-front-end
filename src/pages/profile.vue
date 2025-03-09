@@ -137,7 +137,7 @@ function clearForm() {
             type="password"
             name="password"
             :placeholder="t('profile.pw.placeholder.new')"
-            :class="['input-bordered input', v$.newPassword.$error && 'input-error']"
+            :class="['input input-bordered', v$.newPassword.$error && 'input-error']"
           />
           <label class="label" v-show="v$.newPassword.$error">
             <span class="label-text-alt text-error" v-text="v$.newPassword.$errors[0]?.$message" />
@@ -152,7 +152,7 @@ function clearForm() {
             type="password"
             name="password"
             :placeholder="t('profile.pw.placeholder.again')"
-            :class="['input-bordered input', v$.confirmPassword.$error && 'input-error']"
+            :class="['input input-bordered', v$.confirmPassword.$error && 'input-error']"
           />
           <label class="label" v-show="v$.confirmPassword.$error">
             <span class="label-text-alt text-error" v-text="v$.confirmPassword.$errors[0]?.$message" />
@@ -167,7 +167,7 @@ function clearForm() {
             type="password"
             name="password"
             :placeholder="t('profile.pw.placeholder.current')"
-            :class="['input-bordered input', v$.oldPassword.$error && 'input-error']"
+            :class="['input input-bordered', v$.oldPassword.$error && 'input-error']"
             @keydown.enter="changePassword"
           />
           <label class="label" v-show="v$.oldPassword.$error">
@@ -176,7 +176,7 @@ function clearForm() {
         </div>
         <div class="form-control mt-6">
           <div
-            :class="['btn-primary btn', changePasswordForm.isLoading && 'loading']"
+            :class="['btn btn-primary', changePasswordForm.isLoading && 'loading']"
             @click="changePassword"
           >
             {{ t("profile.pw.submit") }}

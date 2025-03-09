@@ -50,7 +50,7 @@ useTitle("Forgot Password");
           <div v-if="showError" class="alert alert-error text-base">
             {{ t("password_reset.status.error") }}
             <div class="flex-none">
-              <button @click="showError = false" class="btn btn-ghost btn-sm btn-circle">X</button>
+              <button @click="showError = false" class="btn btn-circle btn-ghost btn-sm">X</button>
             </div>
           </div>
           <span class="text-base font-semibold">
@@ -63,14 +63,14 @@ useTitle("Forgot Password");
             type="email"
             name="Email"
             :placeholder="$t('password_reset.email')"
-            :class="['input-bordered input', v$.email.$error && 'input-error']"
+            :class="['input input-bordered', v$.email.$error && 'input-error']"
           />
           <label class="label" v-show="v$.email.$error">
             <span class="label-text-alt text-error" v-text="v$.email.$errors[0]?.$message" />
           </label>
         </div>
         <div class="card-actions justify-center">
-          <button class="btn-primary btn" @click="() => handleSubmit()">
+          <button class="btn btn-primary" @click="() => handleSubmit()">
             {{ t("password_reset.submit") }}
           </button>
         </div>
@@ -78,7 +78,7 @@ useTitle("Forgot Password");
       <div v-else class="card-body">
         {{ t("password_reset.status.success") }}
         <div class="card-actions justify-center">
-          <button class="btn-primary btn" @click="() => router.push('/')">
+          <button class="btn btn-primary" @click="() => router.push('/')">
             {{ t("password_reset.return-home") }}
           </button>
         </div>

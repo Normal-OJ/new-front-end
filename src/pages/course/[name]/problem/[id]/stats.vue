@@ -179,7 +179,7 @@ const barOption = computed(() => ({
         </div>
         <div class="my-1" />
         <skeleton-table v-if="isLoading" :col="4" :row="10" />
-        <table v-else class="table-compact table w-full">
+        <table v-else class="table table-compact w-full">
           <thead>
             <tr>
               <th>{{ t("course.problem.stats.table.runtimeRank.id") }}</th>
@@ -205,7 +205,7 @@ const barOption = computed(() => ({
         </div>
         <div class="my-1" />
         <skeleton-table v-if="isLoading" :col="4" :row="10" />
-        <table v-else class="table-compact table w-full">
+        <table v-else class="table table-compact w-full">
           <thead>
             <tr>
               <th>{{ t("course.problem.stats.table.memoryRank.id") }}</th>

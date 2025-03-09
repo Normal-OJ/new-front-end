@@ -65,7 +65,7 @@ async function submit() {
           <input
             v-model="v$.course.$model"
             type="text"
-            :class="['input-bordered input w-full max-w-xs', v$.course.$error && 'input-error']"
+            :class="['input input-bordered w-full max-w-xs', v$.course.$error && 'input-error']"
           />
           <label class="label" v-show="v$.course.$error">
             <span class="label-text-alt text-error" v-text="v$.course.$errors[0]?.$message" />
@@ -79,7 +79,7 @@ async function submit() {
           <input
             v-model="v$.teacher.$model"
             type="text"
-            :class="['input-bordered input w-full max-w-xs', v$.teacher.$error && 'input-error']"
+            :class="['input input-bordered w-full max-w-xs', v$.teacher.$error && 'input-error']"
           />
           <label class="label" v-show="v$.teacher.$error">
             <span class="label-text-alt text-error" v-text="v$.teacher.$errors[0]?.$message" />
@@ -87,7 +87,7 @@ async function submit() {
         </div>
 
         <div class="mt-4 flex">
-          <button :class="['btn-success btn', isLoading && 'loading']" @click="submit">
+          <button :class="['btn btn-success', isLoading && 'loading']" @click="submit">
             <i-uil-file-upload-alt class="mr-1 lg:h-5 lg:w-5" /> {{ $t("courses.new.submit") }}
           </button>
         </div>
