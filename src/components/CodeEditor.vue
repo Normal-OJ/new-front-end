@@ -20,7 +20,7 @@ const highlighter = (code: string) => {
 
 <template>
   <prism-editor
-    class="rounded bg-zinc-800 py-4 px-2 font-mono text-gray-300"
+    class="rounded bg-zinc-800 px-2 py-4 font-mono text-gray-300"
     :value="value"
     :tabSize="4"
     :highlight="highlighter"

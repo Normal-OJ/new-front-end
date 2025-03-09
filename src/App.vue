@@ -24,7 +24,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div class="drawer-mobile drawer h-screen w-screen">
+  <div class="drawer drawer-mobile h-screen w-screen">
     <input id="noj-drawer" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content">
       <top-bar class="sticky top-0 z-50 lg:hidden" />

@@ -114,7 +114,7 @@ async function submit() {
             </label>
             <select
               v-model="v$.lang.$model"
-              :class="['select-bordered select', v$.lang.$error && 'input-error']"
+              :class="['select select-bordered', v$.lang.$error && 'input-error']"
             >
               <option disabled :value="-1">{{ t("course.problem.submit.lang.select") }}</option>
               <option v-for="{ text, value } in langOptions" :key="value" :value="value">{{ text }}</option>

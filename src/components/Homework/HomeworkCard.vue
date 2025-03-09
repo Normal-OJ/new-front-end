@@ -58,7 +58,7 @@ const state = computed(() => {
         <div class="mb-8 w-full lg:flex-[2_1_0%]">
           <div class="card-title">{{ t("components.hw.card.availability.text") }}</div>
           <div class="mt-2 flex flex-wrap overflow-x-auto lg:flex-nowrap">
-            <table class="table-compact table w-full">
+            <table class="table table-compact w-full">
               <thead>
                 <tr>
                   <th>{{ t("components.hw.card.availability.from") }}</th>
@@ -77,7 +77,7 @@ const state = computed(() => {
 
         <div class="mb-8 w-full lg:flex-[3_1_0%]">
           <div class="card-title">{{ t("components.hw.card.problems.text") }}</div>
-          <table class="table-compact mt-2 table w-full">
+          <table class="table table-compact mt-2 w-full">
             <thead>
               <tr>
                 <th>{{ t("components.hw.card.problems.id") }}</th>
@@ -119,7 +119,7 @@ const state = computed(() => {
                 <td>
                   <div class="tooltip" data-tip="Stats">
                     <router-link
-                      class="btn-ghost btn-xs btn"
+                      class="btn btn-ghost btn-xs"
                       :to="`/course/${$route.params.name}/problem/${pid}/stats`"
                     >
                       <i-uil-chart-line class="lg:h-5 lg:w-5" />
@@ -129,7 +129,7 @@ const state = computed(() => {
                 <td v-if="session.isAdmin">
                   <div class="tooltip" data-tip="Copycat">
                     <router-link
-                      class="btn-ghost btn-xs btn"
+                      class="btn btn-ghost btn-xs"
                       :to="`/course/${$route.params.name}/problem/${pid}/copycat`"
                     >
                       <i-uil-file-exclamation-alt class="lg:h-5 lg:w-5" />

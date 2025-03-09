@@ -36,7 +36,7 @@ const { data: announcements, error, isLoading } = useAxios<AnnouncementList>("/a
               <tbody>
                 <tr v-for="{ title, createTime, annId } in announcements" :key="annId" class="hover">
                   <td>
-                    <router-link :to="`/announcements/${annId}`" class="link-hover link">
+                    <router-link :to="`/announcements/${annId}`" class="link link-hover">
                       {{ title }}
                     </router-link>
                   </td>
@@ -44,7 +44,7 @@ const { data: announcements, error, isLoading } = useAxios<AnnouncementList>("/a
                   <td v-if="session.isAdmin">
                     <div class="tooltip" data-tip="Edit">
                       <router-link
-                        class="btn btn-ghost btn-sm btn-circle"
+                        class="btn btn-circle btn-ghost btn-sm"
                         :to="`/course/Public/announcements/${annId}/edit`"
                       >
                         <i-uil-edit class="lg:h-5 lg:w-5" />
@@ -75,7 +75,7 @@ const { data: announcements, error, isLoading } = useAxios<AnnouncementList>("/a
               <tbody>
                 <tr v-for="{ title, createTime, annId } in announcements" :key="annId" class="hover">
                   <td class="min-w-[10rem] max-w-[12rem] truncate">
-                    <router-link :to="`/announcements/${annId}`" class="link-hover link max-w-full text-lg">
+                    <router-link :to="`/announcements/${annId}`" class="link link-hover max-w-full text-lg">
                       {{ title }}
                     </router-link>
                     <br />
@@ -85,7 +85,7 @@ const { data: announcements, error, isLoading } = useAxios<AnnouncementList>("/a
                   <td v-if="session.isAdmin">
                     <div class="tooltip" data-tip="Edit">
                       <router-link
-                        class="btn btn-ghost btn-sm btn-circle"
+                        class="btn btn-circle btn-ghost btn-sm"
                         :to="`/course/Public/announcements/${annId}/edit`"
                       >
                         <i-uil-edit class="lg:h-5 lg:w-5" />
