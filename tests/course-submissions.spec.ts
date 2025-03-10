@@ -45,7 +45,7 @@ test("Filter by problem, status, and language", async ({ page }) => {
   await expect(page.getByText("Clear")).not.toBeVisible();
 
   const problem = await page.getByRole("combobox").first();
-  await expect(problem.locator("option")).toHaveText(["Problem", "307 - gg", "449 - test", "510 - A+B"]);
+  await expect(problem.locator("option")).toHaveText(["Problem", "307 - gg", "449 - test", "510 - A+B", "511 - B + A"]);
   await problem.selectOption("449");
   await expect(page).toHaveURL("/course/Test/submissions?page=1&problemId=449");
 
