@@ -58,9 +58,7 @@ async function submit() {
     await api.Problem.modify(route.params.id as string, edittingProblem.value);
 
     if (testdata.value) {
-      const testdataForm = new FormData();
-      testdataForm.append("case", testdata.value);
-      await api.Problem.modifyTestdata(route.params.id as string, testdataForm);
+      await uploadTestCase();
     }
     router.push(`/course/${route.params.name}/problem/${route.params.id}`);
   } catch (error) {
@@ -74,6 +72,42 @@ async function submit() {
     formElement.value.isLoading = false;
   }
 }
+
+async function uploadTestCase() {
+  const problemId = Number.parseInt(route.params.id as string, 10);
+  const length = testdata.value?.size;
+  if (!length) {
+    console.error("No file to upload or file size is 0");
+    return;
+  }
+  const partSize = 5 * 1024 * 1024;
+  const uploadInfo = (
+    await api.Problem.initiateTestCaseUpload(problemId, {
+      length,
+      partSize,
+    })
+  ).data;
+
+  const parts = [];
+  const partCount = uploadInfo.urls.length;
+  for (let i = 0; i < partCount; i++) {
+    const start = i * partSize;
+    const end = Math.min((i + 1) * partSize, length);
+    const part = testdata.value?.slice(start, end);
+    if (!part) {
+      console.error("Failed to slice file");
+      return;
+    }
+    const resp = await fetch(uploadInfo.urls[i], { method: "PUT", body: part });
+    parts.push({
+      ETag: resp.headers.get("ETag")!,
+      PartNumber: i + 1,
+    });
+  }
+
+  await api.Problem.completeTestCaseUpload(problemId, uploadInfo.upload_id, parts);
+}
+
 async function discard() {
   if (!confirm("Are u sure?")) return;
   router.push(`/course/${route.params.name}/problems`);
