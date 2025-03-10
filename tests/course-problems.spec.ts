@@ -6,7 +6,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 async function assertProblemTable(table: Locator) {
-  await expect(table.locator("tr")).toHaveCount(4);
+  await expect(table.locator("tr")).toHaveCount(5);
   await expect(table.locator("th")).toHaveCount(5);
   await expect(table.locator("th")).toHaveText(["ID", "Name", "Tags", "Quota", ""], { ignoreCase: true });
 }
