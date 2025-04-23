@@ -68,17 +68,20 @@ async function submit() {
     try {
       await api.Problem.modifyTestdata(problemId, testdataForm);
     } catch (error) {
-      alert("Problem created, but testdata upload failed.");
+      const errorMsg =
+        axios.isAxiosError(error) && error.response?.data?.message
+          ? error.response.data.message
+          : "Unknown error occurred :(";
+      alert(`Problem created, but testdata upload failed: ${errorMsg}`);
       router.push(`/course/${route.params.name}/problem/${problemId}/edit`);
       throw error;
     }
     router.push(`/course/${route.params.name}/problem/${problemId}`);
   } catch (error) {
-    if (axios.isAxiosError(error) && error.response?.data?.message) {
-      formElement.value.errorMsg = error.response.data.message;
-    } else {
-      formElement.value.errorMsg = "Unknown error occurred :(";
-    }
+    formElement.value.errorMsg =
+      axios.isAxiosError(error) && error.response?.data?.message
+        ? error.response.data.message
+        : "Unknown error occurred :(";
     throw error;
   } finally {
     formElement.value.isLoading = false;
