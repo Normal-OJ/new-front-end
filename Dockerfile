@@ -6,7 +6,7 @@ ENV PATH="$PNPM_HOME:$PATH"
 
 RUN corepack enable
 
-ENV VITE_APP_API_BASE_URL "http://localhost:8080/api"
+ENV VITE_APP_API_BASE_URL="http://localhost:8080/api"
 
 WORKDIR /app
 
