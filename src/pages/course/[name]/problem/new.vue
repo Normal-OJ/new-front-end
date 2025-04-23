@@ -63,10 +63,15 @@ async function submit() {
       })
     ).data;
 
-    // TODO: additional handling if testcase upload fail
     const testdataForm = new FormData();
     testdataForm.append("case", testdata.value);
-    await api.Problem.modifyTestdata(problemId, testdataForm);
+    try {
+      await api.Problem.modifyTestdata(problemId, testdataForm);
+    } catch (error) {
+      alert("Problem created, but testdata upload failed.");
+      router.push(`/course/${route.params.name}/problem/${problemId}/edit`);
+      throw error;
+    }
     router.push(`/course/${route.params.name}/problem/${problemId}`);
   } catch (error) {
     if (axios.isAxiosError(error) && error.response?.data?.message) {
