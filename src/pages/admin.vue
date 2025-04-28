@@ -11,7 +11,10 @@ const route = useRoute();
 const router = useRouter();
 const { t } = useI18n();
 const tab = useStorage(LOCAL_STORAGE_KEY.ADMIN_TAB, "/admin/user");
-const tabs = [{ text: t("admin.tab.user"), value: "/admin/user" }];
+const tabs = [
+  { text: t("admin.tab.dashboard"), value: "/admin/dashboard" },
+  { text: t("admin.tab.user"), value: "/admin/user" },
+];
 watchEffect(() => {
   if (!tabs.some((d) => d.value === route.path)) {
     router.replace(tab.value);
