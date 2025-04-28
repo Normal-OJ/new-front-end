@@ -10,6 +10,14 @@ interface User {
 
 type UserInfo = Pick<User, "username" | "displayedName" | "role" | "md5">;
 
+interface UserSummary {
+  userCount: number;
+  breakdown: {
+    role: string;
+    count: number;
+  }[];
+}
+
 interface UserEditorConfig {
   fontSize: number;
   theme: string;

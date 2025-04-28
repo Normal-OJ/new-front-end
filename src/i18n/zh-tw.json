@@ -394,7 +394,23 @@
     },
     "unknown-error-occurred": "發生未知錯誤 :(",
     "tab": {
+      "dashboard": "儀表板",
       "user": "使用者"
+    },
+    "dashboard": {
+      "usercount": {
+        "title": "使用者總覽",
+        "count": "數量",
+        "total": "總數"
+      },
+      "coursecount": {
+        "title": "課程總覽",
+        "coursename": "課程名稱",
+        "user": "人數",
+        "homework": "作業數量",
+        "problem": "題目數量",
+        "submission": "提交數量"
+      }
     }
   },
   "errorCode": {

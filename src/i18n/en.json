@@ -395,7 +395,23 @@
     },
     "unknown-error-occurred": "Unknown error occurred :(",
     "tab": {
+      "dashboard": "Dashboard",
       "user": "User"
+    },
+    "dashboard": {
+      "usercount": {
+        "title": "User Overview",
+        "count": "Count",
+        "total": "Total"
+      },
+      "coursecount": {
+        "title": "Course Overview",
+        "coursename": "Course Name",
+        "user": "User Count",
+        "homework": "Homework Count",
+        "problem": "Problem Count",
+        "submission": "Submission Count"
+      }
     }
   },
   "errorCode": {
