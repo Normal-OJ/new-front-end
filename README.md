@@ -4,9 +4,11 @@
 
 ## Development
 
-Issues and PRs are welcome, please read the [contribution guide](CONTRIBUTING.md).
+### Setup
 
-Clone the repo, then install the dependencies by [pnpm](https://pnpm.io/installation) (v8.6):
+Issues and PRs are welcome, please read the [contribution guide](CONTRIBUTING.md) to prepare a proper development environment.
+
+Clone the repo, then install the dependencies by [pnpm](https://pnpm.io/installation):
 ```bash
 cd new-front-end
 pnpm install
@@ -17,29 +19,48 @@ To start up the dev server, run:
 pnpm dev
 ```
 
+### File Structure
+
+The project follows a file-based routing system. Pages in the `src/pages` folder map directly to URLs on the website. For example, `src/pages/about.vue` corresponds to `/about`, `src/announcements/[id].vue` corresponds to `/announcements/:id`, and `src/courses/index.vue` corresponds to `/courses`. 
+
+- **`src/pages/`**: Contains all page components. Each file or folder here maps to a route. For large pages, split layouts into manageable components and place them in `src/components`.
+- **`src/components/`**: For aforementioned components used in pages, and reusable components.
+- **`src/composables/`**: Reusable logic that can be shared across components.
+- **`src/models/`**: API interaction logic to communicate with the Back-End.
+- **`src/constants.ts`**: Constants for the project.
+- **`src/stores/`**: State management for states used across multiple pages.
+- **`src/utils/`**: Utility functions.
+- **`src/i18n/`**: For every string, try to provide both English and zh-TW with i18n config.
+- **`src/types/`**: TypeScript type definitions.
+
 ## Testing
 
-Guidance of using playwright:
+We currently have end-to-end testing under `./tests` with Playwright.
 
-- `pnpm exec playwright test`
-  Runs the end-to-end tests.
-- `pnpm exec playwright test --ui`
-  Starts the interactive UI mode.
-- `pnpm exec playwright test --project=chromium`
-  Runs the tests only on Desktop Chrome.
-- `pnpm exec playwright test example`
-  Runs the tests in a specific file.
-- `pnpm exec playwright test --debug`
-  Runs the tests in debug mode.
-- `pnpm exec playwright codegen`
-  Auto generate tests with Codegen.
-- `pnpm exec playwright show-report`
-  Shows the test report in `./playwright-report`.
+### Basic Usage
 
-And check out the following files:
+To run the end-to-end tests:
+```bash
+pnpm exec playwright test
+```
+or if you prefer interactive UI, you can run:
+```
+pnpm exec playwright test --ui`
+```
 
-- `./tests/example.spec.ts` - Example end-to-end test
-- `./tests-examples/demo-todo-app.spec.ts` - Demo Todo App end-to-end tests
-- `./playwright.config.ts` - Playwright Test configuration
+In the process, it may prompt you to install the browsers:
+```bash
+pnpm exec playwright install --with-deps
+```
+
+Finally, it will show the report, or you can run this if not:
+```
+pnpm exec playwright show-report
+```
+
+You may wanna try this command to auto-generate tests with Codegen.
+```
+pnpm exec playwright codegen
+```
 
 Visit https://playwright.dev/docs/intro for more information. ✨
