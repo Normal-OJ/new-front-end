@@ -4,6 +4,8 @@
 
 ## Development
 
+To run the entire project, including the `new-front-end`, refer to the `README.md` file in the main Normal-OJ repository. However, if you only wanna build the `new-front-end` independently or run end-to-end tests, proceed with the instructions below.
+
 ### Setup
 
 Issues and PRs are welcome, please read the [contribution guide](CONTRIBUTING.md) to prepare a proper development environment.
