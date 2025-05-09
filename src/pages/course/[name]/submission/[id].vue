@@ -3,7 +3,7 @@ import { ref, watchEffect } from "vue";
 import { useClipboard, useIntervalFn } from "@vueuse/core";
 import { useAxios } from "@vueuse/integrations/useAxios";
 import { useRoute, useRouter } from "vue-router";
-import { LANG } from "@/constants";
+import { SUBMISSION_STATUS_CODE, LANG } from "@/constants";
 import { formatTime } from "@/utils/formatTime";
 import api, { fetcher } from "@/models/api";
 import { useSession } from "@/stores/session";
@@ -13,12 +13,24 @@ const session = useSession();
 const route = useRoute();
 useTitle(`Submission - ${route.params.id} - ${route.params.name} | Normal OJ`);
 const router = useRouter();
+
 const {
   data: submission,
   error,
   isLoading,
   execute,
 } = useAxios<Submission>(`/submission/${route.params.id}`, fetcher);
+
+const {
+  data: CEOutput,
+  error: CEError,
+  isLoading: CELoading,
+  execute: fetchCEOutput,
+  // If the submission CE, then all test cases are CE, thus set /output/0/0
+} = useAxios<{ stderr: string; stdout: string }>(`/submission/${route.params.id}/output/0/0`, fetcher, {
+  immediate: false,
+});
+
 const { copy, copied, isSupported } = useClipboard();
 
 const { pause, isActive } = useIntervalFn(() => {
@@ -33,8 +45,11 @@ watchEffect(() => {
     if (submission.value.tasks) {
       expandTasks.value = submission.value.tasks.map(() => false);
     }
-    if (submission.value.status !== -1) {
+    if (submission.value.status !== SUBMISSION_STATUS_CODE.PENDING) {
       pause();
+      if (submission.value.status === SUBMISSION_STATUS_CODE.COMPILE_ERROR) {
+        fetchCEOutput();
+      }
     }
   }
 });
@@ -123,6 +138,21 @@ async function rejudge() {
                 </table>
               </template>
             </data-status-wrapper>
+
+            <div class="my-4" />
+
+            <div v-if="submission?.status === SUBMISSION_STATUS_CODE.COMPILE_ERROR">
+              <div class="card-title md:text-xl lg:text-2xl">
+                <i-uil-exclamation-circle class="mr-2 text-error" />
+                {{ $t("course.submission.compile_error.title") }}
+              </div>
+              <div class="my-4" />
+              <ui-spinner v-if="CELoading" class="mr-3 h-6 w-6" />
+              <div v-else-if="CEError">unable to get error messages from server 😢</div>
+              <div v-else>
+                <code-editor v-model="CEOutput!.stderr" readonly />
+              </div>
+            </div>
 
             <div class="my-4" />
 

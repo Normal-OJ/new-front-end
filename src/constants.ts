@@ -48,6 +48,18 @@ export const SUBMISSION_STATUS_REPR = {
   },
 } as const;
 
+export const SUBMISSION_STATUS_CODE = {
+  PENDING: -1,
+  ACCEPTED: 0,
+  WRONG_ANSWER: 1,
+  COMPILE_ERROR: 2,
+  TIME_LIMIT_EXCEED: 3,
+  MEMORY_LIMIT_EXCEED: 4,
+  RUNTIME_ERROR: 5,
+  JUDGE_ERROR: 6,
+  OUTPUT_LIMIT_EXCEED: 7,
+} as const;
+
 export const LOCAL_STORAGE_KEY = {
   MINI_SIDEBAR: "mini-sidebar",
   LOCALE: "locale",

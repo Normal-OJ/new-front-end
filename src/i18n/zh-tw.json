@@ -147,6 +147,9 @@
         "text": "原始碼",
         "copied": "已複製！",
         "copy": "複製"
+      },
+      "compile_error": {
+        "title": "編譯錯誤訊息"
       }
     },
     "members": {
