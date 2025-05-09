@@ -147,6 +147,9 @@
         "text": "Source",
         "copied": "Copied!",
         "copy": "Copy"
+      },
+      "compile_error": {
+        "title": "Compile Error Messages"
       }
     },
     "members": {
