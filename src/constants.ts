@@ -71,3 +71,8 @@ export const UNLIMITED_QUOTA = -1;
 export function isQuotaUnlimited(quota: number): boolean {
   return quota === UNLIMITED_QUOTA;
 }
+
+export const PROBLEM_STATUS = {
+  HIDDEN: 1,
+  VISIBLE: 0,
+};
