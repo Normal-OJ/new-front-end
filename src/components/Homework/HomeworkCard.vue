@@ -3,10 +3,12 @@ import { computed } from "vue";
 import { useSession } from "@/stores/session";
 import { formatTime } from "@/utils/formatTime";
 import { useI18n } from "vue-i18n";
+import useInteractions from "@/composables/useInteractions";
+
 import type { ProblemId2Meta } from "@/composables/useProblemSelection";
-import { isQuotaUnlimited } from "@/constants";
 
 const { t } = useI18n();
+const { isDesktop } = useInteractions();
 
 interface Props {
   homework: HomeworkListItem | HomeworkPreviewForm;
@@ -46,8 +48,8 @@ const state = computed(() => {
 <template>
   <div class="card mx-auto w-full bg-base-100 shadow-xl">
     <div class="card-body">
-      <div class="flex items-start justify-between">
-        <div class="lg:text-2x card-title mb-8 md:text-xl">
+      <div class="flex flex-col items-start justify-between sm:flex-row">
+        <div class="lg:text-2x card-title md:mb-8 md:text-xl">
           {{ homework.name }}
           <div :class="['badge', STATUS_CLASS[state]]">{{ state }}</div>
         </div>
@@ -58,7 +60,7 @@ const state = computed(() => {
         <div class="mb-8 w-full lg:flex-[2_1_0%]">
           <div class="card-title">{{ t("components.hw.card.availability.text") }}</div>
           <div class="mt-2 flex flex-wrap overflow-x-auto lg:flex-nowrap">
-            <table class="table table-compact w-full">
+            <table v-if="isDesktop" class="table table-compact w-full">
               <thead>
                 <tr>
                   <th>{{ t("components.hw.card.availability.from") }}</th>
@@ -72,73 +74,41 @@ const state = computed(() => {
                 </tr>
               </tbody>
             </table>
+            <div v-else class="flex flex-wrap text-sm">
+              <div>
+                <span>{{ formatTime(homework.start) }}</span>
+              </div>
+              ~
+              <div>
+                <span>{{ formatTime(homework.end) }}</span>
+              </div>
+            </div>
           </div>
         </div>
 
         <div class="mb-8 w-full lg:flex-[3_1_0%]">
           <div class="card-title">{{ t("components.hw.card.problems.text") }}</div>
-          <table class="table table-compact mt-2 w-full">
-            <thead>
-              <tr>
-                <th>{{ t("components.hw.card.problems.id") }}</th>
-                <th>{{ t("components.hw.card.problems.pid") }}</th>
-                <th>{{ t("components.hw.card.problems.name") }}</th>
-                <th>{{ t("components.hw.card.problems.quota") }}</th>
-                <th>{{ t("components.hw.card.problems.score") }}</th>
-                <th>{{ t("components.hw.card.problems.stats") }}</th>
-                <th v-if="session.isAdmin">{{ t("components.hw.card.problems.copycat") }}</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="(pid, index) in homework.problemIds">
-                <td>{{ index + 1 }}</td>
-                <td>
-                  <router-link class="link" :to="`/course/${$route.params.name}/problem/${pid}`">
-                    {{ pid }}
-                  </router-link>
-                </td>
-                <td>
-                  <ui-spinner v-if="!problems[pid.toString()]" />
-                  <span v-else>{{ problems[pid.toString()].name }}</span>
-                </td>
-                <td>
-                  <ui-spinner v-if="!problems[pid.toString()]" />
-                  <span v-else-if="isQuotaUnlimited(problems[pid.toString()].quota)" class="text-sm">{{
-                    $t("components.problem.card.unlimited")
-                  }}</span>
-                  <span v-else>{{ problems[pid.toString()].quota }}</span>
-                </td>
-                <td>
-                  {{
+          <homework-problems v-if="isDesktop" :homework="homework" :problems="problems" />
+          <div v-else class="w-full py-1">
+            <div class="flex w-full flex-wrap justify-center gap-1 sm:justify-start">
+              <template v-for="pid in homework.problemIds">
+                <problem-info-card
+                  class="w-full sm:w-72"
+                  :name="problems[pid.toString()].name"
+                  :id="pid"
+                  :quota="problems[pid.toString()].quota"
+                  :score="
                     (
                       homework.studentStatus[session.username] &&
                       homework.studentStatus[session.username][pid.toString()]
-                    )?.score || "-"
-                  }}
-                </td>
-                <td>
-                  <div class="tooltip" data-tip="Stats">
-                    <router-link
-                      class="btn btn-ghost btn-xs"
-                      :to="`/course/${$route.params.name}/problem/${pid}/stats`"
-                    >
-                      <i-uil-chart-line class="lg:h-5 lg:w-5" />
-                    </router-link>
-                  </div>
-                </td>
-                <td v-if="session.isAdmin">
-                  <div class="tooltip" data-tip="Copycat">
-                    <router-link
-                      class="btn btn-ghost btn-xs"
-                      :to="`/course/${$route.params.name}/problem/${pid}/copycat`"
-                    >
-                      <i-uil-file-exclamation-alt class="lg:h-5 lg:w-5" />
-                    </router-link>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                    )?.score || 0
+                  "
+                  :show-stats="session.isAdmin"
+                  :show-copycat="session.isAdmin"
+                />
+              </template>
+            </div>
+          </div>
         </div>
       </div>
 
