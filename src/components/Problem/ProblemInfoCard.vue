@@ -44,7 +44,7 @@ withDefaults(defineProps<Props>(), {
           </div>
           <div v-if="tags" class="flex flex-col">
             <span class="font-semibold"> {{ t("components.problem.infoCard.tags") }} : </span>
-            <span v-for="tag in tags" :key="tag" class="badge-info badge">{{ tag }}</span>
+            <span v-for="tag in tags" :key="tag" class="badge badge-info">{{ tag }}</span>
           </div>
         </div>
       </router-link>
