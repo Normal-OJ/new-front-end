@@ -6,7 +6,7 @@ interface Props {
   name: string;
   id: string | number;
   quota: string | number;
-  score?: string | number;
+  score: string | number;
   tags?: string[];
   showStats?: boolean;
   showCopycat?: boolean;
@@ -33,7 +33,7 @@ withDefaults(defineProps<Props>(), {
         </h2>
         <div class="flex flex-col gap-2">
           <div class="flex justify-between">
-            <span v-if="score !== undefined">
+            <span>
               <span class="text-2xl font-bold"> {{ score }} </span>
               <span class="text-xs">/ 100</span>
             </span>

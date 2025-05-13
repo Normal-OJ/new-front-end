@@ -94,14 +94,14 @@ const state = computed(() => {
               <template v-for="pid in homework.problemIds">
                 <problem-info-card
                   class="w-full sm:w-72"
-                  :name="problems[pid.toString()].name"
+                  :name="problems[pid.toString()]?.name || '-'"
                   :id="pid"
-                  :quota="problems[pid.toString()].quota"
+                  :quota="problems[pid.toString()]?.quota || '-'"
                   :score="
                     (
                       homework.studentStatus[session.username] &&
                       homework.studentStatus[session.username][pid.toString()]
-                    )?.score || 0
+                    )?.score || '-'
                   "
                   :show-stats="session.isAdmin"
                   :show-copycat="session.isAdmin"
