@@ -188,7 +188,7 @@ async function submit() {
         <div class="form-control">
           <label class="label cursor-pointer">
             <span class="label-text">{{ $t("course.members.standardizeUsername") }}</span>
-            <input v-model="shouldStandardizeUsername" type="checkbox" class="checkbox-primary checkbox" />
+            <input v-model="shouldStandardizeUsername" type="checkbox" class="checkbox checkbox-primary" />
           </label>
         </div>
 
