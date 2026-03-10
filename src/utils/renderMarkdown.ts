@@ -6,11 +6,11 @@ import hljs from "highlight.js";
 
 const md = markdownIt({
   html: false,
-  highlight: function (str, lang) {
+  highlight: function (str, lang): string {
     if (lang && hljs.getLanguage(lang)) {
       return hljs.highlight(str, { language: lang }).value;
     }
-    return str;
+    return md.utils.escapeHtml(str);
   },
 }).use(tm, {
   engine: katex,
