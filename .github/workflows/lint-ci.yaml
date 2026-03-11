@@ -22,3 +22,5 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Run ESLint and Prettier
         run: pnpm run lint
+      - name: Run unit tests
+        run: pnpm run test
